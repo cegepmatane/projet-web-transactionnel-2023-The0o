@@ -11,43 +11,9 @@ p {
     margin: 0;
 }
 
-#navBar {
-    width: 100%;
-    height: 8.5%;
-    background-color: black;
+a {
     color: white;
-    display: flex;
-    position: relative;
-}
-
-#logo {
-    margin: 0 3ch;
-    margin: 0 10vmin;
-    font-weight: 900;
-    align-self: center;
-    text-align: center;
-    font-size: 200%;
-}
-
-#naviguerCategories {
-    justify-content: space-between;
-    gap: 2ch;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-}
-
-#naviguerCategories *:hover {
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-#imageDefilerMenu {
-    display: none;
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translate(-50%, -50%);
+    text-decoration: none;
 }
 
 #titreEtFiltre {

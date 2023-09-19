@@ -1,16 +1,16 @@
 @font-face {
     font-family: MontserratBlack;
-    src: url(fonts/Montserrat/static/Montserrat-Black.ttf);
+    src: url(../fonts/Montserrat/static/Montserrat-Black.ttf);
   }
 
   @font-face {
     font-family: Cabin;
-    src: url(fonts/Cabin/Cabin-VariableFont_wdth\,wght.ttf);
+    src: url(../fonts/Cabin/Cabin-VariableFont_wdth\,wght.ttf);
   }
 
   @font-face {
     font-family: Inter;
-    src: url(fonts/Inter/static/Inter-Light.ttf);
+    src: url(../fonts/Inter/static/Inter-Light.ttf);
   }
 
 body{
