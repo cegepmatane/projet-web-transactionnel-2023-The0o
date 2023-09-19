@@ -29,7 +29,6 @@
     border-radius: 30px;
     margin-left: calc(100vh * .35 * .10);
     overflow: hidden;
-
     position: relative;
 }
 
@@ -87,4 +86,8 @@
 button {
     display: flex;
     cursor: pointer;
+}
+
+.choix {
+    justify-content: space-between;
 }
