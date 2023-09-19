@@ -1,4 +1,4 @@
-const images = ["./airMax270.png", "./airMax270_dessous.png"];
+const images = ["airMax270.png", "airMax270_dessous.png"];
 let ordreAffichage = 0;
 
 function changeImage(sens) {
@@ -8,5 +8,5 @@ function changeImage(sens) {
     } else if (ordreAffichage < 0) {
         ordreAffichage = images.length - 1;
     }
-    document.getElementById("image").src = images[ordreAffichage];
+    document.getElementById("image").src = "../img/" + images[ordreAffichage];
 }
