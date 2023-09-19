@@ -6,5 +6,5 @@ error_reporting(E_ALL);
 require_once('../controllers/ProduitController.php');
 $produitController = new ProduitController($mysqli); 
 
-$produitController->afficherTousLesProduits();
+$produitController->afficherProduitAccueil();
 ?>
