@@ -29,7 +29,9 @@
                         <p onclick="window.location.replace('listeProduit.html')">FEMME</p>
                     </div>
                     <div class="nav-bar-kids nav-menu">
-                        <p onclick="window.location.replace('listeProduit.html')">ENFANT</p>
+                    <a href="/projet-web-transactionnel-2023-The0o/src/app/views/ListeProduit.php">
+                        <p>ENFANT</p>
+                    </a>
                     </div>
                 </div>
                <div class="container-img-men-outfit">

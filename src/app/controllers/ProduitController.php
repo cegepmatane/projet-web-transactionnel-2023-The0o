@@ -12,7 +12,7 @@ class ProduitController {
     public function afficherTousLesProduits() {
         $produits = $this->produitDAO->getAllProduits();
 
-        include('../views/produits.php');
+        include('../views/ListeProduit.php');
     }
 
     public function afficherUnProduitParSonId($id){
@@ -24,5 +24,18 @@ class ProduitController {
         $produits = $this->produitDAO->getFourProduits();
         include('../views/accueil.php');
     }
+
+    public function afficherProduitParChoix(){
+        //TODO Quand on recois les donnees on fait une verification antiSQL et on modifie ici
+        $trie = null;
+        $prix =null;
+        $taille = null;
+        $couleur = null;
+        $type = null;
+        $reduction = null;
+        $produits = $this->produitDAO->getProduitsByChoice($trie,$prix,$taille,$couleur,$type,$reduction);
+        include('../views/ListeProduit.php');
+    }
+
 }
 ?>
