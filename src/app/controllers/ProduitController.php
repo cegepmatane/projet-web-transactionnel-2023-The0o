@@ -12,7 +12,7 @@ class ProduitController {
     public function afficherTousLesProduits() {
         $produits = $this->produitDAO->getAllProduits();
 
-        include('../views/ListeProduit.php');
+        return $produits;
     }
 
     public function afficherUnProduitParSonId($id){

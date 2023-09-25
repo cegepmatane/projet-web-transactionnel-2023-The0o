@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/accueil.css">
+        <link rel="stylesheet" href="../public/css/accueil.css">
         <title>Wirefit</title>
     </head>
     <body>
@@ -11,7 +11,7 @@
             <div class="left-black">
                 <div id="title" class="front-white"><p>WIREFIT</p></div>
                 <div id="container-image-woman-outfit">
-                    <img src="img/womanOutfit.jpg" id="image-woman-outfit"/>
+                    <img src="../public/img/womanOutfit.jpg" id="image-woman-outfit"/>
                 </div>
                 <div class="container-mid-normal-text front-white" >
                     <div class="medium-text front-white">
@@ -23,10 +23,14 @@
             <div class="right-white">
                 <div class="nav-bar">
                     <div class="nav-bar-men nav-menu nav-bar-menu-chose">
-                        <p onclick="window.location.replace('listeProduit.html')">HOMME</p>
+                    <a href="/projet-web-transactionnel-2023-The0o/src/app/views/ListeProduit.php">
+                        <p>HOMME</p>
+                    </a>
                     </div>
                     <div class="nav-bar-woman nav-menu">
-                        <p onclick="window.location.replace('listeProduit.html')">FEMME</p>
+                    <a href="/projet-web-transactionnel-2023-The0o/src/app/views/ListeProduit.php">
+                        <p>FEMME</p>
+                    </a>
                     </div>
                     <div class="nav-bar-kids nav-menu">
                     <a href="/projet-web-transactionnel-2023-The0o/src/app/views/ListeProduit.php">
@@ -35,7 +39,7 @@
                     </div>
                 </div>
                <div class="container-img-men-outfit">
-                   <img src="img/menOutfit.png" id="image-men-outfit" />
+                   <img src="../public/img/menOutfit.png" id="image-men-outfit" />
                </div>
                <div class="container-shop-img">
                 <div class="container-shop">
@@ -54,7 +58,7 @@
                </div>
 
                 <div class="container-img-men-outfit-body">
-                   <img src="img/menOutfitBody.png" id="image-men-outfit-body">
+                   <img src="../public/img/menOutfitBody.png" id="image-men-outfit-body">
                 </div>
             </div>
         </div>
