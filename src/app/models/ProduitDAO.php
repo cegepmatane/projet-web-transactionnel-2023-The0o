@@ -36,7 +36,7 @@ class ProduitDAO {
     }
 
     public function getProduitById($id){
-        $sql = "SELECT * FROM PRODUIT WHERE idProduit = "+$id+"";
+        $sql = "SELECT * FROM PRODUIT WHERE idProduit = ".$id."";
         $result = $this->conn->query($sql);
 
         if ($result === false) {

@@ -15,11 +15,6 @@ class ProduitController {
         return $produits;
     }
 
-    public function afficherUnProduitParSonId($id){
-        $produit = $this->produitDAO->getProduitById($id);
-        include('../views/Produits.php');
-    }
-
     public function afficherProduitAccueil(){
         $produits = $this->produitDAO->getFourProduits();
         include('../views/accueil.php');
@@ -37,5 +32,9 @@ class ProduitController {
         include('../views/ListeProduit.php');
     }
 
+    public function afficherUnProduitParSonId($id){
+        $produits = $this->produitDAO->getProduitById($id);
+        return $produits;
+    }
 }
 ?>

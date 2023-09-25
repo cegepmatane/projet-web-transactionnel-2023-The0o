@@ -47,12 +47,14 @@
                 <div id="listeArticles">
 
                 <?php foreach ($produits as $produit): ?>
-                    <div class="article" onclick="window.location.replace('pageProduit.html')">
+                    <a href="/projet-web-transactionnel-2023-The0o/src/app/views/Produits.php?id=<?php echo $produit->idProduit; ?>">
+                    <div class="article">
                         <div class="articleNom"><?php echo $produit->nomProduit; ?></div>
                         <div class="articleType"><?php echo $produit->marqueProduit; ?></div>
-                        <div class="articlePrix"><?php echo $produit->prixProduit;?></div>
+                        <div class="articlePrix"><?php echo $produit->prixProduit;?> $</div>
                         <div class="articleCouleur"></div>
                     </div>
+                    </a>
                 <?php endforeach; ?>
                 </div>
                </div>

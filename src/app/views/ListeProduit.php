@@ -13,14 +13,15 @@ $produits = $produitController->afficherTousLesProduits();
   </head>
   <body>
     <div id="navBar">
+      <a href="../public/index.php">
       <div id="logo">
         WIREFIT
         </div>
-      
+        </a>
       <div id="naviguerCategories">
-        <a href="./listeProduit.html">Homme</a>
-        <a href="./listeProduit.html">Femme</a>
-        <a href="./listeProduit.html">Enfant</a>
+        <a href="../views/ListeProduit.php">Homme</a>
+        <a href="../views/ListeProduit.php">Femme</a>
+        <a href="../views/ListeProduit.php">Enfant</a>
       </div>
       </div>
       <div id="imageDefilerMenu">
@@ -62,11 +63,11 @@ $produits = $produitController->afficherTousLesProduits();
 
     <div id="listeArticles">
     <?php foreach ($produits as $produit): ?>
-      <a href="/projet-web-transactionnel-2023-The0o/src/app/views/Produits.php">
+      <a href="/projet-web-transactionnel-2023-The0o/src/app/views/Produits.php?id=<?php echo $produit->idProduit; ?>">
         <div class="article">
             <div class="articleNom"><?php echo $produit->nomProduit; ?></div>
             <div class="articleType"><?php echo $produit->marqueProduit; ?></div>
-            <div class="articlePrix"><?php echo $produit->prixProduit; ?></div>
+            <div class="articlePrix"><?php echo $produit->prixProduit; ?> $</div>
             <div class="articleCouleur"></div>
         </div>
       </a>
