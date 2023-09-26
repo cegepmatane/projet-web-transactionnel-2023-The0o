@@ -1,4 +1,4 @@
-const images = ["airMax270.png", "airMax270_dessous.png"];
+const images = ["image1.png", "image2.png"];
 let ordreAffichage = 0;
 
 function changeImage(sens) {

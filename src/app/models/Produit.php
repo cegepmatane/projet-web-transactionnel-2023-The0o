@@ -8,8 +8,10 @@ class Produit {
     public $marqueProduit;
     public $reductionProduit;
     public $couleurProduit;
+    public $imagesProduit;
+    public $imagesDeuxProduit;
 
-    public function __construct($id, $nom, $prix, $sousTitre, $description, $marque, $reduction, $couleur) {
+    public function __construct($id, $nom, $prix, $sousTitre, $description, $marque, $reduction, $couleur,$imagesProduit,$imagesDeuxProduit) {
         $this->idProduit = $id;
         $this->nomProduit = $nom;
         $this->prixProduit = $prix;
@@ -18,6 +20,8 @@ class Produit {
         $this->marqueProduit = $marque;
         $this->reductionProduit = $reduction;
         $this->couleurProduit = $couleur;
+        $this->imagesProduit = $imagesProduit;
+        $this->imagesDeuxProduit = $imagesDeuxProduit;
     }
 }
 

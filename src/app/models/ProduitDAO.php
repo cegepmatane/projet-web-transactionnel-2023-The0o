@@ -28,7 +28,7 @@ class ProduitDAO {
             } else {
                 $couleurProduit = "000000";
             }
-            
+
             $produit = new Produit(
                 $row['idProduit'],
                 $row['nomProduit'],
@@ -37,7 +37,9 @@ class ProduitDAO {
                 $row['descriptionProduit'],
                 $row['marqueProduit'],
                 $row['reductionProduit'],
-                $couleurProduit
+                $couleurProduit,
+                $row['imageUnProduit'],
+                $row['imageDeuxProduit']
             );
         
             $produits[] = $produit;
@@ -73,7 +75,9 @@ class ProduitDAO {
                 $row['descriptionProduit'],
                 $row['marqueProduit'],
                 $row['reductionProduit'],
-                $couleurProduit
+                $couleurProduit,
+                $row['imageUnProduit'],
+                $row['imageDeuxProduit']
             );
             return $produit;
         } else {
@@ -110,7 +114,9 @@ class ProduitDAO {
                 $row['descriptionProduit'],
                 $row['marqueProduit'],
                 $row['reductionProduit'],
-                $couleurProduit
+                $couleurProduit,
+                $row['imageUnProduit'],
+                $row['imageDeuxProduit']
             );
         
             $produits[] = $produit;
@@ -170,7 +176,10 @@ class ProduitDAO {
                 $row['descriptionProduit'],
                 $row['marqueProduit'],
                 $row['reductionProduit'],
-                $row['couleurProduit']
+                $row['couleurProduit'],
+                $row['imagesProduit'],
+                $row['imageDeuxProduit']
+
             );
         
             $produits[] = $produit;
