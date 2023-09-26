@@ -45,22 +45,28 @@ $produits = $produitController->afficherUnProduitParSonId($idProduit);
     <div class="body">
         <div class="article">
             <div id="images">
-                <img id="image" src="../img/airMax270.png" alt="image1">
-                <div id="precedent" onclick="changeImage(-1)">
                 <?php
                     $imageBase64 = base64_encode($produits->imagesProduit);
                     $imageType = 'image/png';
                     $imageDataUrl = 'data:' . $imageType . ';base64,' . $imageBase64;
+
+                    $imageBase64 = base64_encode($produits->imagesDeuxProduit);
+                    $imageType = 'image/png';
+                    $image2DataUrl = 'data:' . $imageType . ';base64,' . $imageBase64;
                 ?>
-                    <img src="<?php echo $imageDataUrl; ?>" alt="image1">
+                    <img src="<?php echo $imageDataUrl; ?>" id="image1" alt="image1">
+                    <img src="<?php echo $image2DataUrl; ?>" id="image2" alt="image1">
+                <div id="precedent" onclick="changeImage(-1)">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
+                        <path
+                            d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z" />
+                    </svg>
                 </div>
                 <div id="suivant" onclick="changeImage(1)">
-                <?php
-                    $imageBase642 = base64_encode($produits->imagesDeuxProduit);
-                    $imageType2 = 'image/png';
-                    $imageDataUrl2 = 'data:' . $imageType2 . ';base64,' . $imageBase642;
-                ?>
-                    <img src="<?php echo $imageDataUrl2; ?>" alt="image2">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
+                        <path
+                            d="M310.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L242.7 256 73.4 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z" />
+                    </svg>
                 </div>
             </div>
             <div class="informations">
