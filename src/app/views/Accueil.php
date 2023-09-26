@@ -22,7 +22,7 @@
             </div>
             <div class="right-white">
                 <div class="nav-bar">
-                    <div class="nav-bar-men nav-menu nav-bar-menu-chose">
+                    <div class="nav-bar-men nav-menu">
                     <a href="/projet-web-transactionnel-2023-The0o/src/app/views/ListeProduit.php">
                         <p>HOMME</p>
                     </a>

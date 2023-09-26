@@ -19,7 +19,7 @@ class ProduitDAO {
         $produits = [];
 
         while ($row = $result->fetch_assoc()) {
-            $sql = "SELECT COULEUR.hexaCouleur FROM PRODUIT NATURAL JOIN COULEUR WHERE idProduit=".$row['idProduit']." LIMIT 1";
+            $sql = "SELECT COULEUR.hexaCouleur FROM PRODUIT INNER JOIN AVOIR ON AVOIR.idProduit=".$row['idProduit']." INNER JOIN COULEUR ON AVOIR.idCouleur=COULEUR.idCouleur";
             $couleurResult= $this->conn->query($sql);
 
             if ($couleurResult) {
@@ -57,7 +57,7 @@ class ProduitDAO {
         }
 
         if ($row = $result->fetch_assoc()) {
-            $sql = "SELECT COULEUR.hexaCouleur FROM PRODUIT NATURAL JOIN COULEUR WHERE idProduit=".$row['idProduit']." LIMIT 1";
+            $sql = "SELECT COULEUR.hexaCouleur FROM PRODUIT INNER JOIN AVOIR ON AVOIR.idProduit=".$row['idProduit']." INNER JOIN COULEUR ON AVOIR.idCouleur=COULEUR.idCouleur";
             $couleurResult= $this->conn->query($sql);
 
             if ($couleurResult) {
@@ -96,7 +96,7 @@ class ProduitDAO {
         $produits = [];
 
         while ($row = $result->fetch_assoc()) {
-            $sql = "SELECT COULEUR.hexaCouleur FROM PRODUIT NATURAL JOIN COULEUR WHERE idProduit=".$row['idProduit']." LIMIT 1";
+            $sql = "SELECT COULEUR.hexaCouleur FROM PRODUIT INNER JOIN AVOIR ON AVOIR.idProduit=".$row['idProduit']." INNER JOIN COULEUR ON AVOIR.idCouleur=COULEUR.idCouleur";
             $couleurResult= $this->conn->query($sql);
 
             if ($couleurResult) {
