@@ -11,12 +11,12 @@ class ProduitController {
 
     public function afficherTousLesProduits() {
         $produits = $this->produitDAO->getAllProduits();
-
         return $produits;
     }
 
     public function afficherProduitAccueil(){
         $produits = $this->produitDAO->getFourProduits();
+        include('../views/accueil.php');
     }
 
     public function afficherProduitParChoix(){
