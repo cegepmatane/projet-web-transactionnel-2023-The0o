@@ -8,5 +8,4 @@ class Taille {
         $this->taille = $taille;
     }
 }
-
 ?>

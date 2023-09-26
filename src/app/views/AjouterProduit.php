@@ -4,6 +4,7 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
     require_once '../controllers/ProduitController.php';
     $produitController = new ProduitController($mysqli);
+    $categorie = $produitController->afficherListeDesCategorie();
 ?>
 
 <!DOCTYPE html>
@@ -12,13 +13,11 @@ error_reporting(E_ALL);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajouter un produit</title>
-    <!-- Incluez vos feuilles de style CSS ici -->
-    <link rel="stylesheet" href="votre-style.css">
+    <link rel="stylesheet" href="../public/css/ajouter.css">
 </head>
 <body>
     <h1>Ajouter un produit</h1>
     <form action="traitement-ajout-produit.php" method="post" enctype="multipart/form-data">
-        <!-- Champ pour le nom du produit -->
         <label for="nomProduit">Nom du produit :</label>
         <input type="text" id="nomProduit" name="nomProduit" required>
         
@@ -39,16 +38,27 @@ error_reporting(E_ALL);
         <input type="number" id="reductionProduit" name="reductionProduit">
         
         <!-- Champ pour la couleur du produit -->
-        <label for="couleurProduit"> Type de sexe du produit</label>
-        <input type="number" id="couleurProduit" name="couleurProduit">
+        <label for="couleurProduit">Type de sexe du produit :</label>
+<select id="couleurProduit" name="couleurProduit">
+    <option value="1">Homme</option>
+    <option value="2">Femme</option>
+    <option value="3">Enfant</option>
+</select>
         
         <!-- Champ pour la taille du produit -->
         <label for="tailleProduit">Afficher le produit :</label>
-        <input type="boolean" id="tailleProduit" name="tailleProduit">
+        <input type="checkbox" id="tailleProduit" name="tailleProduit" value="1">
+
         
         <!-- Champ pour le type du produit -->
         <label for="typeProduit">Type du produit :</label>
-        <input type="text" id="typeProduit" name="typeProduit">
+<select id="typeProduit" name="typeProduit">
+<?php foreach ($categorie as $categorie): ?>
+    <option value="<?php echo $categorie->nomCategorie ?>"><?php echo $categorie->nomCategorie ?></option>
+    <?php endforeach; ?>
+
+</select>
+
         
         <!-- Champ pour la première image du produit -->
         <label for="imageProduit">Image du produit (1) :</label>
