@@ -19,6 +19,8 @@ class ProduitDAO {
         $produits = [];
 
         while ($row = $result->fetch_assoc()) {
+            $sql = "SELECT COULEUR.nomCouleur FROM PRODUIT NATURAL JOIN COULEUR WHERE idProduit=".$row['idProduit']." LIMIT 1";
+            $couleurProduit= $this->conn->query($sql);
             $produit = new Produit(
                 $row['idProduit'],
                 $row['nomProduit'],
@@ -26,7 +28,8 @@ class ProduitDAO {
                 $row['sousTitreProduit'],
                 $row['descriptionProduit'],
                 $row['marqueProduit'],
-                $row['reductionProduit']
+                $row['reductionProduit'],
+                $couleurProduit
             );
         
             $produits[] = $produit;
@@ -44,6 +47,8 @@ class ProduitDAO {
         }
 
         if ($row = $result->fetch_assoc()) {
+            $sql = "SELECT COULEUR.nomCouleur FROM PRODUIT NATURAL JOIN COULEUR WHERE idProduit=".$row['idProduit']." LIMIT 1";
+            $couleurProduit= $this->conn->query($sql);
             $produit = new Produit(
                 $row['idProduit'],
                 $row['nomProduit'],
@@ -51,7 +56,8 @@ class ProduitDAO {
                 $row['sousTitreProduit'],
                 $row['descriptionProduit'],
                 $row['marqueProduit'],
-                $row['reductionProduit']
+                $row['reductionProduit'],
+                $couleurProduit
             );
             return $produit;
         } else {
@@ -70,6 +76,8 @@ class ProduitDAO {
         $produits = [];
 
         while ($row = $result->fetch_assoc()) {
+            $sql = "SELECT COULEUR.nomCouleur FROM PRODUIT NATURAL JOIN COULEUR WHERE idProduit=".$row['idProduit']." LIMIT 1";
+            $couleurProduit= $this->conn->query($sql);
             $produit = new Produit(
                 $row['idProduit'],
                 $row['nomProduit'],
@@ -77,7 +85,8 @@ class ProduitDAO {
                 $row['sousTitreProduit'],
                 $row['descriptionProduit'],
                 $row['marqueProduit'],
-                $row['reductionProduit']
+                $row['reductionProduit'],
+                $couleurProduit
             );
         
             $produits[] = $produit;
@@ -127,7 +136,6 @@ class ProduitDAO {
         if ($result === false) {
             return false; 
         }
-
         $produits = [];
 
         while ($row = $result->fetch_assoc()) {
@@ -138,7 +146,8 @@ class ProduitDAO {
                 $row['sousTitreProduit'],
                 $row['descriptionProduit'],
                 $row['marqueProduit'],
-                $row['reductionProduit']
+                $row['reductionProduit'],
+                $row['couleurProduit']
             );
         
             $produits[] = $produit;
