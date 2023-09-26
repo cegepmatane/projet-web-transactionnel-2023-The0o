@@ -16,11 +16,17 @@ a {
     text-decoration: none;
 }
 
+ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
 #titreEtFiltre {
     width: 100%;
-    display: flex;
+    display: grid;
     justify-content: center;
-    flex-wrap: wrap;
+    grid-template-columns: 1fr 1fr;
     margin: 5% 0;
     gap: 2ch;
 }
@@ -44,12 +50,29 @@ a {
 }
 
 .filtre {
+    border: 1px black solid;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+
+.filtreTitre {
     height: min-content;
     display: flex;
-    border: 1px black solid;
     align-items: center;
-    padding: 5px;
-    border-radius: 10px;
+    justify-content: space-between;
+}
+
+.separationEntreOption {
+    color: #eeeeee;
+}
+
+.optionsFiltre {
+    display: none;
+}
+
+.optionFiltre {
+    display: flex;
     justify-content: space-between;
 }
 

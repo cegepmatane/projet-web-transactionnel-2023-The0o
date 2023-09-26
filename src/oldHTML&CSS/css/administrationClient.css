@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+#mainPage {
+    width: 90%;
+    margin: auto;
+}
+
+#introClient {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5%;
+    margin-bottom: 2%;
+}
+
+.texteGrosGras {
+    font-weight: 900;
+    font-size: 200%;
+}
+
+#addClient {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    border-radius: 14px;
+    padding: 0 2ch;
+    gap: 3vw;
+}
+
+#tableauClient {
+    box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.25); 
+    display: grid;
+    border-radius: 11px; 
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 28% 28% 28% 16%;
+    padding: 1%;
+}
+
+#tableauClient div p {
+    word-break: break-word;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+}
+
+#headerTableau {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border-radius: 11px 11px 0 0;
+}
+
+#actionHeader {
+    justify-content: center;
+}
+
+.listeActions {
+}
+
+.imageAction {
+    width: min-content;
+    gap: 15px;
+    margin: 0 15px;
+    flex-wrap: wrap;
+    display: flex;
+    width: auto;
+    justify-content: center;
+}
+
+.imageAction img {
+    background-color: black;
+    border-radius: 100%;
+    padding: 5px !important;
+}
