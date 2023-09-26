@@ -35,5 +35,10 @@ class ProduitController {
         $produits = $this->produitDAO->getProduitById($id);
         return $produits;
     }
+
+    public function supprimerProduit($id) {
+        $produit = $this->produitDAO->deleteProduit($id);
+        return $produit;
+    }
 }
 ?>

@@ -186,5 +186,23 @@ class ProduitDAO {
         }
 
     }
+
+    public function deleteProduit($id) {
+        $sql = "DELETE FROM AVOIR WHERE idProduit=". $id . ";";
+        $result = $this->conn->query($sql);
+        $sql = "DELETE FROM FAVORIS WHERE idProduit=" . $id . ";";
+        $result = $this->conn->query($sql);
+        $sql = "DELETE FROM MESURER WHERE idProduit=" . $id . ";";
+        $result = $this->conn->query($sql);
+        $sql = "DELETE FROM MESURER WHERE idProduit=" . $id . ";";
+        $result = $this->conn->query($sql);
+        $sql = "DELETE FROM PANIER WHERE idProduit=" . $id . ";";
+        $result = $this->conn->query($sql);
+        $sql = "DELETE FROM PRODUIT WHERE idProduit=" . $id . ";";
+        $result = $this->conn->query($sql);
+        if ($result === false) {
+            return false; 
+        }
+    }
 }
 ?>

@@ -18,10 +18,6 @@ function fermerPopupAjout() {
     document.getElementById("popupAjout").style.display = "none";
 }
 
-function ajouterProduit() {
-    //TODO
-}
-
 function afficherPopupAffichageProduit() {
     assombrirBackground();
     document.getElementById("popupAffichage").style.display = "block";
@@ -42,7 +38,10 @@ function fermerPopupModification() {
     document.getElementById("popupModification").style.display = "none";
 }
 
-function afficherPopupSuppressionProduit() {
+let produitActuel;
+
+function afficherPopupSuppressionProduit(produit) {
+    produitActuel = produit;
     assombrirBackground();
     document.getElementById("popupSuppression").style.display = "block";
 }
@@ -50,6 +49,11 @@ function afficherPopupSuppressionProduit() {
 function fermerPopupSuppression() {
     eclaircirBackground()
     document.getElementById("popupSuppression").style.display = "none";
+}
+
+
+function supprimerProduit() {
+    console.log(produitActuel);
 }
 
 let previous_categorie;

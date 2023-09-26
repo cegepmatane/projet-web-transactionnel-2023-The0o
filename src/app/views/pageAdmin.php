@@ -33,76 +33,70 @@ $produits = $produitController->afficherTousLesProduits();
 
     <div id="popupAjout">
         <div id="contenuPopupAjout">
-            <button class="boutonFermer" onclick="fermerPopupAjout()">
-                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
-                    <path
-                        d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
-                </svg>
-            </button>
-            <div class="contenuProduit">
-                <div class="titrePopup">
-                    <p>Ajouter un produit</p>
-                </div>
-                <div class="champsProduit">
-                    <div class="champ">
-                        <p>Nom du produit</p>
-                        <input type="text">
-                    </div>
-                    <div class="champ">
-                        <p>Marque du produit</p>
-                        <input type="text">
-                    </div>
-                    <div class="champ">
-                        <p>Prix du produit</p>
-                        <input type="text">
-                    </div>
-                    <div class="champ">
-                        <p>Description du produit</p>
-                        <input type="text">
-                    </div>
-                    <div class="champ">
-                        <p>Tailles du produit</p>
-                        <div id="choixTailles">
-                            <div>
-                                <input type="checkbox" name="s" value="S">
-                                <label for="s">S</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="m" value="M">
-                                <label for="m">M</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="l" value="L">
-                                <label for="l">L</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="champ">
-                        <p>Couleurs du produit</p>
-                        <div id="champCouleurs">
-                            <div>
-                                <input type="checkbox" name="noir" value="Noir">
-                                <label for="noir">Noir</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="vert" value="Vert">
-                                <label for="vert">Vert</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="rouge" value="Rouge">
-                                <label for="rouge">Rouge</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="champ">
-                        <p>Images du produit</p>
-                        <input type="file" accept="image/png, image/jpeg" multiple />
-                    </div>
-                </div>
-                <button id="boutonAjoutProduitPopup" onclick="ajouterProduit()">
-                    <p>Ajouter le produit</p>
+            <form action="ajoutProduitBDD.php" method="post">
+                <button class="boutonFermer" onclick="fermerPopupAjout()">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                        <path
+                            d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                    </svg>
                 </button>
-            </div>
+                <div class="contenuProduit">
+                    <div class="titrePopup">
+                        <p>Ajouter un produit</p>
+                    </div>
+                    <div class="champsProduit">
+                        <div class="champ">
+                            <p>Nom du produit</p>
+                            <input type="text" name="nomProduit">
+                        </div>
+                        <div class="champ">
+                            <p>Marque du produit</p>
+                            <input type="text" name="marqueProduit">
+                        </div>
+                        <div class="champ">
+                            <p>Prix du produit</p>
+                            <input type="text" name="prixProduit">
+                        </div>
+                        <div class="champ">
+                            <p>Description du produit</p>
+                            <input type="text" name="descriptionProduit">
+                        </div>
+                        <div class="champ">
+                            <p>Tailles du produit</p>
+                            <div id="choixTailles">
+
+                                <?php foreach ($produits as $produit): ?>
+                                    <div>
+                                        <input type="checkbox" name="<?php ?>" value="<?php ?>">
+                                        <label for="<?php ?>"><?php ?></label>
+                                    </div>
+                                <?php endforeach; ?>
+
+                            </div>
+                        </div>
+                        <div class="champ">
+                            <p>Couleurs du produit</p>
+                            <div id="champCouleurs">
+
+                                <?php foreach ($produits as $produit): ?>
+                                    <div>
+                                        <input type="checkbox" name="<?php ?>" value="<?php ?>">
+                                        <label for="<?php ?>"><?php ?></label>
+                                    </div>
+                                <?php endforeach; ?>
+
+                            </div>
+                        </div>
+                        <div class="champ">
+                            <p>Images du produit</p>
+                            <input type="file" accept="image/png, image/jpeg" name="images[]" multiple />
+                        </div>
+                    </div>
+                    <button type="submit" id="boutonAjoutProduitPopup" onclick="fermerPopupAjout()">
+                        <p>Ajouter le produit</p>
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -239,7 +233,7 @@ $produits = $produitController->afficherTousLesProduits();
                                 d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
                         </svg>
                     </button>
-                    <button class="boutonConfirmationPopup">
+                    <button class="boutonConfirmationPopup" onclick="supprimerProduit(this)">
                         <p>Confirmer</p>
                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
                     </button>
@@ -302,7 +296,8 @@ $produits = $produitController->afficherTousLesProduits();
                                 fill="#F8F8F8" />
                         </svg>
                     </div>
-                    <div class="modificationProduit" onclick="afficherPopupModificationProduit()">
+                    <div class="modificationProduit">
+                        <a href="./modificationProduit.php?id=<?php echo $produit->idProduit; ?>">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M13.1981 1.22004L3.12013 11.298C2.96948 11.4483 2.87069 11.6428 2.83813 11.853L2.13313 16.447C2.10934 16.6022 2.12242 16.7608 2.17129 16.91C2.22017 17.0591 2.30348 17.1947 2.41448 17.3057C2.52547 17.4167 2.66104 17.5 2.81022 17.5489C2.95939 17.5978 3.11797 17.6108 3.27313 17.587L7.86813 16.882C8.0783 16.8498 8.27271 16.7513 8.42313 16.601L18.5011 6.52304C18.6886 6.33552 18.7939 6.08121 18.7939 5.81604C18.7939 5.55088 18.6886 5.29657 18.5011 5.10905L14.6111 1.21904C14.4236 1.03188 14.1696 0.926758 13.9046 0.926758C13.6397 0.926758 13.3856 1.03188 13.1981 1.21904V1.22004ZM4.31713 15.404L4.76513 12.48L13.9051 3.34004L16.3801 5.81604L7.24013 14.956L4.31713 15.404Z"
@@ -310,13 +305,16 @@ $produits = $produitController->afficherTousLesProduits();
                             <path d="M11.4419 5.24704L12.5019 4.18604L15.7439 7.42604L14.6829 8.48704L11.4419 5.24704Z"
                                 fill="#F8F8F8" />
                         </svg>
+                        </a>
                     </div>
-                    <div class="suppressionProduit" onclick="afficherPopupSuppressionProduit()">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <div class="suppressionProduit">
+                        <a href="./suppressionProduit.php?id=<?php echo $produit->idProduit; ?>">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M7 21C6.45 21 5.979 20.804 5.587 20.412C5.195 20.02 4.99933 19.5493 5 19V6H4V4H9V3H15V4H20V6H19V19C19 19.55 18.804 20.021 18.412 20.413C18.02 20.805 17.5493 21.0007 17 21H7ZM17 6H7V19H17V6ZM9 17H11V8H9V17ZM13 17H15V8H13V17Z"
                                 fill="#F8F8F8" />
-                        </svg>
+                            </svg>
+                        </a>
                     </div>
                 </div>
                 <div class="previewImageArticle">
