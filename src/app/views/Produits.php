@@ -28,15 +28,15 @@ $produits = $produitController->afficherUnProduitParSonId($idProduit);
 
 <body>
     <div id="navBar">
-        <a href="../public/index.php" id="aLien">
+        <a href="../public/index.php" id="aLien" class="aucuneDecoration">
       <div id="logo">
         WIREFIT
       </div>
       </a>
       <div id="naviguerCategories">
-        <a href="../views/ListeProduit.php">Homme</a>
-        <a href="../views/ListeProduit.php">Femme</a>
-        <a href="../views/ListeProduit.php">Enfant</a>
+        <a href="../views/ListeProduit.php" class="aucuneDecoration">Homme</a>
+        <a href="../views/ListeProduit.php" class="aucuneDecoration">Femme</a>
+        <a href="../views/ListeProduit.php" class="aucuneDecoration">Enfant</a>
       </div>
       <div id="imageDefilerMenu">
         <img src="../img/menu.svg" alt="Menu déroulant">

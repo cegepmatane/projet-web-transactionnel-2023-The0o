@@ -38,10 +38,14 @@
 }
 
 #aLien {
-    color: white;
-    text-decoration: none;
+    display: flex;
+    align-items: center;
 }
 
+.aucuneDecoration {
+    text-decoration: none;
+    color: white;
+}
 
 @media (max-width: 750px) {
     #naviguerCategories {
