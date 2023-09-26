@@ -56,8 +56,8 @@ $taille = $produitController->afficherTailleParProduit($idProduit);
                     $imageType = 'image/png';
                     $image2DataUrl = 'data:' . $imageType . ';base64,' . $imageBase64;
                 ?>
-                    <img src="<?php echo $imageDataUrl; ?>" id="image1" alt="image1">
-                    <img src="<?php echo $image2DataUrl; ?>" id="image2" alt="image1">
+                    <img src="../models/image/<?php echo $produits->imagesProduit; ?>" id="image1" alt="image1">
+                    <img src="../models/image/<?php echo $produits->imagesDeuxProduit; ?>" id="image2" alt="image2">
                 <div id="precedent" onclick="changeImage(-1)">
                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 320 512">
                         <path

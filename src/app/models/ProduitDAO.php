@@ -22,9 +22,17 @@ class ProduitDAO {
             $sql = "SELECT COULEUR.hexaCouleur FROM PRODUIT INNER JOIN AVOIR ON AVOIR.idProduit=".$row['idProduit']." INNER JOIN COULEUR ON AVOIR.idCouleur=COULEUR.idCouleur";
             $couleurResult= $this->conn->query($sql);
 
+            $sql = "SELECT * FROM PRODUIT INNER JOIN IMAGE ON IMAGE.id = PRODUIT.imageUnProduit WHERE PRODUIT.idProduit = ".$row['idProduit'];
+            $fileNameProduit1 = $this->conn->query($sql)->fetch_assoc()["filename"];
+
+            $sql = "SELECT * FROM PRODUIT INNER JOIN IMAGE ON IMAGE.id = PRODUIT.imageDeuxProduit WHERE PRODUIT.idProduit = ".$row['idProduit'];
+            $fileNameProduit2 = $this->conn->query($sql)->fetch_assoc()["filename"];
+
             if ($couleurResult) {
                 $couleurRow = $couleurResult->fetch_assoc();
-                $couleurProduit = $couleurRow['hexaCouleur'];
+                if (isset($couleurRow['hexaCouleur'])) {
+                    $couleurProduit = $couleurRow['hexaCouleur'];
+                }
             } else {
                 $couleurProduit = "000000";
             }
@@ -38,8 +46,8 @@ class ProduitDAO {
                 $row['marqueProduit'],
                 $row['reductionProduit'],
                 $couleurProduit,
-                $row['imageUnProduit'],
-                $row['imageDeuxProduit']
+                $fileNameProduit1,
+                $fileNameProduit2
             );
         
             $produits[] = $produit;
@@ -60,9 +68,20 @@ class ProduitDAO {
             $sql = "SELECT COULEUR.hexaCouleur FROM PRODUIT INNER JOIN AVOIR ON AVOIR.idProduit=".$row['idProduit']." INNER JOIN COULEUR ON AVOIR.idCouleur=COULEUR.idCouleur";
             $couleurResult= $this->conn->query($sql);
 
+            $sql = "SELECT * FROM PRODUIT INNER JOIN IMAGE ON IMAGE.id = PRODUIT.imageUnProduit WHERE PRODUIT.idProduit = ".$row['idProduit'];
+            $fileNameProduit1 = $this->conn->query($sql)->fetch_assoc()["filename"];
+
+            $sql = "SELECT * FROM PRODUIT INNER JOIN IMAGE ON IMAGE.id = PRODUIT.imageDeuxProduit WHERE PRODUIT.idProduit = ".$row['idProduit'];
+            $fileNameProduit2 = $this->conn->query($sql)->fetch_assoc()["filename"];
+
             if ($couleurResult) {
                 $couleurRow = $couleurResult->fetch_assoc();
-                $couleurProduit = $couleurRow['hexaCouleur'];
+                if (isset($couleurRow['hexaCouleur'])) {
+                    $couleurProduit = $couleurRow['hexaCouleur'];
+                }
+                else {
+                    $couleurProduit = "000000";    
+                }
             } else {
                 $couleurProduit = "000000";
             }
@@ -76,8 +95,8 @@ class ProduitDAO {
                 $row['marqueProduit'],
                 $row['reductionProduit'],
                 $couleurProduit,
-                $row['imageUnProduit'],
-                $row['imageDeuxProduit']
+                $fileNameProduit1,
+                $fileNameProduit2
             );
             return $produit;
         } else {
@@ -99,12 +118,18 @@ class ProduitDAO {
             $sql = "SELECT COULEUR.hexaCouleur FROM PRODUIT INNER JOIN AVOIR ON AVOIR.idProduit=".$row['idProduit']." INNER JOIN COULEUR ON AVOIR.idCouleur=COULEUR.idCouleur";
             $couleurResult= $this->conn->query($sql);
 
-            if ($couleurResult) {
-                $couleurRow = $couleurResult->fetch_assoc();
+            $couleurRow = $couleurResult->fetch_assoc();
+            if (isset($couleurRow['hexaCouleur'])) {
                 $couleurProduit = $couleurRow['hexaCouleur'];
             } else {
                 $couleurProduit = "000000";
             }
+
+            $sql = "SELECT * FROM PRODUIT INNER JOIN IMAGE ON IMAGE.id = PRODUIT.imageUnProduit WHERE PRODUIT.idProduit = ".$row['idProduit'];
+            $fileNameProduit1 = $this->conn->query($sql)->fetch_assoc()["filename"];
+
+            $sql = "SELECT * FROM PRODUIT INNER JOIN IMAGE ON IMAGE.id = PRODUIT.imageDeuxProduit WHERE PRODUIT.idProduit = ".$row['idProduit'];
+            $fileNameProduit2 = $this->conn->query($sql)->fetch_assoc()["filename"];
             
             $produit = new Produit(
                 $row['idProduit'],
@@ -115,8 +140,8 @@ class ProduitDAO {
                 $row['marqueProduit'],
                 $row['reductionProduit'],
                 $couleurProduit,
-                $row['imageUnProduit'],
-                $row['imageDeuxProduit']
+                $fileNameProduit1,
+                $fileNameProduit2
             );
         
             $produits[] = $produit;
@@ -294,7 +319,20 @@ class ProduitDAO {
     }
 
     public function addProduit($nomProduit,$prixProduit,$descriptionProduit,$marqueProduit,$reductionProduit,$couleurProduit,$tailleProduit,$typeProduit,$imageProduit,$imageProduit2) {
-        $sql = "INSERT INTO `PRODUIT`(`idProduit`, `nomProduit`, `prixProduit`, `sousTitreProduit`, `descriptionProduit`, `marqueProduit`, `reductionProduit`, `sexeProduit`, `afficherProduit`, `typeProduit`, `imageUnProduit`, `imageDeuxProduit`) VALUES (7,'$nomProduit','$prixProduit','$descriptionProduit','AAAAAA','$marqueProduit','$reductionProduit','$couleurProduit',$tailleProduit,'$typeProduit','$imageProduit','$imageProduit2')";
+        define ('SITE_ROOT', realpath(dirname(__FILE__)));
+
+        echo $imageProduit["name"];
+        $sql = "INSERT INTO IMAGE(filename) VALUES ('".$imageProduit["name"]."')";
+        move_uploaded_file($imageProduit["tmp_name"], SITE_ROOT. "/image/" . $imageProduit["name"]);
+        $this->conn->query($sql);
+        $last_id_image1 = $this->conn->insert_id;
+
+        $sql = "INSERT INTO IMAGE(filename) VALUES ('".$imageProduit2["name"]."')";
+        move_uploaded_file($imageProduit2["tmp_name"], SITE_ROOT. "/image/" . $imageProduit2["name"]);
+        $this->conn->query($sql);
+        $last_id_image2 = $this->conn->insert_id;
+
+        $sql = "INSERT INTO `PRODUIT`(`idProduit`, `nomProduit`, `prixProduit`, `sousTitreProduit`, `descriptionProduit`, `marqueProduit`, `reductionProduit`, `sexeProduit`, `afficherProduit`, `typeProduit`, `imageUnProduit`, `imageDeuxProduit`) VALUES (7,'$nomProduit','$prixProduit','$descriptionProduit','AAAAAA','$marqueProduit','$reductionProduit','$couleurProduit',$tailleProduit,'$typeProduit','$last_id_image1','$last_id_image2')";
         $result = $this->conn->query($sql);
         
 
