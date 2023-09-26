@@ -16,7 +16,7 @@ class ProduitController {
 
     public function afficherProduitAccueil(){
         $produits = $this->produitDAO->getFourProduits();
-        include('../views/accueil.php');
+        include('../views/Accueil.php');
     }
 
     public function afficherProduitParChoix(){
