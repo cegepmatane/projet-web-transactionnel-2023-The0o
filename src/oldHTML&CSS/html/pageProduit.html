@@ -57,26 +57,91 @@
                 </p><br>
 
                 <div class="personnalisation">
-                    <button>
-                        <p>Taille</p>
-                        <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M1.85354 5.9898C2.06405 5.77843 2.34989 5.65932 2.64819 5.65867C2.9465 5.65802 3.23286 5.77587 3.44429 5.98631L9.02522 11.5429L14.5818 5.96192C14.7935 5.75653 15.0774 5.64251 15.3724 5.64443C15.6674 5.64635 15.9498 5.76404 16.1588 5.97217C16.3679 6.1803 16.4868 6.4622 16.49 6.75717C16.4932 7.05213 16.3805 7.33656 16.176 7.54918L9.82582 13.9272C9.61531 14.1386 9.32948 14.2577 9.03117 14.2584C8.73286 14.259 8.4465 14.1412 8.23507 13.9307L1.85703 7.58054C1.64566 7.37004 1.52655 7.0842 1.5259 6.78589C1.52525 6.48758 1.6431 6.20123 1.85354 5.9898Z"
-                                fill="black" />
-                        </svg>
-                    </button>
-                    <button>
-                        <p>Couleur</p>
-                        <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M1.85354 5.9898C2.06405 5.77843 2.34989 5.65932 2.64819 5.65867C2.9465 5.65802 3.23286 5.77587 3.44429 5.98631L9.02522 11.5429L14.5818 5.96192C14.7935 5.75653 15.0774 5.64251 15.3724 5.64443C15.6674 5.64635 15.9498 5.76404 16.1588 5.97217C16.3679 6.1803 16.4868 6.4622 16.49 6.75717C16.4932 7.05213 16.3805 7.33656 16.176 7.54918L9.82582 13.9272C9.61531 14.1386 9.32948 14.2577 9.03117 14.2584C8.73286 14.259 8.4465 14.1412 8.23507 13.9307L1.85703 7.58054C1.64566 7.37004 1.52655 7.0842 1.5259 6.78589C1.52525 6.48758 1.6431 6.20123 1.85354 5.9898Z"
-                                fill="black" />
-                        </svg>
-                    </button>
+                    <div class="filtre">
+                      <div class="filtreTitre" onclick="showFilter('filtreTaille')">
+                        <p>Tailles</p>
+                        <img src="../img/fleche.svg" alt="fleche vers le bas">  
+                      </div>
+                      <div class="optionsFiltre" id="filtreTaille">
+                        <hr>
+                        <ul>
+                          <div class="optionFiltre">
+                            <p>36</p>
+                            <input type="checkbox" onchange="tailleChange(this)">
+                          </div>
+                          <div class="optionFiltre">
+                            <p>37</p>
+                            <input type="checkbox" onchange="tailleChange(this)">
+                          </div>
+                          <div class="optionFiltre">
+                            <p>38</p>
+                            <input type="checkbox" onchange="tailleChange(this)">
+                          </div>
+                          <div class="optionFiltre">
+                            <p>39</p>
+                            <input type="checkbox" onchange="tailleChange(this)">
+                          </div>
+                          <div class="optionFiltre">
+                            <p>40</p>
+                            <input type="checkbox" onchange="tailleChange(this)">
+                          </div>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="filtre">
+                      <div class="filtreTitre" onclick="showFilter('filtreCouleur')"">
+                        <p>Couleurs</p>
+                        <img src="../img/fleche.svg" alt="fleche vers le bas">  
+                      </div>
+                      <div class="optionsFiltre" id="filtreCouleur">
+                        <hr>
+                        <ul>
+                          <div class="optionFiltre">
+                            <p>Blanc</p>
+                            <input type="checkbox" onchange="couleurChange(this)">
+                          </div>
+                          <div class="optionFiltre">
+                            <p>Noir</p>
+                            <input type="checkbox" onchange="couleurChange(this)">
+                          </div>
+                          <div class="optionFiltre">
+                            <p>Gris</p>
+                            <input type="checkbox" onchange="couleurChange(this)">
+                          </div>
+                          <div class="optionFiltre">
+                            <p>Rouge</p>
+                            <input type="checkbox" onchange="couleurChange(this)">
+                          </div>
+                          <div class="optionFiltre">
+                            <p>Bleu</p>
+                            <input type="checkbox" onchange="couleurChange(this)">
+                          </div>
+                        </ul>
+                      </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        function showFilter(id) {
+          if (document.getElementById(id).style.display !== "block") {
+            document.getElementById(id).style.display = "block"
+          }
+          else {
+            document.getElementById(id).style.display = "none"
+          }
+        }
+    
+        function tailleChange(element) {
+          document.cookie = "taille=" + element.parentElement.children[0].textContent
+        }
+    
+        function couleurChange(element) {
+          document.cookie = "couleur=" + element.parentElement.children[0].textContent
+        }
+        
+      </script>
 </body>
 
 </html>
