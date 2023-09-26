@@ -19,7 +19,7 @@ class ProduitDAO {
         $produits = [];
 
         while ($row = $result->fetch_assoc()) {
-            $sql = "SELECT COULEUR.hexaCouleur FROM PRODUIT NATURAL JOIN COULEUR WHERE idProduit=".$row['idProduit']." LIMIT 1";
+            $sql = "SELECT COULEUR.hexaCouleur FROM PRODUIT INNER JOIN AVOIR ON AVOIR.idProduit=".$row['idProduit']." INNER JOIN COULEUR ON AVOIR.idCouleur=COULEUR.idCouleur";
             $couleurResult= $this->conn->query($sql);
 
             if ($couleurResult) {
@@ -57,7 +57,7 @@ class ProduitDAO {
         }
 
         if ($row = $result->fetch_assoc()) {
-            $sql = "SELECT COULEUR.hexaCouleur FROM PRODUIT NATURAL JOIN COULEUR WHERE idProduit=".$row['idProduit']." LIMIT 1";
+            $sql = "SELECT COULEUR.hexaCouleur FROM PRODUIT INNER JOIN AVOIR ON AVOIR.idProduit=".$row['idProduit']." INNER JOIN COULEUR ON AVOIR.idCouleur=COULEUR.idCouleur";
             $couleurResult= $this->conn->query($sql);
 
             if ($couleurResult) {
@@ -96,7 +96,7 @@ class ProduitDAO {
         $produits = [];
 
         while ($row = $result->fetch_assoc()) {
-            $sql = "SELECT COULEUR.hexaCouleur FROM PRODUIT NATURAL JOIN COULEUR WHERE idProduit=".$row['idProduit']." LIMIT 1";
+            $sql = "SELECT COULEUR.hexaCouleur FROM PRODUIT INNER JOIN AVOIR ON AVOIR.idProduit=".$row['idProduit']." INNER JOIN COULEUR ON AVOIR.idCouleur=COULEUR.idCouleur";
             $couleurResult= $this->conn->query($sql);
 
             if ($couleurResult) {
@@ -299,6 +299,13 @@ class ProduitDAO {
         
 
     }
-    
+
+    public function modifyProduit($id, $nom, $prix, $sousTitre, $description, $marque, $reduction, $couleur, $imagesUn, $imagesDeux) {
+        $sql = "UPDATE PRODUIT SET nomProduit = '" . $nom . "', prixProduit = " . $prix . ", sousTitreProduit = '" . $sousTitre . "', descriptionProduit = '" . $description . "', marqueProduit = '" . $marque . "', reductionProduit = " . $reduction . ", imageUnProduit = '" . $imagesUn . "', imageDeuxProduit = '" . $imagesDeux . "' WHERE idProduit = " . $id;
+        $result = $this->conn->query($sql);
+        if ($result === false) {
+            return false; 
+        }
+    }
 }
 ?>

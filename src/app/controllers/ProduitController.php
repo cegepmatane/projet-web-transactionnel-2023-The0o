@@ -67,5 +67,10 @@ class ProduitController {
     public function ajouterUnProduit($nomProduit,$prixProduit,$descriptionProduit,$marqueProduit,$reductionProduit,$couleurProduit,$tailleProduit,$typeProduit,$imageProduit,$imageProduit2){
         $resultatAjout = $this->produitDAO->addProduit($nomProduit,$prixProduit,$descriptionProduit,$marqueProduit,$reductionProduit,$couleurProduit,$tailleProduit,$typeProduit,$imageProduit,$imageProduit2);
     }
+
+    public function modifierProduit($id, $nom, $prix, $sousTitre, $description, $marque, $reduction, $couleur, $imagesUn, $imagesDeux) {
+        $produit = $this->produitDAO->modifyProduit($id, $nom, $prix, $sousTitre, $description, $marque, $reduction, $couleur, $imagesUn, $imagesDeux);
+        return $produit;
+    }
 }
 ?>
