@@ -30,7 +30,10 @@ $produits = $produitController->afficherTousLesProduits();
     </div>
 
     <div id="titreEtFiltre">
-    <div id="listeFiltre">
+      <div id="titre">
+        T-shirt pour homme
+      </div>
+      <div id="listeFiltre">
         <div class="filtre">
           <div class="filtreTitre" onclick="showFilter('tri')">
             <p>Tri</p>
