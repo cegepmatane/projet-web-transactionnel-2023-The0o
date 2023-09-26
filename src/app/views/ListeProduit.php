@@ -1,7 +1,13 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require_once('../controllers/ProduitController.php');
 $produitController = new ProduitController($mysqli);
 $produits = $produitController->afficherTousLesProduits();
+$couleur = $produitController->afficherListeDesCouleurs();
+$taille = $produitController->afficherListeDesTaille();
+$categorie = $produitController->afficherListeDesCategorie();
 ?>
 <!DOCTYPE html>
 <html lang="FR">
@@ -91,26 +97,12 @@ $produits = $produitController->afficherTousLesProduits();
           <div class="optionsFiltre" id="filtreTaille">
             <hr>
             <ul>
+            <?php foreach ($taille as $taille): ?>
               <div class="optionFiltre">
-                <p>XS</p>
+                <p><?php echo $taille->taille; ?></p>
                 <input type="checkbox" onchange="tailleChange(this)">
               </div>
-              <div class="optionFiltre">
-                <p>S</p>
-                <input type="checkbox" onchange="tailleChange(this)">
-              </div>
-              <div class="optionFiltre">
-                <p>M</p>
-                <input type="checkbox" onchange="tailleChange(this)">
-              </div>
-              <div class="optionFiltre">
-                <p>L</p>
-                <input type="checkbox" onchange="tailleChange(this)">
-              </div>
-              <div class="optionFiltre">
-                <p>XL</p>
-                <input type="checkbox" onchange="tailleChange(this)">
-              </div>
+              <?php endforeach; ?>
             </ul>
           </div>
         </div>
@@ -122,26 +114,12 @@ $produits = $produitController->afficherTousLesProduits();
           <div class="optionsFiltre" id="filtreCouleur">
             <hr>
             <ul>
+            <?php foreach ($couleur as $couleur): ?>
               <div class="optionFiltre">
-                <p>Blanc</p>
+                <p><?php echo $couleur->nomCouleur ?></p>
                 <input type="checkbox" onchange="couleurChange(this)">
               </div>
-              <div class="optionFiltre">
-                <p>Noir</p>
-                <input type="checkbox" onchange="couleurChange(this)">
-              </div>
-              <div class="optionFiltre">
-                <p>Gris</p>
-                <input type="checkbox" onchange="couleurChange(this)">
-              </div>
-              <div class="optionFiltre">
-                <p>Rouge</p>
-                <input type="checkbox" onchange="couleurChange(this)">
-              </div>
-              <div class="optionFiltre">
-                <p>Bleu</p>
-                <input type="checkbox" onchange="couleurChange(this)">
-              </div>
+              <?php endforeach; ?>
             </ul>
           </div>
         </div>
@@ -153,26 +131,12 @@ $produits = $produitController->afficherTousLesProduits();
           <div class="optionsFiltre" id="filtreType">
             <hr>
             <ul>
+            <?php foreach ($categorie as $categorie): ?>
               <div class="optionFiltre">
-                <p>Pantalon</p>
+                <p><?php echo $categorie->nomCategorie ?></p>
                 <input type="checkbox" onchange="typeChange(this)">
               </div>
-              <div class="optionFiltre">
-                <p>T-shirt</p>
-                <input type="checkbox" onchange="typeChange(this)">
-              </div>
-              <div class="optionFiltre">
-                <p>Chausette</p>
-                <input type="checkbox" onchange="typeChange(this)">
-              </div>
-              <div class="optionFiltre">
-                <p>Chaussure</p>
-                <input type="checkbox" onchange="typeChange(this)">
-              </div>
-              <div class="optionFiltre">
-                <p>Bob</p>
-                <input type="checkbox" onchange="typeChange(this)">
-              </div>
+              <?php endforeach; ?>
             </ul>
           </div>
         </div>
@@ -222,7 +186,7 @@ $produits = $produitController->afficherTousLesProduits();
                 ?>
                     <img src="<?php echo $imageDataUrl2; ?>" alt="image2">
           </div>
-            <div class="articleNom"><?php echo $produit->nomProduit; ?></div>
+            <div class="articleNom"><?php echo  $produit->nomProduit; ?></div>
             <div class="articleType"><?php echo $produit->marqueProduit; ?></div>
             <div class="articlePrix"><?php echo $produit->prixProduit; ?> $</div>
             <div class="articleCouleur" style="background-color:#<?php echo $produit->couleurProduit;?>;"></div>
