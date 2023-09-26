@@ -19,8 +19,16 @@ class ProduitDAO {
         $produits = [];
 
         while ($row = $result->fetch_assoc()) {
-            $sql = "SELECT COULEUR.nomCouleur FROM PRODUIT NATURAL JOIN COULEUR WHERE idProduit=".$row['idProduit']." LIMIT 1";
-            $couleurProduit= $this->conn->query($sql);
+            $sql = "SELECT COULEUR.hexaCouleur FROM PRODUIT NATURAL JOIN COULEUR WHERE idProduit=".$row['idProduit']." LIMIT 1";
+            $couleurResult= $this->conn->query($sql);
+
+            if ($couleurResult) {
+                $couleurRow = $couleurResult->fetch_assoc();
+                $couleurProduit = $couleurRow['hexaCouleur'];
+            } else {
+                $couleurProduit = "000000";
+            }
+            
             $produit = new Produit(
                 $row['idProduit'],
                 $row['nomProduit'],
@@ -47,8 +55,16 @@ class ProduitDAO {
         }
 
         if ($row = $result->fetch_assoc()) {
-            $sql = "SELECT COULEUR.nomCouleur FROM PRODUIT NATURAL JOIN COULEUR WHERE idProduit=".$row['idProduit']." LIMIT 1";
-            $couleurProduit= $this->conn->query($sql);
+            $sql = "SELECT COULEUR.hexaCouleur FROM PRODUIT NATURAL JOIN COULEUR WHERE idProduit=".$row['idProduit']." LIMIT 1";
+            $couleurResult= $this->conn->query($sql);
+
+            if ($couleurResult) {
+                $couleurRow = $couleurResult->fetch_assoc();
+                $couleurProduit = $couleurRow['hexaCouleur'];
+            } else {
+                $couleurProduit = "000000";
+            }
+
             $produit = new Produit(
                 $row['idProduit'],
                 $row['nomProduit'],
@@ -76,8 +92,16 @@ class ProduitDAO {
         $produits = [];
 
         while ($row = $result->fetch_assoc()) {
-            $sql = "SELECT COULEUR.nomCouleur FROM PRODUIT NATURAL JOIN COULEUR WHERE idProduit=".$row['idProduit']." LIMIT 1";
-            $couleurProduit= $this->conn->query($sql);
+            $sql = "SELECT COULEUR.hexaCouleur FROM PRODUIT NATURAL JOIN COULEUR WHERE idProduit=".$row['idProduit']." LIMIT 1";
+            $couleurResult= $this->conn->query($sql);
+
+            if ($couleurResult) {
+                $couleurRow = $couleurResult->fetch_assoc();
+                $couleurProduit = $couleurRow['hexaCouleur'];
+            } else {
+                $couleurProduit = "000000";
+            }
+            
             $produit = new Produit(
                 $row['idProduit'],
                 $row['nomProduit'],
@@ -94,7 +118,6 @@ class ProduitDAO {
 
         return $produits;
     }
-
 
     public function getProduitsByChoice($trie,$prix,$taille,$couleur,$type,$reduction){
         

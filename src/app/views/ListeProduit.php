@@ -68,7 +68,7 @@ $produits = $produitController->afficherTousLesProduits();
             <div class="articleNom"><?php echo $produit->nomProduit; ?></div>
             <div class="articleType"><?php echo $produit->marqueProduit; ?></div>
             <div class="articlePrix"><?php echo $produit->prixProduit; ?> $</div>
-            <div class="articleCouleur"></div>
+            <div class="articleCouleur" style="background-color:#<?php echo $produit->couleurProduit;?>;"></div>
         </div>
       </a>
     <?php endforeach; ?>
