@@ -310,5 +310,13 @@ class ProduitDAO {
             return false; 
         }
     }
+
+    public function modifyProduit($id, $nom, $prix, $sousTitre, $description, $marque, $reduction, $couleur, $imagesUn, $imagesDeux) {
+        $sql = "UPDATE PRODUIT SET nomProduit = '" . $nom . "', prixProduit = " . $prix . ", sousTitreProduit = '" . $sousTitre . "', descriptionProduit = '" . $description . "', marqueProduit = '" . $marque . "', reductionProduit = " . $reduction . ", imageUnProduit = '" . $imagesUn . "', imageDeuxProduit = '" . $imagesDeux . "' WHERE idProduit = " . $id;
+        $result = $this->conn->query($sql);
+        if ($result === false) {
+            return false; 
+        }
+    }
 }
 ?>
