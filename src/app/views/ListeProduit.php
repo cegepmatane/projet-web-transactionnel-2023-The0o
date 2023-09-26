@@ -13,7 +13,7 @@ $produits = $produitController->afficherTousLesProduits();
   </head>
   <body>
     <div id="navBar">
-      <a href="../public/index.php">
+      <a href="../public/index.php" id="aLien">
       <div id="logo">
         WIREFIT
         </div>
