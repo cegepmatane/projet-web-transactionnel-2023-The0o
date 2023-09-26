@@ -12,7 +12,7 @@ error_reporting(E_ALL);
     $couleurProduit = $_POST["couleurProduit"];
     $tailleProduit = $_POST["tailleProduit"];
     $typeProduit = $_POST["typeProduit"];
-    $imageProduit = file_get_contents($_FILES["imageProduit"]["tmp_name"]);
-    $imageProduit2 = file_get_contents($_FILES["imageProduit2"]["tmp_name"]);
+    $imageProduit = $_FILES["imageProduit"]["tmp_name"];
+    $imageProduit2 = $_FILES["imageProduit2"]["tmp_name"];
     $produitController->ajouterUnProduit($nomProduit,$prixProduit,$descriptionProduit,$marqueProduit,$reductionProduit,$couleurProduit,$tailleProduit,$typeProduit,$imageProduit,$imageProduit2);
 ?>
