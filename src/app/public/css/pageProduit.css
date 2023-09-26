@@ -84,6 +84,10 @@ ul {
     justify-content: space-between;
 }
 
+#image2 {
+    display: none;
+}
+
 .informations {
     height: 90%;
     width: 52%;
