@@ -72,5 +72,10 @@ class ProduitController {
         $produit = $this->produitDAO->modifyProduit($id, $nom, $prix, $sousTitre, $description, $marque, $reduction, $couleur, $imagesUn, $imagesDeux);
         return $produit;
     }
+
+    public function supprimerProduit($id) {
+        $produit = $this->produitDAO->deleteProduit($id);
+        return $produit;
+    }
 }
 ?>
