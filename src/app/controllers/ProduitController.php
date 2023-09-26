@@ -53,5 +53,15 @@ class ProduitController {
         $produits = $this->produitDAO->getProduitById($id);
         return $produits;
     }
+
+    public function afficherCouleurParProduit($id){
+        $couleur = $this->produitDAO->getColorByProductId($id);
+        return $couleur;
+    }
+
+    public function afficherTailleParProduit($id){
+        $taille = $this->produitDAO->getSizeByProductId($id);
+        return $taille;
+    }
 }
 ?>

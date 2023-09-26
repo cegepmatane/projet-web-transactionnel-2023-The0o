@@ -249,5 +249,48 @@ class ProduitDAO {
         }
 
     }
+
+    public function getColorByProductId($id){
+        $sql = "SELECT COULEUR.idCouleur,COULEUR.nomCouleur,COULEUR.hexaCouleur FROM PRODUIT NATURAL JOIN COULEUR WHERE idProduit = ".$id."";
+        $result = $this->conn->query($sql);
+
+        if ($result === false) {
+            return false; 
+        }
+
+        $couleurs = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $couleur = new Couleur(
+                $row['idCouleur'],
+                $row['nomCouleur'],
+                $row['hexaCouleur']
+            );
+            $couleurs[] = $couleur;
+        }
+
+        return $couleurs;
+    }
+
+    public function getSizeByProductId($id){
+        $sql = "SELECT TAILLE.idTaille,TAILLE.taille FROM PRODUIT NATURAL JOIN TAILLE WHERE idProduit = ".$id."";
+        $result = $this->conn->query($sql);
+
+        if ($result === false) {
+            return false; 
+        }
+
+        $tailles = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $taille = new Taille(
+                $row['idTaille'],
+                $row['taille']
+            );
+            $tailles[] = $taille;
+        }
+
+        return $tailles;
+    }
 }
 ?>

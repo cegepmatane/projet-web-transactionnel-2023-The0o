@@ -10,6 +10,8 @@ if (isset($_GET['id'])) {
     $idProduit = 1;
 }
 $produits = $produitController->afficherUnProduitParSonId($idProduit);
+$couleur = $produitController->afficherCouleurParProduit($idProduit);
+$taille = $produitController->afficherTailleParProduit($idProduit);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -80,26 +82,12 @@ $produits = $produitController->afficherUnProduitParSonId($idProduit);
                       <div class="optionsFiltre" id="filtreTaille">
                         <hr>
                         <ul>
+                        <?php foreach ($taille as $taille): ?>
                           <div class="optionFiltre">
-                            <p>36</p>
+                            <p><?php echo $taille->taille ?></p>
                             <input type="checkbox" onchange="tailleChange(this)">
-                          </div>
-                          <div class="optionFiltre">
-                            <p>37</p>
-                            <input type="checkbox" onchange="tailleChange(this)">
-                          </div>
-                          <div class="optionFiltre">
-                            <p>38</p>
-                            <input type="checkbox" onchange="tailleChange(this)">
-                          </div>
-                          <div class="optionFiltre">
-                            <p>39</p>
-                            <input type="checkbox" onchange="tailleChange(this)">
-                          </div>
-                          <div class="optionFiltre">
-                            <p>40</p>
-                            <input type="checkbox" onchange="tailleChange(this)">
-                          </div>
+                            </div>
+                            <?php endforeach; ?>
                         </ul>
                       </div>
                     </div>
@@ -111,26 +99,12 @@ $produits = $produitController->afficherUnProduitParSonId($idProduit);
                       <div class="optionsFiltre" id="filtreCouleur">
                         <hr>
                         <ul>
+                            <?php foreach ($couleur as $couleur): ?>
                           <div class="optionFiltre">
-                            <p>Blanc</p>
+                            <p><?php echo $couleur->nomCouleur ?></p>
                             <input type="checkbox" onchange="couleurChange(this)">
                           </div>
-                          <div class="optionFiltre">
-                            <p>Noir</p>
-                            <input type="checkbox" onchange="couleurChange(this)">
-                          </div>
-                          <div class="optionFiltre">
-                            <p>Gris</p>
-                            <input type="checkbox" onchange="couleurChange(this)">
-                          </div>
-                          <div class="optionFiltre">
-                            <p>Rouge</p>
-                            <input type="checkbox" onchange="couleurChange(this)">
-                          </div>
-                          <div class="optionFiltre">
-                            <p>Bleu</p>
-                            <input type="checkbox" onchange="couleurChange(this)">
-                          </div>
+                            <?php endforeach; ?>
                         </ul>
                       </div>
                     </div>
