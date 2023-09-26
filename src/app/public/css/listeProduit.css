@@ -97,6 +97,19 @@ ul {
     gap: 5px;
 }
 
+.previewImageArticle {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.previewImageArticle img {
+    height: auto;
+    width: auto;
+    overflow: auto;
+}
+
 .articleNom {
     font-weight: 500;
 }

@@ -17,13 +17,12 @@ class ProduitController {
 
     public function afficherProduitAccueil(){
         $produits = $this->produitDAO->getFourProduits();
-        include('../views/accueil.php');
     }
 
     public function afficherProduitParChoix(){
         //TODO Quand on recois les donnees on fait une verification antiSQL et on modifie ici
         $trie = null;
-        $prix =null;
+        $prix = null;
         $taille = null;
         $couleur = null;
         $type = null;
