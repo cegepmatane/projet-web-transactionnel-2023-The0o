@@ -1,0 +1,56 @@
+/* Styles pour le corps de la page */
+body {
+    background-color: black; /* Fond noir */
+    color: white; /* Texte blanc */
+    font-family: Arial, sans-serif; /* Police de caractères */
+    text-align: center; /* Centrer le texte */
+    margin-left: 20%;
+    margin-right: 20%;
+}
+#prixProduit,#reductionProduit{
+    width: 125px; /* Largeur souhaitée en pixels */
+    height: 10px;
+}
+
+#marqueProduit{
+    width: 200px; /* Largeur souhaitée en pixels */
+    height: 10px;
+}
+
+/* Style pour le titre */
+h1 {
+    font-size: 24px; /* Taille du titre */
+    margin-top: 20px; /* Marge en haut */
+}
+
+/* Styles pour les étiquettes de formulaire */
+label {
+    display: block; /* Afficher les étiquettes sur une ligne distincte */
+    margin-top: 10px; /* Marge en haut */
+}
+
+/* Styles pour les champs de formulaire */
+input[type="text"],
+input[type="number"],
+textarea,
+input[type="file"],
+input[type="boolean"] {
+    width: 100%; /* Largeur du champ à 100% de son conteneur */
+    padding: 10px; /* Espacement interne */
+    margin-top: 5px; /* Marge en haut */
+}
+
+/* Style pour le bouton de soumission du formulaire */
+button[type="submit"] {
+    background-color: #007bff; /* Couleur de fond bleue */
+    color: white; /* Texte blanc */
+    padding: 10px 20px; /* Espacement interne */
+    border: none; /* Pas de bordure */
+    cursor: pointer; /* Curseur en main */
+    margin-top: 20px; /* Marge en haut */
+}
+
+/* Style pour le bouton de soumission du formulaire au survol */
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Couleur de fond bleue plus foncée au survol */
+}
