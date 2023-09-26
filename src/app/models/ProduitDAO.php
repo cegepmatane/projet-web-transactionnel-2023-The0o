@@ -19,6 +19,16 @@ class ProduitDAO {
         $produits = [];
 
         while ($row = $result->fetch_assoc()) {
+            $sql = "SELECT COULEUR.hexaCouleur FROM PRODUIT NATURAL JOIN COULEUR WHERE idProduit=".$row['idProduit']." LIMIT 1";
+            $couleurResult= $this->conn->query($sql);
+
+            if ($couleurResult) {
+                $couleurRow = $couleurResult->fetch_assoc();
+                $couleurProduit = $couleurRow['hexaCouleur'];
+            } else {
+                $couleurProduit = "000000";
+            }
+
             $produit = new Produit(
                 $row['idProduit'],
                 $row['nomProduit'],
@@ -26,7 +36,10 @@ class ProduitDAO {
                 $row['sousTitreProduit'],
                 $row['descriptionProduit'],
                 $row['marqueProduit'],
-                $row['reductionProduit']
+                $row['reductionProduit'],
+                $couleurProduit,
+                $row['imageUnProduit'],
+                $row['imageDeuxProduit']
             );
         
             $produits[] = $produit;
@@ -36,7 +49,7 @@ class ProduitDAO {
     }
 
     public function getProduitById($id){
-        $sql = "SELECT * FROM PRODUIT WHERE idProduit = "+$id+"";
+        $sql = "SELECT * FROM PRODUIT WHERE idProduit = ".$id."";
         $result = $this->conn->query($sql);
 
         if ($result === false) {
@@ -44,6 +57,16 @@ class ProduitDAO {
         }
 
         if ($row = $result->fetch_assoc()) {
+            $sql = "SELECT COULEUR.hexaCouleur FROM PRODUIT NATURAL JOIN COULEUR WHERE idProduit=".$row['idProduit']." LIMIT 1";
+            $couleurResult= $this->conn->query($sql);
+
+            if ($couleurResult) {
+                $couleurRow = $couleurResult->fetch_assoc();
+                $couleurProduit = $couleurRow['hexaCouleur'];
+            } else {
+                $couleurProduit = "000000";
+            }
+
             $produit = new Produit(
                 $row['idProduit'],
                 $row['nomProduit'],
@@ -51,7 +74,10 @@ class ProduitDAO {
                 $row['sousTitreProduit'],
                 $row['descriptionProduit'],
                 $row['marqueProduit'],
-                $row['reductionProduit']
+                $row['reductionProduit'],
+                $couleurProduit,
+                $row['imageUnProduit'],
+                $row['imageDeuxProduit']
             );
             return $produit;
         } else {
@@ -70,6 +96,16 @@ class ProduitDAO {
         $produits = [];
 
         while ($row = $result->fetch_assoc()) {
+            $sql = "SELECT COULEUR.hexaCouleur FROM PRODUIT NATURAL JOIN COULEUR WHERE idProduit=".$row['idProduit']." LIMIT 1";
+            $couleurResult= $this->conn->query($sql);
+
+            if ($couleurResult) {
+                $couleurRow = $couleurResult->fetch_assoc();
+                $couleurProduit = $couleurRow['hexaCouleur'];
+            } else {
+                $couleurProduit = "000000";
+            }
+            
             $produit = new Produit(
                 $row['idProduit'],
                 $row['nomProduit'],
@@ -77,7 +113,10 @@ class ProduitDAO {
                 $row['sousTitreProduit'],
                 $row['descriptionProduit'],
                 $row['marqueProduit'],
-                $row['reductionProduit']
+                $row['reductionProduit'],
+                $couleurProduit,
+                $row['imageUnProduit'],
+                $row['imageDeuxProduit']
             );
         
             $produits[] = $produit;
@@ -85,7 +124,6 @@ class ProduitDAO {
 
         return $produits;
     }
-
 
     public function getProduitsByChoice($trie,$prix,$taille,$couleur,$type,$reduction){
         
@@ -127,7 +165,6 @@ class ProduitDAO {
         if ($result === false) {
             return false; 
         }
-
         $produits = [];
 
         while ($row = $result->fetch_assoc()) {
@@ -138,7 +175,11 @@ class ProduitDAO {
                 $row['sousTitreProduit'],
                 $row['descriptionProduit'],
                 $row['marqueProduit'],
-                $row['reductionProduit']
+                $row['reductionProduit'],
+                $row['couleurProduit'],
+                $row['imagesProduit'],
+                $row['imageDeuxProduit']
+
             );
         
             $produits[] = $produit;

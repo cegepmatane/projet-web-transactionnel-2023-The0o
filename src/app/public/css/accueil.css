@@ -13,6 +13,16 @@
     src: url(../fonts/Inter/static/Inter-Light.ttf);
   }
 
+  @font-face {
+    font-family: Montserrat;
+    src: url(../fonts/Montserrat/static/Montserrat-Medium.ttf);
+  }
+
+  @font-face {
+    font-family: MontserratBold;
+    src: url(../fonts/Montserrat/static/Montserrat-Bold.ttf);
+  }
+
 body{
     overflow: hidden;
     position: fixed;
@@ -20,6 +30,11 @@ body{
 
 p{
     margin: 0;
+}
+
+a {
+    color: inherit; 
+    text-decoration: none;
 }
 
 .container{
@@ -243,10 +258,16 @@ p{
 
 .articleNom {
     font-weight: 500;
+    font-family: Montserrat;
+}
+.articlePrix {
+    font-weight: 500;
+    font-family: Montserrat;
 }
 
 .articleType {
     font-weight: 700;
+    font-family: MontserratBold;
 }
 
 .articleCouleur {
