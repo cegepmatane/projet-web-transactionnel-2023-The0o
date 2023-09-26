@@ -1,43 +1,29 @@
 @font-face {
     font-family: MontserratBlack;
     src: url(../fonts/Montserrat/static/Montserrat-Black.ttf);
-  }
+}
 
-  @font-face {
+@font-face {
     font-family: Cabin;
     src: url(../fonts/Cabin/Cabin-VariableFont_wdth\,wght.ttf);
-  }
+}
 
-  @font-face {
+@font-face {
     font-family: Inter;
     src: url(../fonts/Inter/static/Inter-Light.ttf);
-  }
-
-  @font-face {
-    font-family: Montserrat;
-    src: url(../fonts/Montserrat/static/Montserrat-Medium.ttf);
-  }
-
-  @font-face {
-    font-family: MontserratBold;
-    src: url(../fonts/Montserrat/static/Montserrat-Bold.ttf);
-  }
-
-body{
-    overflow: hidden;
-    position: fixed;
 }
+
+/* TEST */
+
+
+
+/* FIN TEST */
 
 p{
     margin: 0;
 }
 
-a {
-    color: inherit; 
-    text-decoration: none;
-}
-
-.container{
+.conteneur{
  display: flex;
  flex-direction: row;
  height: 100vh;
@@ -45,7 +31,7 @@ a {
  margin: 0 auto;
 }
 
-.left-black{
+.gauche-noir{
     display: flex;
     flex-direction: column;
     margin: -8px 0px -8px -8px; 
@@ -53,7 +39,7 @@ a {
     height: 100vh;
     width: 35vw;
 }
-#title{
+#titre{
     display: flex;
     margin-top: 12%;
     margin-bottom: 12%;
@@ -67,21 +53,19 @@ a {
 }
 
 @media screen and (max-width: 960px) {
-    #title{
+    #titre{
         font-size: 3.5rem;
     }
     
 }
 
 @media screen and (min-width: 1480px) {
-    #title{
+    #titre{
         font-size: 5rem;
     }
 }
 
-
-
-#image-woman-outfit {
+#image-tenue-femme {
     display: flex;
     justify-content: center;
     width: 85%;
@@ -91,18 +75,18 @@ a {
 }
 
 @media screen and (min-width: 1100px) {
-    #image-woman-outfit{
+    #image-tenue-femme{
         width: 20rem;
         height: 24rem;
     }
 
     .article{
         width: 12rem;
-        height: 12 rem;
+        height: 12rem;
     }
 }
 
-.medium-text{
+.texte-moyen{
     white-space: nowrap;
     display: flex;
     justify-content: center;
@@ -112,47 +96,47 @@ a {
     margin-bottom: 3%;
 }
 
-.normal-text{
+.texte-normal{
     font-family: Inter;
     font-size: 0.9rem;
     margin-left: 5%;
     margin-right: 5%;
 }
 
-.container-mid-normal-text{
+.conteneur-texte-moyen-normal{
     margin-top: 13%;
 }
-.front-white{
+.texte-blanc-avant{
     color: #FFF;
     font-style: normal;
     line-height: normal;
 }
 
 @media screen and (max-width: 1180px) {
-    .medium-text{
+    .texte-moyen{
         font-size: 1.5rem;
     }
-    .normal-text{
+    .texte-normal{
         font-size: 0.8rem;
     }
 }
 
 @media screen and (max-width: 995px) {
-    .medium-text{
+    .texte-moyen{
         font-size: 1.35rem;
     }
 }
 
 @media screen and (max-width: 1040px) {
-    #title{
+    #titre{
         margin-bottom: 20%;
     }
-    .medium-text{
+    .texte-moyen{
         margin-top: 20%;
     }
 }
 
-.law{
+.mention-legale{
     font-family: Inter;
     color: #343434;
     bottom: 0;
@@ -161,17 +145,17 @@ a {
     white-space: nowrap;
 }
 
-.right-white{
+.droite-blanc{
     display: flex;
     flex-direction: column;
 }
 
-.nav-bar{
+.barre-de-navigation{
     display: flex;
     flex-direction: row;
 }
 
-.nav-menu{
+.menu-de-navigation{
     color: black;
     font-family: Inter;
     font-size: 1rem;
@@ -186,37 +170,48 @@ a {
     padding-top: 1%;
 }
 
-.nav-bar-menu-chose{
+.menu-choisi{
     background-color: black;
     color: white;
     border-radius: 14.5px;
 }
+.texte-blanc{
+    color: #FFF;
+    font-style: normal;
+    line-height: normal;
+}
 
-.container-img-men-outfit{
+.texte-normal{
+    font-family: Inter;
+    font-size: 0.9rem;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.conteneur-image-tenue-homme{
     display: flex;
     justify-content: center;
     margin-top: 2%;
 }
 
-#image-men-outfit{
+#image-tenue-homme{
     width: 70%;
     border-radius: 11px;
     background: url(<path-to-image>), lightgray 50% / cover no-repeat;
     margin-bottom: 3%;
-
 }
 
-#image-woman-outfit-body{
+#image-tenue-femme-corps{
     height: 100%;
     width: 100%;
     
 }
 
-.container-img-men-outfit-body{
+.conteneur-image-tenue-homme-corps{
   margin-right: 5%;  
 }
 
-.container-shop-img{
+.conteneur-boutique-img{
     display: flex;
     flex-direction: row;
     justify-content: space-between;   
@@ -256,21 +251,15 @@ a {
     overflow: auto;
 }
 
-.articleNom {
+.nom-article {
     font-weight: 500;
-    font-family: Montserrat;
-}
-.articlePrix {
-    font-weight: 500;
-    font-family: Montserrat;
 }
 
-.articleType {
+.type-article {
     font-weight: 700;
-    font-family: MontserratBold;
 }
 
-.articleCouleur {
+.couleur-article {
     background-color: black;
     width: 8%;
     height: 8%;
@@ -287,12 +276,12 @@ a {
 }
 
 @media screen and (max-width: 1053px) {
-  .container-img-men-outfit-body{
+  .conteneur-image-tenue-homme-corps{
         width: 10rem;
         display: flex;
         align-items: center;
     }
-    #image-men-outfit-body{
+    #image-tenue-homme-corps{
         width: 10rem;
         height: 23rem;
     }
@@ -300,7 +289,7 @@ a {
 }
 
 @media screen and (max-width: 993px) {
-   .container-img-men-outfit{
+   .conteneur-image-tenue-homme{
         margin-top: 5%;
     }
     .article{
@@ -316,35 +305,35 @@ a {
         position: none;
     }
 
-    #title{
+    #titre{
         justify-content: center;
         align-items: center;
         margin: 0;
         height: 100%;
     }
 
-    .container{
+    .conteneur{
         display: flex;
         flex-direction: column;
     }
-    .left-black{
+    .gauche-noir{
         width: 100vw;
         height: 10vh;
         margin: -8px 0px 0px -8px; 
     }
 
-    #container-image-woman-outfit,.container-mid-normal-text{
+    #conteneur-image-tenue-femme,.conteneur-texte-moyen-normal{
         display: none;
     }
 
-    .nav-bar{
+    .barre-de-navigation{
     display: flex;
     flex-direction: row;
     justify-content: center;
     margin-top: 1%;
     }
 
-    #image-men-outfit{
+    #image-tenue-homme{
         width: 60%;
     }
 
@@ -353,7 +342,7 @@ a {
         height: 10.5em;
     }
 
-    #image-men-outfit {
+    #image-tenue-homme {
         width: 65%;
     }
     
@@ -361,7 +350,7 @@ a {
 
 
 @media screen and (max-width: 902px) {
-   .container-img-men-outfit{
+   .conteneur-image-tenue-homme{
         margin-top: 6%;
     }
     .article{
@@ -370,7 +359,7 @@ a {
         height: 9.5em;
     }
 
-    #image-men-outfit-body{
+    #image-tenue-homme-corps{
         width: 8rem;
         height: 18.5rem;
     }
@@ -383,18 +372,18 @@ a {
         height: 12em;
     }
 
-    #image-men-outfit-body{
+    #image-tenue-homme-corps{
         width: 11rem;
         height: 22rem;
     }
 }
 
 @media screen and (max-width: 671px) {
-    .container-img-men-outfit-body{
+    .conteneur-image-tenue-homme-corps{
         display: none;
     }
 
-    .container-img-men-outfit{
+    .conteneur-image-tenue-homme{
         margin-top: 3%;
     }
        .article{
@@ -405,10 +394,10 @@ a {
 }
 
 @media screen and (max-width: 482px) {
-        .nav-bar{
+        .barre-de-navigation{
         margin-top: 5%;
     }
-    .container-img-men-outfit{
+    .conteneur-image-tenue-homme{
         margin-top: 7%;
     }
 
@@ -420,10 +409,10 @@ a {
 }
 
 @media screen and (max-width: 428px) {
-    .nav-bar{
+    .barre-de-navigation{
         margin-top: 5%;
     }
-    .container-img-men-outfit{
+    .conteneur-image-tenue-homme{
         margin-top: 7%;
     }
 
@@ -435,10 +424,10 @@ a {
 }
 
 @media screen and (max-width: 397px) {
-    .nav-bar{
+    .barre-de-navigation{
         margin-top: 5%;
     }
-    .container-img-men-outfit{
+    .conteneur-image-tenue-homme{
         margin-top: 7%;
     }
     .article{
@@ -447,12 +436,3 @@ a {
         height: 8em;
     }
 }
-
-
-
-
-
-
-
-
-

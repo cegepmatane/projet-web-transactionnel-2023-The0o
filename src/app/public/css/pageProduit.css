@@ -3,9 +3,19 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+body {
+    height: 100vh;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
 .body {
     display: flex;
-    height: 100vh;
+    height: 91.5vh;
     align-items: center;
     justify-content: center;
 }
@@ -49,6 +59,29 @@
 
 #suivant {
     right: 25px;
+}
+
+.filtre {
+    border: 1px black solid;
+    border-radius: 10px;
+    padding: 5px;
+    height: fit-content;
+}
+
+.filtreTitre {
+    height: min-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.optionsFiltre {
+    display: none;
+}
+
+.optionFiltre {
+    display: flex;
+    justify-content: space-between;
 }
 
 .informations {
