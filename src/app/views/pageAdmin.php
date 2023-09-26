@@ -318,12 +318,7 @@ $produits = $produitController->afficherTousLesProduits();
                     </div>
                 </div>
                 <div class="previewImageArticle">
-                    <?php
-                    $imageBase642 = base64_encode($produit->imagesProduit);
-                    $imageType2 = 'image/png';
-                    $imageDataUrl2 = 'data:' . $imageType2 . ';base64,' . $imageBase642;
-                    ?>
-                    <img src="<?php echo $imageDataUrl2; ?>" alt="image2">
+                    <img src="../models/image/<?php echo $produit->imagesProduit; ?>" alt="image2">
                 </div>
                 <div class="articleNom"><?php echo $produit->nomProduit; ?></div>
                 <div class="articleType"><?php echo $produit->marqueProduit; ?></div>
