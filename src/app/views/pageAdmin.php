@@ -18,13 +18,12 @@ $produits = $produitController->afficherTousLesProduits();
 
 <body>
     <div id="navBar">
-        <div id="logo" onclick="window.location.replace('accueil.html')">
+        <div id="logo" onclick="window.location.replace('./Accueil.php')">
             WIREFIT
         </div>
         <div id="naviguerCategories">
-            <a href="./listeProduit.html">Produit</a>
-            <a href="./listeProduit.html">Clients</a>
-            <a href="./listeProduit.html">Administration</a>
+            <a href="./pageAdmin.php" class="aucuneDecoration">Produits</a>
+            <a href="./AdministrationClient.php" class="aucuneDecoration">Clients</a>
         </div>
         <div id="imageDefilerMenu">
             <img src="../img/menu.svg" alt="Menu déroulant">
