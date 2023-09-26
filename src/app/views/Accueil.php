@@ -48,6 +48,9 @@
 
                 <?php foreach ($produits as $produit): ?>
                     <div class="article" onclick="window.location.replace('pageProduit.html')">
+                        <div class="previewImageArticle">
+                            <img src="<?php echo $produit->imgProduit; ?>" > <!-- NOM DE VARIABLE A MODIFIER -->
+                        </div>
                         <div class="articleNom"><?php echo $produit->nomProduit; ?></div>
                         <div class="articleType"><?php echo $produit->marqueProduit; ?></div>
                         <div class="articlePrix"><?php echo $produit->prixProduit;?></div>

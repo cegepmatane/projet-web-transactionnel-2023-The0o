@@ -13,7 +13,11 @@
     src: url(../fonts/Inter/static/Inter-Light.ttf);
 }
 
+/* TEST */
 
+
+
+/* FIN TEST */
 
 p{
     margin: 0;
@@ -232,6 +236,19 @@ p{
     position: relative;
     padding: 10px;
     gap: 5px;
+}
+
+.previewImageArticle {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.previewImageArticle img {
+    height: auto;
+    width: auto;
+    overflow: auto;
 }
 
 .nom-article {

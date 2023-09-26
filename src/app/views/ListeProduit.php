@@ -64,6 +64,9 @@ $produits = $produitController->afficherTousLesProduits();
     <?php foreach ($produits as $produit): ?>
       <a href="/projet-web-transactionnel-2023-The0o/src/app/views/Produits.php">
         <div class="article">
+            <div class="previewImageArticle">
+              <img src="<?php echo $produit->imgProduit; ?>" > <!-- NOM DE VARIABLE A MODIFIER -->
+            </div>
             <div class="articleNom"><?php echo $produit->nomProduit; ?></div>
             <div class="articleType"><?php echo $produit->marqueProduit; ?></div>
             <div class="articlePrix"><?php echo $produit->prixProduit; ?></div>
