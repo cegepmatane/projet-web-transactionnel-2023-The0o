@@ -1,6 +1,9 @@
 <?php
 require_once('../models/Produit.php');
 require_once('../models/ProduitDAO.php');
+require_once('../models/Taille.php');
+require_once('../models/Couleur.php');
+require_once('../models/Categorie.php');
 
 class ProduitController {
     private $produitDAO;
@@ -12,6 +15,21 @@ class ProduitController {
     public function afficherTousLesProduits() {
         $produits = $this->produitDAO->getAllProduits();
         return $produits;
+    }
+
+    public function afficherListeDesTaille(){
+        $taille = $this->produitDAO->getListSize();
+        return $taille;
+    }
+
+    public function afficherListeDesCouleurs(){
+        $couleur = $this->produitDAO->getListColor();
+        return $couleur;
+    }
+
+    public function afficherListeDesCategorie(){
+        $categorie = $this->produitDAO->getListCategorie();
+        return $categorie;
     }
 
     public function afficherProduitAccueil(){
@@ -34,6 +52,16 @@ class ProduitController {
     public function afficherUnProduitParSonId($id){
         $produits = $this->produitDAO->getProduitById($id);
         return $produits;
+    }
+
+    public function afficherCouleurParProduit($id){
+        $couleur = $this->produitDAO->getColorByProductId($id);
+        return $couleur;
+    }
+
+    public function afficherTailleParProduit($id){
+        $taille = $this->produitDAO->getSizeByProductId($id);
+        return $taille;
     }
 
     public function supprimerProduit($id) {

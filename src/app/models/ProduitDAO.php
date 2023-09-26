@@ -125,6 +125,69 @@ class ProduitDAO {
         return $produits;
     }
 
+    public function getListColor(){
+        $sql = "SELECT * FROM COULEUR";
+        $result = $this->conn->query($sql);
+
+        if ($result === false) {
+            return false; 
+        }
+
+        $couleurs = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $couleur = new Couleur(
+                $row['idCouleur'],
+                $row['nomCouleur'],
+                $row['hexaCouleur']
+            );
+            $couleurs[] = $couleur;
+        }
+
+        return $couleurs;
+    }
+
+    public function getListSize(){
+        $sql = "SELECT * FROM TAILLE";
+        $result = $this->conn->query($sql);
+
+        if ($result === false) {
+            return false; 
+        }
+
+        $tailles = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $taille = new Taille(
+                $row['idTaille'],
+                $row['taille']
+            );
+            $tailles[] = $taille;
+        }
+
+        return $tailles;
+    }
+
+    public function getListCategorie(){
+        $sql = "SELECT * FROM CATÉGORIE";
+        $result = $this->conn->query($sql);
+
+        if ($result === false) {
+            return false; 
+        }
+
+        $categories = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $categorie = new Categorie(
+                $row['idCatégorie'],
+                $row['nomCatégorie']
+            );
+            $categories[] = $categorie;
+        }
+        return $categories;
+    }
+
     public function getProduitsByChoice($trie,$prix,$taille,$couleur,$type,$reduction){
         
         $conditions = [];
@@ -185,6 +248,49 @@ class ProduitDAO {
             $produits[] = $produit;
         }
 
+    }
+
+    public function getColorByProductId($id){
+        $sql = "SELECT COULEUR.idCouleur,COULEUR.nomCouleur,COULEUR.hexaCouleur FROM PRODUIT NATURAL JOIN COULEUR WHERE idProduit = ".$id."";
+        $result = $this->conn->query($sql);
+
+        if ($result === false) {
+            return false; 
+        }
+
+        $couleurs = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $couleur = new Couleur(
+                $row['idCouleur'],
+                $row['nomCouleur'],
+                $row['hexaCouleur']
+            );
+            $couleurs[] = $couleur;
+        }
+
+        return $couleurs;
+    }
+
+    public function getSizeByProductId($id){
+        $sql = "SELECT TAILLE.idTaille,TAILLE.taille FROM PRODUIT NATURAL JOIN TAILLE WHERE idProduit = ".$id."";
+        $result = $this->conn->query($sql);
+
+        if ($result === false) {
+            return false; 
+        }
+
+        $tailles = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $taille = new Taille(
+                $row['idTaille'],
+                $row['taille']
+            );
+            $tailles[] = $taille;
+        }
+
+        return $tailles;
     }
 
     public function deleteProduit($id) {

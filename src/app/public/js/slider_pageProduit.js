@@ -1,12 +1,10 @@
-const images = ["image1.png", "image2.png"];
-let ordreAffichage = 0;
-
 function changeImage(sens) {
-    ordreAffichage = ordreAffichage + sens;
-    if (ordreAffichage > images.length - 1) {
-        ordreAffichage = 0;
-    } else if (ordreAffichage < 0) {
-        ordreAffichage = images.length - 1;
+    if (document.getElementById("image1").style.display === "none") {
+        document.getElementById("image1").style.display = "block"
+        document.getElementById("image2").style.display = "none"
     }
-    document.getElementById("image").src = "../img/" + images[ordreAffichage];
+    else {
+        document.getElementById("image2").style.display = "block"
+        document.getElementById("image1").style.display = "none"
+    }
 }
