@@ -39,7 +39,7 @@ $produits = $produitController->afficherUnProduitParSonId($idProduit);
         <a href="../views/ListeProduit.php" class="aucuneDecoration">Enfant</a>
       </div>
       <div id="imageDefilerMenu">
-        <img src="../img/menu.svg" alt="Menu déroulant">
+        <img src="../public/img/menu.svg" alt="Menu déroulant">
       </div>
     </div>
     <div class="body">
