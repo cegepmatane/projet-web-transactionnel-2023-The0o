@@ -34,7 +34,7 @@ $produits = $produitController->afficherTousLesProduits();
         <div class="filtre">
           <div class="filtreTitre" onclick="showFilter('tri')">
             <p>Tri</p>
-            <img src="../img/fleche.svg" alt="fleche vers le bas">  
+            <img src="../public/img/fleche.svg" alt="fleche vers le bas">  
           </div>
           <div class="optionsFiltre" id="tri">
             <hr>
@@ -52,7 +52,7 @@ $produits = $produitController->afficherTousLesProduits();
         <div class="filtre">
           <div class="filtreTitre" onclick="showFilter('filtrePrix')">
             <p>Prix</p>
-            <img src="../img/fleche.svg" alt="fleche vers le bas">  
+            <img src="../public/img/fleche.svg" alt="fleche vers le bas">  
           </div>
           <div class="optionsFiltre" id="filtrePrix">
             <hr>
@@ -83,7 +83,7 @@ $produits = $produitController->afficherTousLesProduits();
         <div class="filtre">
           <div class="filtreTitre" onclick="showFilter('filtreTaille')">
             <p>Tailles</p>
-            <img src="../img/fleche.svg" alt="fleche vers le bas">  
+            <img src="../public/img/fleche.svg" alt="fleche vers le bas">  
           </div>
           <div class="optionsFiltre" id="filtreTaille">
             <hr>
@@ -114,7 +114,7 @@ $produits = $produitController->afficherTousLesProduits();
         <div class="filtre">
           <div class="filtreTitre" onclick="showFilter('filtreCouleur')"">
             <p>Couleurs</p>
-            <img src="../img/fleche.svg" alt="fleche vers le bas">  
+            <img src="../public/img/fleche.svg" alt="fleche vers le bas">  
           </div>
           <div class="optionsFiltre" id="filtreCouleur">
             <hr>
@@ -145,7 +145,7 @@ $produits = $produitController->afficherTousLesProduits();
         <div class="filtre">
           <div class="filtreTitre" onclick="showFilter('filtreType')">
             <p>Type</p>
-            <img src="../img/fleche.svg" alt="fleche vers le bas">  
+            <img src="../public/img/fleche.svg" alt="fleche vers le bas">  
           </div>
           <div class="optionsFiltre" id="filtreType">
             <hr>
@@ -176,7 +176,7 @@ $produits = $produitController->afficherTousLesProduits();
         <div class="filtre">
           <div class="filtreTitre" onclick="showFilter('filtreReduction')"">
             <p>Réduction</p>
-            <img src="../img/fleche.svg" alt="fleche vers le bas">  
+            <img src="../public/img/fleche.svg" alt="fleche vers le bas">  
           </div>
           <div class="optionsFiltre" id="filtreReduction">
             <hr>

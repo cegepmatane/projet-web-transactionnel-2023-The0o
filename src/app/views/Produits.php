@@ -75,7 +75,7 @@ $produits = $produitController->afficherUnProduitParSonId($idProduit);
                     <div class="filtre">
                       <div class="filtreTitre" onclick="showFilter('filtreTaille')">
                         <p>Tailles</p>
-                        <img src="../img/fleche.svg" alt="fleche vers le bas">  
+                        <img src="../public/img/fleche.svg" alt="fleche vers le bas">  
                       </div>
                       <div class="optionsFiltre" id="filtreTaille">
                         <hr>
@@ -106,7 +106,7 @@ $produits = $produitController->afficherUnProduitParSonId($idProduit);
                     <div class="filtre">
                       <div class="filtreTitre" onclick="showFilter('filtreCouleur')"">
                         <p>Couleurs</p>
-                        <img src="../img/fleche.svg" alt="fleche vers le bas">  
+                        <img src="../public/img/fleche.svg" alt="fleche vers le bas">  
                       </div>
                       <div class="optionsFiltre" id="filtreCouleur">
                         <hr>

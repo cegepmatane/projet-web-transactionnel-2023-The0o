@@ -277,15 +277,15 @@ $produits = $produitController->afficherTousLesProduits();
             <div id="listeFiltre">
                 <div class="filtre">
                     <p>Prix</p>
-                    <img src="../img/fleche.svg" alt="fleche vers le bas">
+                    <img src="../public/img/fleche.svg" alt="fleche vers le bas">
                 </div>
                 <div class="filtre">
                     <p>Tailles</p>
-                    <img src="../img/fleche.svg" alt="fleche vers le bas">
+                    <img src="../public/img/fleche.svg" alt="fleche vers le bas">
                 </div>
                 <div class="filtre">
                     <p>Couleurs</p>
-                    <img src="../img/fleche.svg" alt="fleche vers le bas">
+                    <img src="../public/img/fleche.svg" alt="fleche vers le bas">
                 </div>
             </div>
         </div>
