@@ -124,3 +124,15 @@ ul {
     }
 
 }
+
+@media (max-width: 1150px) {
+    #titreEtFiltre {
+        grid-template-columns: auto;
+        grid-template-rows: 1fr 1fr;
+    }
+
+    #titre {
+        text-align: center;
+    }
+
+}
