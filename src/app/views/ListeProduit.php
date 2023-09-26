@@ -1,3 +1,8 @@
+<?php
+require_once('../controllers/ProduitController.php');
+$produitController = new ProduitController($mysqli);
+$produits = $produitController->afficherTousLesProduits();
+?>
 <!DOCTYPE html>
 <html lang="FR">
   <head>
@@ -8,13 +13,15 @@
   </head>
   <body>
     <div id="navBar">
-      <div id="logo" onclick="window.location.replace('accueil.html')">
+      <div id="logo">
         WIREFIT
-      </div>
+        </div>
+      
       <div id="naviguerCategories">
         <a href="./listeProduit.html">Homme</a>
         <a href="./listeProduit.html">Femme</a>
         <a href="./listeProduit.html">Enfant</a>
+      </div>
       </div>
       <div id="imageDefilerMenu">
         <img src="../public/img/menu.svg" alt="Menu déroulant">
@@ -54,61 +61,17 @@
     </div>
 
     <div id="listeArticles">
-      <div class="article" onclick="window.location.replace('pageProduit.html')">
-        <div class="articleNom">Mikilon homme</div>
-        <div class="articleType">CARGO</div>
-        <div class="articlePrix">119,99$</div>
-        <div class="articleCouleur"></div>
-      </div>
-      <div class="article" onclick="window.location.replace('pageProduit.html')">
-        <div class="articleNom">Mikilon homme</div>
-        <div class="articleType">CARGO</div>
-        <div class="articlePrix">119,99$</div>
-        <div class="articleCouleur"></div>
-      </div>
-      <div class="article" onclick="window.location.replace('pageProduit.html')">
-        <div class="articleNom">Mikilon homme</div>
-        <div class="articleType">CARGO</div>
-        <div class="articlePrix">119,99$</div>
-        <div class="articleCouleur"></div>
-      </div>
-      <div class="article" onclick="window.location.replace('pageProduit.html')">
-        <div class="articleNom">Mikilon homme</div>
-        <div class="articleType">CARGO</div>
-        <div class="articlePrix">119,99$</div>
-        <div class="articleCouleur"></div>
-      </div>
-      <div class="article" onclick="window.location.replace('pageProduit.html')">
-        <div class="articleNom">Mikilon homme</div>
-        <div class="articleType">CARGO</div>
-        <div class="articlePrix">119,99$</div>
-        <div class="articleCouleur"></div>
-      </div>
-      <div class="article" onclick="window.location.replace('pageProduit.html')">
-        <div class="articleNom">Mikilon homme</div>
-        <div class="articleType">CARGO</div>
-        <div class="articlePrix">119,99$</div>
-        <div class="articleCouleur"></div>
-      </div>
-      <div class="article" onclick="window.location.replace('pageProduit.html')">
-        <div class="articleNom">Mikilon homme</div>
-        <div class="articleType">CARGO</div>
-        <div class="articlePrix">119,99$</div>
-        <div class="articleCouleur"></div>
-      </div>
-      <div class="article" onclick="window.location.replace('pageProduit.html')">
-        <div class="articleNom">Mikilon homme</div>
-        <div class="articleType">CARGO</div>
-        <div class="articlePrix">119,99$</div>
-        <div class="articleCouleur"></div>
-      </div>
-      <div class="article" onclick="window.location.replace('pageProduit.html')">
-        <div class="articleNom">Mikilon homme</div>
-        <div class="articleType">CARGO</div>
-        <div class="articlePrix">119,99$</div>
-        <div class="articleCouleur"></div>
-      </div>
-    </div>
+    <?php foreach ($produits as $produit): ?>
+      <a href="/projet-web-transactionnel-2023-The0o/src/app/views/Produits.php">
+        <div class="article">
+            <div class="articleNom"><?php echo $produit->nomProduit; ?></div>
+            <div class="articleType"><?php echo $produit->marqueProduit; ?></div>
+            <div class="articlePrix"><?php echo $produit->prixProduit; ?></div>
+            <div class="articleCouleur"></div>
+        </div>
+      </a>
+    <?php endforeach; ?>
+</div>
 
   </body>
 </html>

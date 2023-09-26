@@ -12,7 +12,7 @@ p {
 }
 
 a {
-    color: white;
+    color: inherit; 
     text-decoration: none;
 }
 
@@ -76,10 +76,16 @@ a {
 
 .articleNom {
     font-weight: 500;
+    color: black;
 }
 
 .articleType {
     font-weight: 700;
+    color: black;
+}
+
+.articlePrix{
+    color: black;
 }
 
 .articleCouleur {
