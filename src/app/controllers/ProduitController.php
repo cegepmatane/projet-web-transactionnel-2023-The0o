@@ -64,9 +64,8 @@ class ProduitController {
         return $taille;
     }
 
-    public function supprimerProduit($id) {
-        $produit = $this->produitDAO->deleteProduit($id);
-        return $produit;
+    public function ajouterUnProduit($nomProduit,$prixProduit,$descriptionProduit,$marqueProduit,$reductionProduit,$couleurProduit,$tailleProduit,$typeProduit,$imageProduit,$imageProduit2){
+        $resultatAjout = $this->produitDAO->addProduit($nomProduit,$prixProduit,$descriptionProduit,$marqueProduit,$reductionProduit,$couleurProduit,$tailleProduit,$typeProduit,$imageProduit,$imageProduit2);
     }
 }
 ?>

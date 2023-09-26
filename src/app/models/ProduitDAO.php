@@ -293,22 +293,12 @@ class ProduitDAO {
         return $tailles;
     }
 
-    public function deleteProduit($id) {
-        $sql = "DELETE FROM AVOIR WHERE idProduit=". $id . ";";
+    public function addProduit($nomProduit,$prixProduit,$descriptionProduit,$marqueProduit,$reductionProduit,$couleurProduit,$tailleProduit,$typeProduit,$imageProduit,$imageProduit2) {
+        $sql = "INSERT INTO `PRODUIT`(`idProduit`, `nomProduit`, `prixProduit`, `sousTitreProduit`, `descriptionProduit`, `marqueProduit`, `reductionProduit`, `sexeProduit`, `afficherProduit`, `typeProduit`, `imageUnProduit`, `imageDeuxProduit`) VALUES (7,'$nomProduit','$prixProduit','$descriptionProduit','AAAAAA','$marqueProduit','$reductionProduit','$couleurProduit',$tailleProduit,'$typeProduit','$imageProduit','$imageProduit2')";
         $result = $this->conn->query($sql);
-        $sql = "DELETE FROM FAVORIS WHERE idProduit=" . $id . ";";
-        $result = $this->conn->query($sql);
-        $sql = "DELETE FROM MESURER WHERE idProduit=" . $id . ";";
-        $result = $this->conn->query($sql);
-        $sql = "DELETE FROM MESURER WHERE idProduit=" . $id . ";";
-        $result = $this->conn->query($sql);
-        $sql = "DELETE FROM PANIER WHERE idProduit=" . $id . ";";
-        $result = $this->conn->query($sql);
-        $sql = "DELETE FROM PRODUIT WHERE idProduit=" . $id . ";";
-        $result = $this->conn->query($sql);
-        if ($result === false) {
-            return false; 
-        }
+        
+
     }
+    
 }
 ?>
