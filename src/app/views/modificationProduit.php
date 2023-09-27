@@ -12,8 +12,7 @@ if (isset($_GET['id'])) {
     $idProduit = 1;
 }
 $produit = $produitController->afficherUnProduitParSonId($idProduit);
-$tailles = $produitController->afficherTailleParProduit($idProduit);
-$couleurs = $produitController->afficherCouleurParProduit($idProduit);
+$categories = $produitController->afficherListeDesCategorie();
 
 ?>
 
@@ -22,57 +21,73 @@ $couleurs = $produitController->afficherCouleurParProduit($idProduit);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Modification d'un produit</title>
+    <link rel="stylesheet" type="text/css" href="../public/css/modificationProduit.css" />
 </head>
 <body>
 <div class="contenuProduit">
-    <div class="titrePopup">
-        <p>Modifier un produit</p>
-    </div>
-    <form method="GET" action="./confirmationModificationProduit.php">
+    <form method="post" action="./confirmationModificationProduit.php" enctype="multipart/form-data">
+        <div class="titrePopup">
+            <p>Modifier un produit</p>
+        </div>
         <div class="champsProduit">
-            <input type="hidden" name="id" value="<?php echo $produit->idProduit; ?>">
+            <input type="hidden" name="idProduit" value="<?php echo $produit->idProduit; ?>">
             <div class="champ">
                 <p>Nom du produit</p>
-                <input type="text" value="<?php echo $produit->nomProduit; ?>">
-            </div>
-            <div class="champ">
-                <p>Marque du produit</p>
-                <input type="text" value="<?php echo $produit->marqueProduit; ?>">
+                <input type="text" name="nomProduit" value="<?php echo $produit->nomProduit; ?>">
             </div>
             <div class="champ">
                 <p>Prix du produit</p>
-                <input type="text" value="<?php echo $produit->prixProduit; ?>">
+                <input type="number" name="prixProduit" value="<?php echo $produit->prixProduit; ?>">
             </div>
             <div class="champ">
                 <p>Description du produit</p>
-                <input type="text" value="<?php echo $produit->descriptionProduit; ?>">
+                <input type="text" name="descriptionProduit" value="<?php echo $produit->descriptionProduit; ?>">
             </div>
             <div class="champ">
-                <p>Tailles du produit</p>
-                <div id="choixTailles">
-                    <?php foreach ($tailles as $taille): ?>
-                        <div>
-                            <input type="checkbox" name="<?php echo $taille->taille ?>" value="<?php echo $taille->taille ?>">
-                            <label for="<?php echo $taille->taille ?>"><?php echo $taille->taille ?></label>
-                        </div>
-                    <?php endforeach; ?>
+                <p>Marque du produit</p>
+                <input type="text" name="marqueProduit" value="<?php echo $produit->marqueProduit; ?>">
+            </div>
+            <div class="champ">
+                <p>Réduction sur le produit</p>
+                <input type="number" name="reductionProduit" value="<?php echo $produit->reductionProduit; ?>">
+            </div>
+            <div class="champ">
+                <p>Type de sexe du produit</p>
+                <select id="sexeProduit" name="sexeProduit">
+                    <option value="0">Homme</option>
+                    <option value="1">Femme</option>
+                    <option value="2">Enfant</option>
+                </select>
+            </div>
+            <div class="champ">
+                <p>Affichage du produit</p>
+                <div id="choixAffichageRadioButtons">
+                    <div id="noAffichageRadioButton">
+                        <input type="radio" id="reponseNoAffichage" name="afficherProduit" value="0">
+                        <label for="reponseNoAffichage">Non</label>
+                    </div>
+                    <div id="yesAffichageRadioButton">
+                        <input type="radio" id="reponseYesAffichage" name="afficherProduit" value="1">
+                        <label for="reponseYesAffichage">Oui</label>
+                    </div>
                 </div>
             </div>
             <div class="champ">
-                <p>Couleurs du produit</p>
-                <div id="champCouleurs">
-                    <?php foreach ($couleurs as $couleur): ?>
-                        <div>
-                            <input type="checkbox" name="<?php echo $couleur->nomCouleur ?>" value="<?php echo $couleur->nomCouleur ?>">
-                            <label for="<?php echo $couleur->nomCouleur ?>"><?php echo $couleur->nomCouleur ?></label>
-                        </div>
+                <p>Type de produit</p>
+                <select id="typeProduit" name="typeProduit">
+                    <?php foreach ($categories as $categorie): ?>
+                        <option value="<?php echo $categorie->nomCategorie ?>"><?php echo $categorie->nomCategorie ?></option>
                     <?php endforeach; ?>
-                </div>
+                </select>
             </div>
             <div class="champ">
-                <p>Images du produit</p>
-                <input name="images[]" type="file" accept="image/png, image/jpeg" multiple />
+                <p>Première image du produit</p>
+                <input type="file" class="imagesInput" id="imageUn" name="imageUn" accept="image/png" />
+            </div>
+            <div class="champ">
+                <p>Seconde image du produit</p>
+                <input type="file" class="imagesInput" id="imageDeux" name="imageDeux" accept="image/png" />
             </div>
         </div>
         <div class="boutonsConfirmationEtAnnulation">

@@ -1,0 +1,81 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #edede9;
+}
+
+.contenuProduit {
+    display: flex;
+    justify-content: center;
+    height: 65%;
+    width: 35%;
+    background-color: black;
+    color: white;
+    border-radius: 25px;
+}
+
+form {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+}
+
+.titrePopup {
+    font-weight: 700;
+    font-size: 150%;
+}
+
+.champsProduit {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 75%;
+    width: 100%;
+}
+
+.champ {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#choixAffichageRadioButtons {
+    display: flex;
+    gap: 2ch;
+}
+
+.boutonsConfirmationEtAnnulation {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.boutonConfirmationPopup {
+    display: flex;
+    align-items: center;
+    gap: 1ch;
+    color: white;
+    border-style: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.titrePopup {
+    font-weight: 700;
+    font-size: 150%;
+}
+.boutonConfirmationPopup svg {
+    fill: #ffffff;
+}
+
+.imagesInput {
+    display: flex;
+}
