@@ -334,18 +334,30 @@ class ProduitDAO {
 
         $sql = "INSERT INTO `PRODUIT`(`idProduit`, `nomProduit`, `prixProduit`, `sousTitreProduit`, `descriptionProduit`, `marqueProduit`, `reductionProduit`, `sexeProduit`, `afficherProduit`, `typeProduit`, `imageUnProduit`, `imageDeuxProduit`) VALUES (8, '$nomProduit','$prixProduit','$descriptionProduit','AAAAAA','$marqueProduit','$reductionProduit','$couleurProduit',$tailleProduit,'$typeProduit','$last_id_image1','$last_id_image2')";
         $result = $this->conn->query($sql);
-        
-
     }
 
-    public function modifyProduit($id, $nom, $prix, $sousTitre, $description, $marque, $reduction, $couleur, $imagesUn, $imagesDeux) {
-        $sql = "UPDATE PRODUIT SET nomProduit = '" . $nom . "', prixProduit = " . $prix . ", sousTitreProduit = '" . $sousTitre . "', descriptionProduit = '" . $description . "', marqueProduit = '" . $marque . "', reductionProduit = " . $reduction . ", imageUnProduit = '" . $imagesUn . "', imageDeuxProduit = '" . $imagesDeux . "' WHERE idProduit = " . $id;
+    public function modifyProduit($id, $nom, $prix, $description, $marque, $reduction, $sexe, $afficher, $type, $imageUn, $imageDeux) {
+        define ('SITE_ROOT', realpath(dirname(__FILE__)));
+
+        echo $imageUn["name"];
+        $sql = "INSERT INTO IMAGE(filename) VALUES ('".$imageUn["name"]."')";
+        move_uploaded_file($imageUn["tmp_name"], SITE_ROOT. "/image/" . $imageUn["name"]);
+        $this->conn->query($sql);
+        $last_id_image1 = $this->conn->insert_id;
+
+        $sql = "INSERT INTO IMAGE(filename) VALUES ('".$imageDeux["name"]."')";
+        move_uploaded_file($imageDeux["tmp_name"], SITE_ROOT. "/image/" . $imageDeux["name"]);
+        $this->conn->query($sql);
+        $last_id_image2 = $this->conn->insert_id;
+        
+        $sql = "UPDATE PRODUIT SET nomProduit='$nom', prixProduit=$prix, descriptionProduit='$description', marqueProduit='$marque', reductionProduit=$reduction, sexeProduit=$sexe, afficherProduit=$afficher, typeProduit='$type', imageUnProduit=$last_id_image1, imageDeuxProduit=$last_id_image2 WHERE idProduit=$id";
         $result = $this->conn->query($sql);
         if ($result === false) {
-            return false; 
+            return false;
         }
     }
-public function deleteProduit($id) {
+    
+    public function deleteProduit($id) {
         $sql = "DELETE FROM AVOIR WHERE idProduit=". $id . ";";
         $result = $this->conn->query($sql);
         $sql = "DELETE FROM FAVORIS WHERE idProduit=" . $id . ";";

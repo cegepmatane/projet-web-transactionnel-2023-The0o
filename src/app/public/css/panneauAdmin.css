@@ -331,6 +331,7 @@ a {
     border-radius: 100%;
     position: absolute;
     right: 10px;
+    border: #0006 1.5px solid;
 }
 
 .affichageProduit {

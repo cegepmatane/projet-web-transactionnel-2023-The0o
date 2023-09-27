@@ -6,67 +6,20 @@ error_reporting(E_ALL);
 require_once('../controllers/ProduitController.php');
 
 $produitController = new ProduitController($mysqli);
-if (isset($_GET['id'])) {
-    $idProduit = $_GET['id'];
-} else {
-    $idProduit = 1;
-}
 
-if (isset($_GET['nomProduit'])) {
-    $nomProduit = $_GET['nomProduit'];
-} else {
-    $nomProduit = "truc";
-}
+$idProduit = $_POST['idProduit'];
+$nomProduit = $_POST['nomProduit'];
+$prixProduit = $_POST['prixProduit'];
+$descriptionProduit = $_POST['descriptionProduit'];
+$marqueProduit = $_POST['marqueProduit'];
+$reductionProduit = $_POST['reductionProduit'];
+$sexeProduit = $_POST['sexeProduit'];
+$afficherProduit = $_POST['afficherProduit'];
+$typeProduit = $_POST['typeProduit'];
+$imagesProduit = $_FILES['imageUn'];
+$imagesDeuxProduit = $_FILES['imageDeux'];
 
-if (isset($_GET['prixProduit'])) {
-    $prixProduit = $_GET['prixProduit'];
-} else {
-    $prixProduit = 1;
-}
-
-if (isset($_GET['sousTitreProduit'])) {
-    $sousTitreProduit = $_GET['sousTitreProduit'];
-} else {
-    $sousTitreProduit = "mineur";
-}
-
-if (isset($_GET['descriptionProduit'])) {
-    $descriptionProduit = $_GET['descriptionProduit'];
-} else {
-    $descriptionProduit = "aucune";
-}
-
-if (isset($_GET['marqueProduit'])) {
-    $marqueProduit = $_GET['marqueProduit'];
-} else {
-    $marqueProduit = "nike";
-}
-
-if (isset($_GET['reductionProduit'])) {
-    $reductionProduit = $_GET['reductionProduit'];
-} else {
-    $reductionProduit = 1;
-}
-
-if (isset($_GET['couleurProduit'])) {
-    $couleurProduit = $_GET['couleurProduit'];
-} else {
-    $couleurProduit = "Noir";
-}
-
-if (isset($_GET['imagesProduit'])) {
-    $imagesProduit = $_GET['imagesProduit'];
-} else {
-    $imagesProduit = "null";
-}
-
-if (isset($_GET['imagesDeuxProduit'])) {
-    $imagesDeuxProduit = $_GET['imagesDeuxProduit'];
-} else {
-    $imagesDeuxProduit = "null";
-}
-
-$produits = $produitController->modifierProduit($idProduit, $nomProduit, $prixProduit, $sousTitreProduit, $descriptionProduit, $marqueProduit, $reductionProduit, $couleurProduit, $imagesProduit, $imagesDeuxProduit);
+$produits = $produitController->modifierProduit($idProduit, $nomProduit, $prixProduit, $descriptionProduit, $marqueProduit, $reductionProduit, $sexeProduit, $afficherProduit, $typeProduit, $imagesProduit, $imagesDeuxProduit);
 
 ?>
 

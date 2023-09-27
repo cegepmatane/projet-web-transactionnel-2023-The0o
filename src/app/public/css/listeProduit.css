@@ -125,6 +125,7 @@ ul {
     border-radius: 100%;
     position: absolute;
     right: 10px;
+    border: #0006 1.5px solid;
 }
 
 @media (max-width: 750px) {
