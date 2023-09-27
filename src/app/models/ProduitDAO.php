@@ -374,5 +374,42 @@ class ProduitDAO {
             return false; 
 	        }
 	    }
+
+        public function addSize($nomTaille) {
+            $nomTaille = $this->conn->real_escape_string($nomTaille);//evite les injectionSQL
+            $sql = "INSERT INTO `TAILLE` (`taille`) VALUES ('$nomTaille')";
+        
+            if ($this->conn->query($sql)) {
+                return true; 
+            } else {
+                return false;
+            }
+        }
+        public function deleteSize($nomTaille) {
+            $sql = "DELETE FROM `TAILLE` WHERE taille = '$nomTaille'";
+            if ($this->conn->query($sql)) {
+                return true; 
+            } else {
+                return false;
+            }
+        }
+
+        public function addColor($nomCouleur, $hexaCouleur){
+            $sql = "INSERT INTO `COULEUR` (`nomCouleur`,`hexaCouleur`) VALUES ('$nomCouleur','$hexaCouleur')";
+            if ($this->conn->query($sql)) {
+                return true; 
+            } else {
+                return false;
+            }
+        }
+
+        public function deleteColor($nomCouleur) {
+            $sql = "DELETE FROM `COULEUR` WHERE nomCouleur = '$nomCouleur'";
+            if ($this->conn->query($sql)) {
+                return true; 
+            } else {
+                return false;
+            }
+        }
 }
 ?>

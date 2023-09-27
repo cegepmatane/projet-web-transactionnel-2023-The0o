@@ -77,5 +77,26 @@ class ProduitController {
         $produit = $this->produitDAO->deleteProduit($id);
         return $produit;
     }
+
+    public function ajouterUneTaille($nomTaille){
+        $taille = $this->produitDAO->addSize($nomTaille);
+        return $taille;
+
+    }
+
+    public function SuppUneTaille($nomTaille){
+        $taille = $this->produitDAO->deleteSize($nomTaille);
+        return $taille;
+    }
+
+    public function ajouterUneCouleur($nomCouleur, $hexaCouleur){
+        $couleur = $this->produitDAO->addColor($nomCouleur, $hexaCouleur);
+        return $couleur;
+    }
+    
+    public function supprimerUneCouleur($nomCouleur){
+        $nomCouleur = $this->produitDAO->deleteColor($nomCouleur);
+        return $nomCouleur;
+    }
 }
 ?>

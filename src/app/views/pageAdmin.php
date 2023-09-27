@@ -18,8 +18,8 @@ $produits = $produitController->afficherTousLesProduits();
 
 <body>
     <div id="navBar">
-        <div id="logo" onclick="window.location.replace('./Accueil.php')">
-            WIREFIT
+        <div id="logo">
+                    WIREFIT
         </div>
         <div id="naviguerCategories">
             <a href="./pageAdmin.php" class="aucuneDecoration">Produits</a>
@@ -247,6 +247,18 @@ $produits = $produitController->afficherTousLesProduits();
             <div id="ajoutProduit">
                 <button id="boutonAjoutProduit" onclick="afficherPopupAjoutProduit()()">
                     <p>Ajouter un produit</p>
+                    <p>+</p>
+                </button>
+                <button id="boutonAjoutProduit">
+                    <a href="AjouterUneTaille.php">
+                    <p>Ajouter une taille</p>
+                    </a>
+                    <p>+</p>
+                </button>
+                <button id="boutonAjoutProduit">
+                    <a href="AjouterUneCouleur.php">
+                    <p>Ajouter une couleur</p>
+                    </a>
                     <p>+</p>
                 </button>
             </div>
