@@ -93,5 +93,10 @@ class ProduitController {
         $couleur = $this->produitDAO->addColor($nomCouleur, $hexaCouleur);
         return $couleur;
     }
+    
+    public function supprimerUneCouleur($nomCouleur){
+        $nomCouleur = $this->produitDAO->deleteColor($nomCouleur);
+        return $nomCouleur;
+    }
 }
 ?>

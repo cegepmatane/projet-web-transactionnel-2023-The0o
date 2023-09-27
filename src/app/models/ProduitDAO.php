@@ -390,5 +390,14 @@ public function deleteProduit($id) {
                 return false;
             }
         }
+
+        public function deleteColor($nomCouleur) {
+            $sql = "DELETE FROM `COULEUR` WHERE nomCouleur = '$nomCouleur'";
+            if ($this->conn->query($sql)) {
+                return true; 
+            } else {
+                return false;
+            }
+        }
 }
 ?>

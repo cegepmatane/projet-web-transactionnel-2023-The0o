@@ -45,5 +45,6 @@ $couleurs = $produitController->afficherListeDesCouleurs();
             <li><?php echo $couleur->nomCouleur; ?> (#<?php echo $couleur->hexaCouleur; ?>)</li>
         <?php endforeach; ?>
     </ul>
+    <button><a href="pageAdmin.php">RETOUR</a></button>
 </body>
 </html>
