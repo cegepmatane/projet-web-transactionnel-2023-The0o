@@ -31,30 +31,30 @@ $categories = $produitController->afficherListeDesCategorie();
             <p>Modifier un produit</p>
         </div>
         <div class="champsProduit">
-            <input type="hidden" name="idProduit" value="<?php echo $produit->idProduit; ?>">
+            <input type="hidden" name="idProduit" value="<?php echo $produit->idProduit; ?>" required>
             <div class="champ">
                 <p>Nom du produit</p>
-                <input type="text" name="nomProduit" value="<?php echo $produit->nomProduit; ?>">
+                <input type="text" name="nomProduit" value="<?php echo $produit->nomProduit; ?>" required>
             </div>
             <div class="champ">
                 <p>Prix du produit</p>
-                <input type="number" name="prixProduit" value="<?php echo $produit->prixProduit; ?>">
+                <input type="number" name="prixProduit" value="<?php echo $produit->prixProduit; ?>" required>
             </div>
             <div class="champ">
                 <p>Description du produit</p>
-                <input type="text" name="descriptionProduit" value="<?php echo $produit->descriptionProduit; ?>">
+                <input type="text" name="descriptionProduit" value="<?php echo $produit->descriptionProduit; ?>" required>
             </div>
             <div class="champ">
                 <p>Marque du produit</p>
-                <input type="text" name="marqueProduit" value="<?php echo $produit->marqueProduit; ?>">
+                <input type="text" name="marqueProduit" value="<?php echo $produit->marqueProduit; ?>" required>
             </div>
             <div class="champ">
                 <p>Réduction sur le produit</p>
-                <input type="number" name="reductionProduit" value="<?php echo $produit->reductionProduit; ?>">
+                <input type="number" name="reductionProduit" value="<?php echo $produit->reductionProduit; ?>" required>
             </div>
             <div class="champ">
                 <p>Type de sexe du produit</p>
-                <select id="sexeProduit" name="sexeProduit">
+                <select id="sexeProduit" name="sexeProduit" required>
                     <option value="0">Homme</option>
                     <option value="1">Femme</option>
                     <option value="2">Enfant</option>
@@ -64,34 +64,34 @@ $categories = $produitController->afficherListeDesCategorie();
                 <p>Affichage du produit</p>
                 <div id="choixAffichageRadioButtons">
                     <div id="noAffichageRadioButton">
-                        <input type="radio" id="reponseNoAffichage" name="afficherProduit" value="0">
+                        <input type="radio" id="reponseNoAffichage" name="afficherProduit" value="0" required>
                         <label for="reponseNoAffichage">Non</label>
                     </div>
                     <div id="yesAffichageRadioButton">
-                        <input type="radio" id="reponseYesAffichage" name="afficherProduit" value="1">
+                        <input type="radio" id="reponseYesAffichage" name="afficherProduit" value="1" required>
                         <label for="reponseYesAffichage">Oui</label>
                     </div>
                 </div>
             </div>
             <div class="champ">
                 <p>Type de produit</p>
-                <select id="typeProduit" name="typeProduit">
+                <select id="typeProduit" name="typeProduit" required>
                     <?php foreach ($categories as $categorie): ?>
-                        <option value="<?php echo $categorie->nomCategorie ?>"><?php echo $categorie->nomCategorie ?></option>
+                        <option value="<?php echo $categorie->nomCategorie ?>" required><?php echo $categorie->nomCategorie ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
             <div class="champ">
                 <p>Première image du produit</p>
-                <input type="file" class="imagesInput" id="imageUn" name="imageUn" accept="image/png" />
+                <input type="file" class="imagesInput" id="imageUn" name="imageUn" accept="image/png" required/>
             </div>
             <div class="champ">
                 <p>Seconde image du produit</p>
-                <input type="file" class="imagesInput" id="imageDeux" name="imageDeux" accept="image/png" />
+                <input type="file" class="imagesInput" id="imageDeux" name="imageDeux" accept="image/png" required/>
             </div>
         </div>
         <div class="boutonsConfirmationEtAnnulation">
-            <button class="boutonConfirmationPopup" onclick="fermerPopupModification()">
+            <button type="button" class="boutonConfirmationPopup" onclick="window.location.href='./pageAdmin.php'">
                 <p>Annuler</p>
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em"
                     viewBox="0 0 384 512">
