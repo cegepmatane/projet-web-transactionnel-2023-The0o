@@ -4,9 +4,11 @@ require_once('../models/ProduitDAO.php');
 require_once('../models/Taille.php');
 require_once('../models/Couleur.php');
 require_once('../models/Categorie.php');
+require_once('../models/CouleurDAO.php');
 
 class ProduitController {
     private $produitDAO;
+    private $couleurDAO;
 
     public function __construct($connexion) {
         $this->produitDAO = new ProduitDAO($connexion);
@@ -23,7 +25,7 @@ class ProduitController {
     }
 
     public function afficherListeDesCouleurs(){
-        $couleur = $this->produitDAO->getListColor();
+        $couleur = $this->couleurDAO->getListColor();
         return $couleur;
     }
 
@@ -55,7 +57,7 @@ class ProduitController {
     }
 
     public function afficherCouleurParProduit($id){
-        $couleur = $this->produitDAO->getColorByProductId($id);
+        $couleur = $this->couleurDAO->getColorByProductId($id);
         return $couleur;
     }
 
@@ -90,12 +92,12 @@ class ProduitController {
     }
 
     public function ajouterUneCouleur($nomCouleur, $hexaCouleur){
-        $couleur = $this->produitDAO->addColor($nomCouleur, $hexaCouleur);
+        $couleur = $this->couleurDAO->addColor($nomCouleur, $hexaCouleur);
         return $couleur;
     }
-    
+
     public function supprimerUneCouleur($nomCouleur){
-        $nomCouleur = $this->produitDAO->deleteColor($nomCouleur);
+        $nomCouleur = $this->couleurDAO->deleteColor($nomCouleur);
         return $nomCouleur;
     }
 }

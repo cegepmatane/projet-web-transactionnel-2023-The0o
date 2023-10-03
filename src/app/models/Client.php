@@ -7,10 +7,10 @@ class Client {
     public $adresseClient;
 
     public function __construct($mail, $prenom, $mdp, $nom, $adresse) {
-        $this->mailClient = $mail;
-        $this->prenomClient = $prenom;
+        $this->mailClient = filter_var($mail, FILTER_SANITIZE_EMAIL);
+        $this->prenomClient = filter_var($prenom, FILTER_SANITIZE_STRING);
         $this->mdpClient = $mdp;
-        $this->nomClient = $nom;
+        $this->nomClient = filter_var($nom, FILTER_SANITIZE_STRING);
         $this->adresseClient = $adresse;
     }
 }

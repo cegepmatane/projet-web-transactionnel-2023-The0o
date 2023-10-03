@@ -4,8 +4,10 @@ class Taille {
     public $taille;
 
     public function __construct($id, $taille) {
-        $this->idTaille = $id;
+        $this->idTaille = filter_var($id, FILTER_VALIDATE_INT);
         $this->taille = $taille;
+       
+       
     }
 }
 ?>
