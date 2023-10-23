@@ -12,6 +12,7 @@ class ProduitController {
 
     public function __construct($connexion) {
         $this->produitDAO = new ProduitDAO($connexion);
+        $this->couleurDAO = new CouleurDAO($connexion);
     }
 
     public function afficherTousLesProduits() {

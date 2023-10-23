@@ -1,0 +1,146 @@
+
+@font-face {
+    font-family: Inter;
+    src: url(../fonts/Inter/static/Inter-SemiBold.ttf);
+  }
+
+  @font-face {
+    font-family: InterExtra;
+    src: url(../fonts/Inter/static/Inter-ExtraBold.ttf);
+  }
+
+.bg-commande {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 25%;
+    margin-right: 25%;
+    justify-content: center;
+    border-radius: 0.6875rem;
+    background: #FFF;
+    box-shadow: 3px 3px 10px 1px rgba(0, 0, 0, 0.25);
+}
+
+.commande-adresse-ville{
+    display: flex;
+    gap: 3%;
+    flex-direction: row;
+}
+
+input{
+    border-radius: 0.625rem;
+    border: 1px solid #000;
+    background: #FFF;
+    width: 14.625rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+}
+
+.bg-commande  p{
+    color: #000;
+    font-family: Inter;
+    font-size: 0.9375rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    width: 9.5rem;
+    height: 1.125rem;
+    flex-shrink: 0; 
+}
+
+.champs-commande {
+    margin-top: 2%;
+}
+
+.titre-commande{
+    color: #000;
+    font-family: InterExtra;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    letter-spacing: 0.0875rem; 
+    margin-top: 2%;
+}
+
+.commande-adresse-ville{
+    margin-bottom: 2%;
+}
+
+#ville{
+    border-radius: 0.625rem;
+    border: 1px solid #000;
+    background: #FFF;
+    width: 9.625rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+}
+
+.commande{
+    margin-top: 1%;
+}
+.total{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    display: flex;
+    align-items: center;
+}
+
+.info-nom-categorie{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 2%;
+}
+.contenu-commande{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2%;
+    margin-left: 0%;
+    width: 40vw
+}
+
+.txt-g3{
+    color: #000;
+    font-family: Inter;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+.prix{
+    display: flex;
+    align-items: end;
+}
+
+.barre{
+    width: 36.6875rem;
+    height: 0.125rem;
+    background: rgba(0, 0, 0, 0.10);
+    margin-top: 1%;
+}
+.btn-retour{
+    margin-top: 1%;
+    margin-left: 1%;
+    border-radius: 0.875rem;
+    background: #000;
+    width: 7.5625rem;
+    height: 2.3125rem;
+    border: none;
+}
+
+.btn-retour p{
+    color: #FFF;
+    font-family: Inter;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.d-flex-a{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}

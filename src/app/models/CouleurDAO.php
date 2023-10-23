@@ -48,7 +48,6 @@ class CouleurDAO {
             );
             $couleurs[] = $couleur;
         }
-
         return $couleurs;
     }
 
