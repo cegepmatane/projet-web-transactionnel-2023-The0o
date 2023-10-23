@@ -4,8 +4,8 @@ class Categorie {
     public $nomCategorie;
 
     public function __construct($id, $nom) {
-        $this->idCategorie = $id;
-        $this->nomCategorie = $nom;
+        $this->idCategorie = filter_var($id, FILTER_VALIDATE_INT);
+        $this->nomCategorie = filter_var($nom, FILTER_SANITIZE_STRING);
     }
 }
 
