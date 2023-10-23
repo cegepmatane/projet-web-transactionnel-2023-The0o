@@ -97,7 +97,8 @@ input{
     justify-content: space-between;
     margin-top: 2%;
     margin-left: 0%;
-    width: 40vw
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .txt-g3{
@@ -114,10 +115,11 @@ input{
 }
 
 .barre{
-    width: 36.6875rem;
     height: 0.125rem;
     background: rgba(0, 0, 0, 0.10);
     margin-top: 1%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 .btn-retour{
     margin-top: 1%;
@@ -141,6 +143,17 @@ input{
 .d-flex-a{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
+}
+
+.item{
+    width: 100%;
+}
+
+@media screen and (max-width: 922px) {
+    .commande-adresse-ville{
+        display: flex;
+        flex-direction: column;
+    }
 }
