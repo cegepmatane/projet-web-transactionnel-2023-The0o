@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,6 +75,5 @@
         <div class="btn-paypal"></div>
     </div>
 </div>
-
 </body>
 </html>

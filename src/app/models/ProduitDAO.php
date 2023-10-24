@@ -342,14 +342,18 @@ class ProduitDAO {
                 return false;
             }
         }
-        public function deleteSize($nomTaille) {
-            $sql = "DELETE FROM `TAILLE` WHERE taille = '$nomTaille'";
-            if ($this->conn->query($sql)) {
+
+       public function deleteSize($nomTaille) {
+            $sql = "DELETE FROM `TAILLE` WHERE taille = :nomTaille";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':nomTaille', $nomTaille);
+            if ($stmt->execute()) {
                 return true; 
             } else {
                 return false;
             }
         }
+
 
 }
 ?>
