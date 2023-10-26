@@ -109,7 +109,7 @@ input{
     font-weight: 800;
     line-height: normal;
 }
-.prix{
+.contenu-commande{
     display: flex;
     align-items: end;
 }
@@ -156,4 +156,47 @@ input{
         display: flex;
         flex-direction: column;
     }
+}
+
+.select-quantity{
+      display: flex;
+    align-items: end; 
+}
+
+.btn-produit{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.prix{
+   white-space: nowrap;
+}
+
+.select-quantity label{
+white-space: nowrap;
+padding-right: 20%;
+}
+
+.total{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.btn-commander{
+    margin-top: 1%;
+    border-radius: 0.875rem;
+    background: #000;
+    width: 8.7rem;
+    height: 2.5rem;
+    border: none;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.commander{
+    display: flex;
+    justify-content: center;
 }
