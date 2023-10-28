@@ -1,3 +1,9 @@
+<?php
+require_once('../controllers/PanierController.php');
+$panierController = new PanierController($mysqli);
+$panier = $panierController->ListPanierProduit($_SESSION['mailClient']);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
