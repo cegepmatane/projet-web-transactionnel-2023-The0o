@@ -10,10 +10,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
     $utilisateurs = $utilisateurController->connexionUtilisateur($email, $password);
     if ($utilisateurs !== false) {
+        foreach ($utilisateurs as $utilisateur) {
+            var_dump($utilisateur);
+        }
         $_SESSION['utilisateur'] = $utilisateurs;
-        header('Location: ./Acceuil.php');
+        echo 'Vous êtes connecté';
+        //header('Location: ../public/index.php');
     } else {
-        $error = 'Mauvais identifiants';
+        $error = 'identifiants incorrecte';
     }
 }
 ?>

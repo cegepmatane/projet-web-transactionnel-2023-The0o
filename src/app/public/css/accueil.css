@@ -44,6 +44,10 @@ a {
  width: 100vw;
  margin: 0 auto;
 }
+.nav-bar-icons{
+    padding-top: 1%;
+}
+
 
 .left-black{
     display: flex;
@@ -448,11 +452,6 @@ a {
         height: 8em;
     }
 }
-
-
-
-
-
 
 
 

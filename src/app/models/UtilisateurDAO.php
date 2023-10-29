@@ -23,21 +23,21 @@ class UtilisateurDAO {
         $result = $this->conn->query($sql);
 
         if ($result === false) {
-            return 'utilisateur non trouvé'; 
+            return false; 
         }
 
-        $utilisateur = [];
+        $utilisateurs = [];
 
         while ($row = $result->fetch_assoc()) {
             $utilisateur = new Utilisateur(
                 $row['nomClient'],
                 $row['prenomClient'],
                 $row['mailClient'],
-                $row['mdpClient']
+                'none'
             );
         }
-
-        return $utilisateur;
+        $utilisateurs[] = $utilisateur; 
+        return $utilisateurs;
     }
     //getPassword
     public function getPassword($email){
