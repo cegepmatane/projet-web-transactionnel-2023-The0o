@@ -14,5 +14,21 @@ class UtilisateurController{
         $confirmationCreation = $this->utilisateurDAO->createUtilisateur($nomutilisateur,$prenomutilisateur, $email, $password);
         return $confirmationCreation;
     }
+
+    //connexion utilisateur
+    public function connexionUtilisateur($email, $password){
+        $utilisateur = $this->utilisateurDAO->getUtilisateur($email);
+        if ($utilisateur === false) {
+            return false;
+        }else{
+            $motdepasse = $this->utilisateurDAO->getPassword($email);
+            if (password_verify($password, $motdepasse)) {
+                return $utilisateur;
+            } else {
+                return false;
+            }
+        }
+       
+    }
 }
 ?>

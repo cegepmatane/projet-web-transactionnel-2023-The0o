@@ -17,5 +17,45 @@ class UtilisateurDAO {
             return false;
         }
     }
+
+    public function getUtilisateur($email){
+        $sql = "SELECT * FROM CLIENT WHERE mailClient = '$email'";
+        $result = $this->conn->query($sql);
+
+        if ($result === false) {
+            return 'utilisateur non trouvé'; 
+        }
+
+        $utilisateur = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $utilisateur = new Utilisateur(
+                $row['nomClient'],
+                $row['prenomClient'],
+                $row['mailClient'],
+                $row['mdpClient']
+            );
+        }
+
+        return $utilisateur;
+    }
+    //getPassword
+    public function getPassword($email){
+        $sql = "SELECT mdpClient FROM CLIENT WHERE mailClient = '$email'";
+        $result = $this->conn->query($sql);
+
+        if ($result === false) {
+            return 'utilisateur non trouvé'; 
+        }
+        $motdepasse = '';
+        while ($row = $result->fetch_assoc()) {
+            $motdepasse = $row['mdpClient'];
+        }
+
+        return $motdepasse;
+    }
+
+
+
 }
     ?>
