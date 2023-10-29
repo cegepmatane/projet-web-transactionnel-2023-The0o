@@ -11,11 +11,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $utilisateurs = $utilisateurController->connexionUtilisateur($email, $password);
     if ($utilisateurs !== false) {
         foreach ($utilisateurs as $utilisateur) {
-            var_dump($utilisateur);
+            //var_dump($utilisateur);
         }
         $_SESSION['utilisateur'] = $utilisateurs;
         echo 'Vous êtes connecté';
-        //header('Location: ../public/index.php');
+        echo 'test';
+        var_dump($_SESSION['utilisateur']);
+        if(isset($_SESSION['utilisateur'])){
+            header('Location: ../public/index.php');
+        }
+
+       // header('Location: ../public/index.php');
     } else {
         $error = 'identifiants incorrecte';
     }

@@ -1,4 +1,10 @@
+<?php 
+session_start();
+?>
+
+
 <!DOCTYPE html>
+
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -38,7 +44,6 @@
                     </a>
                     </div>
                     <?php 
-                    echo $_SESSION['utilisateur']->nomClient;
                     if(isset($_SESSION['utilisateur'])) {
                         echo '
                         <div class="nav-bar-icons"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

@@ -26,8 +26,6 @@ class UtilisateurDAO {
             return false; 
         }
 
-        $utilisateurs = [];
-
         while ($row = $result->fetch_assoc()) {
             $utilisateur = new Utilisateur(
                 $row['nomClient'],
@@ -36,8 +34,8 @@ class UtilisateurDAO {
                 'none'
             );
         }
-        $utilisateurs[] = $utilisateur; 
-        return $utilisateurs;
+        $utilisateur; 
+        return $utilisateur;
     }
     //getPassword
     public function getPassword($email){
