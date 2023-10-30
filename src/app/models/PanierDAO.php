@@ -1,5 +1,6 @@
 <?php 
 require_once('../config/database.php');
+require_once('../models/Panier.php');
 
 class PanierDAO{
     private $conn;
@@ -8,24 +9,29 @@ class PanierDAO{
         $this->conn = $connexion;
     }
 
-    public function getListColor($mailClient){
-        $sql = "SELECT * FROM Panier WHERE mailClient = '.$mailClient.'";
-        $result = $this->conn->query($sql);
-
+    public function getListPanier($mailClient){
+        $sql = "SELECT idProduit,QuantiterProduit FROM Panier WHERE mailClient = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("s", $mailClient);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
         if ($result === false) {
             return false; 
         }
-
+    
+        $listeProduit = [];
         while ($row = $result->fetch_assoc()) {
             $panier = new Panier(
                 $row['idProduit'],
                 $row['QuantiterProduit']
             );
-            $panier[] = $panier;
+            $listeProduit[] = $panier;
         }
-
-        return $panier;
+    
+        return $listeProduit;
     }
+    
 
 
 }

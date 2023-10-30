@@ -12,5 +12,9 @@ class Utilisateur{
         $this->password = $password;
     }
 
+    public function getEmail() {
+        return $this->email;
+    }
+
 }
 ?>

@@ -4,8 +4,8 @@ require_once('../models/PanierDAO.php');
 class PanierController{
     private $panierDAO;
 
-    public function __construct($panierDAO) {
-        $this->panierDAO = $panierDAO;
+    public function __construct($connexion) {
+        $this->panierDAO = new PanierDAO($connexion);
     }
 
     public function ListPanierProduit($mailClient){
