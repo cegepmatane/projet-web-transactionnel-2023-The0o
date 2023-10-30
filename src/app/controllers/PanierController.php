@@ -12,5 +12,18 @@ class PanierController{
         $panier = $this->panierDAO->getListPanier($mailClient);
         return $panier;
     }
+
+    public function supprimerProduitPanier($idProduit, $emailUtilisateur){
+        $this->panierDAO->deleteProduitPanier($idProduit, $emailUtilisateur);
+    }
+
+    public function modifierQuantiteProduitPanier($idProduit, $emailUtilisateur, $quantite){
+        $this->panierDAO->updateQuantiteProduitPanier($idProduit, $emailUtilisateur, $quantite);
+    }
+
+    public function afficherPrixPanier($emailUtilisateur){
+        $prixTotal = $this->panierDAO->totalPricePanier($emailUtilisateur);
+        return $prixTotal;
+    }
 }
 ?>

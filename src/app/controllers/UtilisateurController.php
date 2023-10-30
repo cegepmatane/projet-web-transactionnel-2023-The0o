@@ -15,7 +15,6 @@ class UtilisateurController{
         return $confirmationCreation;
     }
 
-    //connexion utilisateur
     public function connexionUtilisateur($email, $password){
         $utilisateur = $this->utilisateurDAO->getUtilisateur($email);
         if ($utilisateur === false) {

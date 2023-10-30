@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $adresse_mail = $_POST["adresse_mail"];
     if (!empty($nom) && !empty($prenom) && !empty($mot_de_passe) && !empty($adresse_mail)) {
         $utilisateurs = $utilisateurController->creeUtilisateur($nom,$prenom, $adresse_mail, $mot_de_passe);
-        echo $utilisateurs;
     } else {
         $erreur = "Veuillez remplir tous les champs.";
     }
