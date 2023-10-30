@@ -6,7 +6,6 @@ error_reporting(E_ALL);
 require_once('../models/Utilisateur.php');
 require_once('../controllers/UtilisateurController.php');
 session_start();
-echo "test6";
 $utilisateurController = new UtilisateurController($mysqli);
 $utilisateurObjet = $_SESSION['utilisateur'];
 $emailUtilisateur = $utilisateurObjet->getEmail();
@@ -16,20 +15,17 @@ $adresseUtilisateur = $utilisateurObjet->getAdresse();
 
 //si le formulaire est envoyer
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['action'])) {
-        if ($_POST['action'] === 'modifierUtilisateur') {
             $emailUtilisateur = $_POST['email'];
             $nomUtilisateur = $_POST['first_name'];
             $prenomUtilisateur = $_POST['last_name'];
             $adresseUtilisateur = $_POST['address'];
-            $ModifiactionUtilisateur =  $utilisateurController->modificationUtilisateur($emailUtilisateur, $nomUtilisateur, $prenomUtilisateur, $adresseUtilisateur, $passwordUtilisateur);
+            $ModifiactionUtilisateur =  $utilisateurController->modificationUtilisateur($emailUtilisateur, $nomUtilisateur, $prenomUtilisateur, $adresseUtilisateur);
             if(isset($_POST['password']) && !empty($_POST['password'])){
                 $passwordUtilisateur = $_POST['password'];
                 $passwordUtilisateur = $utilisateurController->modificationMotDePasse($emailUtilisateur, $passwordUtilisateur);
             }
-        }
+        
     }
-}
 
 ?>
 
@@ -40,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <h1>Profil utilisateur</h1>
-    <form action="/ProfilUtilisateur.php" method="post">
+    <form method="post">
         <label for="email">Email :</label>
         <input type="email" id="email" name="email" value="<?php echo $emailUtilisateur ?>" required><br>
 

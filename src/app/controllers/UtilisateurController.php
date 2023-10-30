@@ -41,5 +41,10 @@ class UtilisateurController{
         }
     }
 
+    public function modificationUtilisateur($nomutilisateur,$prenomutilisateur, $email, $adresse){
+        $modificationUtilisateur = $this->utilisateurDAO->updateUtilisateur($nomutilisateur,$prenomutilisateur, $email, $adresse);
+        return $modificationUtilisateur;
+    }
+
 }
 ?>
