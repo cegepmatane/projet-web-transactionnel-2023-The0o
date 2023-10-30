@@ -28,9 +28,6 @@
             Profil
         </div>
         <div id="champs">
-            <div class="champ" id="image-profil">
-                <img src="../public/img/womanOutfit.jpg" alt="">
-            </div>
             <div id="champs-profil">
                 <div id="nom-prenom">
                     <div class="champ">
