@@ -1,0 +1,88 @@
+* {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+input {
+    width: 250px;
+}
+
+#body-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#titre {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-weight: 900;
+    font-size: x-large;
+}
+
+#champs {
+    width: 80%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 75px;
+}
+
+#image-profil {
+    width: 250px;
+    height: 250px;
+    border-radius: 250px;
+    overflow: hidden;
+}
+
+#image-profil img {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+}
+
+.champ {
+    margin-top: 20px;
+}
+
+#champs-profil {
+    display: flex;
+    flex-direction: column;
+}
+
+#nom-prenom {
+    display: flex;
+    flex-direction: row;
+}
+
+#code-postal-ville {
+    display: flex;
+    flex-direction: row;
+}
+
+#prenom, #ville {
+    margin-left: 75px;
+}
+
+#editer-profil {
+    margin-top: 10%;
+}
+
+#editer-profil input {
+    width: 150px;
+    height: 25px;
+    background-color: black;
+    border-style: none;
+    color: white;
+    border-radius: 10px;
+    font-weight: 900;
+    cursor: pointer;
+}
