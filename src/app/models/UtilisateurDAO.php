@@ -53,6 +53,25 @@ class UtilisateurDAO {
         return $motdepasse;
     }
 
+    ///updatePassword 
+    public function updatePassword($email, $password){
+        $sql = "UPDATE CLIENT SET mdpClient = '$password' WHERE mailClient = '$email'";
+        if ($this->conn->query($sql)) {
+            return true; 
+        } else {
+            return false;
+        }
+    }
+
+    //updateUtilisateur
+    public function updateUtilisateur($email, $nom, $prenom,$adresse){
+        $sql = "UPDATE CLIENT SET nomClient = '$nom', prenomClient = '$prenom',adresseClient = '$adresse',mailClient ='$email' WHERE mailClient = '$email'";
+        if ($this->conn->query($sql)) {
+            return true; 
+        } else {
+            return false;
+        }
+    }
 
 
 }

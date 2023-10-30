@@ -29,5 +29,17 @@ class UtilisateurController{
         }
        
     }
+
+    public function modificationMotDePasse($email, $password){
+        $motdepasse = $this->utilisateurDAO->getPassword($email);
+        if (password_verify($password, $motdepasse)) {
+            $password = password_hash($password, PASSWORD_DEFAULT);
+            $modificationMotDePasse = $this->utilisateurDAO->updatePassword($email, $password);
+            return $modificationMotDePasse;
+        } else {
+            return false;
+        }
+    }
+
 }
 ?>
