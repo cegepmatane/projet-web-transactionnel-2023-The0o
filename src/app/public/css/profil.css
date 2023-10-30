@@ -36,19 +36,6 @@ input {
     gap: 75px;
 }
 
-#image-profil {
-    width: 250px;
-    height: 250px;
-    border-radius: 250px;
-    overflow: hidden;
-}
-
-#image-profil img {
-    height: 100%;
-    width: 100%;
-    overflow: auto;
-}
-
 .champ {
     margin-top: 20px;
 }
