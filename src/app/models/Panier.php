@@ -5,8 +5,8 @@ class Panier{
         public $QuantiterProduit;
     
         public function __construct($idProduit,$quantiter ) {
-            $this->idProduit = filter_var($idProduit, FILTER_VALIDATE_INT);
-            $this->QuantiterProduit = filter_var($quantiter, FILTER_SANITIZE_STRING);
+            $this->idProduit = htmlspecialchars($idProduit);
+            $this->QuantiterProduit = htmlspecialchars($quantiter);
         }
     }
 ?>
