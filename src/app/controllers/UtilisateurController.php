@@ -46,5 +46,9 @@ class UtilisateurController{
         return $modificationUtilisateur;
     }
 
+    public function tousUtilisateur() {
+        return $this->utilisateurDAO->allUtilisateur();
+    }
+
 }
 ?>

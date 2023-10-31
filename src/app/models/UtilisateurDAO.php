@@ -86,7 +86,33 @@ class UtilisateurDAO {
         }
     }
     
-
+    public function allUtilisateur() {
+        $sql = "SELECT * FROM CLIENT";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        if ($result === false) {
+            return 'Aucun utilisateur trouvé';
+        }
+    
+        $utilisateurs = array(); // Initialiser un tableau vide pour stocker les utilisateurs
+    
+        while ($row = $result->fetch_assoc()) {
+            $utilisateur = new Utilisateur(
+                $row['nomClient'],
+                $row['prenomClient'],
+                $row['mailClient'],
+                'none'
+            );
+    
+            // Ajouter l'utilisateur au tableau
+            $utilisateurs[] = $utilisateur;
+        }
+    
+        return $utilisateurs;
+    }
+    
 
 }
-    ?>
+?>
