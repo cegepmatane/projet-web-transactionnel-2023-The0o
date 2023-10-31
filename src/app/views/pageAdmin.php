@@ -23,7 +23,7 @@ $produits = $produitController->afficherTousLesProduits();
         </div>
         <div id="naviguerCategories">
             <a href="./pageAdmin.php" class="aucuneDecoration">Produits</a>
-            <a href="./AdministrationClient.php" class="aucuneDecoration">Clients</a>
+            <a href="./compteAdmin.php" class="aucuneDecoration">Clients</a>
         </div>
         <div id="imageDefilerMenu">
             <img src="../img/menu.svg" alt="Menu déroulant">
