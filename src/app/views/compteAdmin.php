@@ -22,10 +22,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/css/navBar.css">
     <link rel="stylesheet" href="../public/css/compteAdmin.css">
     <title>Compte ADMIN</title>
 </head>
 <body>
+
+    <div id="navBar">
+        <div id="logo">
+                    WIREFIT
+        </div>
+        <div id="naviguerCategories">
+            <a href="./pageAdmin.php" class="aucuneDecoration">Produits</a>
+            <a href="./AdministrationClient.php" class="aucuneDecoration">Clients</a>
+        </div>
+        <div id="imageDefilerMenu">
+            <img src="../img/menu.svg" alt="Menu déroulant">
+        </div>
+    </div>
     
     <form method="post">
         <?php
