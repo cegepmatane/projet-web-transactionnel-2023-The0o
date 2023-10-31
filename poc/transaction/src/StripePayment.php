@@ -19,7 +19,7 @@ class StripePayment {
                         'product_data' => [
                             'name' => 'Pantalon'
                         ],
-                        'unit_amount'  => 250
+                        'unit_amount'  => 50
                     ]
                 ]
             ],
