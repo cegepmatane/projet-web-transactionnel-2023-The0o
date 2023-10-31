@@ -8,24 +8,30 @@ class UtilisateurDAO {
         $this->conn = $connexion;
     }
 
-
-    public function createUtilisateur($nomutilisateur,$prenomutilisateur, $email, $password){
-        $sql = "INSERT INTO `CLIENT` (`nomClient`,`prenomClient`,`mailClient`,`mdpClient`) VALUES ('$nomutilisateur','$prenomutilisateur','$email','$password')";
-        if ($this->conn->query($sql)) {
+    public function createUtilisateur($nomutilisateur, $prenomutilisateur, $email, $password){
+        $sql = "INSERT INTO CLIENT (nomClient, prenomClient, mailClient, mdpClient) VALUES (?, ?, ?, ?)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("ssss", $nomutilisateur, $prenomutilisateur, $email, $password);
+    
+        if ($stmt->execute()) {
             return true; 
         } else {
             return false;
         }
     }
-
+    
     public function getUtilisateur($email){
-        $sql = "SELECT * FROM CLIENT WHERE mailClient = '$email'";
-        $result = $this->conn->query($sql);
-
+        $sql = "SELECT * FROM CLIENT WHERE mailClient = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
         if ($result === false) {
             return false; 
         }
-
+    
+        $utilisateur = null;
         while ($row = $result->fetch_assoc()) {
             $utilisateur = new Utilisateur(
                 $row['nomClient'],
@@ -34,14 +40,16 @@ class UtilisateurDAO {
                 'none'
             );
         }
-        $utilisateur; 
         return $utilisateur;
     }
-    //getPassword
+    
     public function getPassword($email){
-        $sql = "SELECT mdpClient FROM CLIENT WHERE mailClient = '$email'";
-        $result = $this->conn->query($sql);
-
+        $sql = "SELECT mdpClient FROM CLIENT WHERE mailClient = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
         if ($result === false) {
             return 'utilisateur non trouvé'; 
         }
@@ -49,29 +57,35 @@ class UtilisateurDAO {
         while ($row = $result->fetch_assoc()) {
             $motdepasse = $row['mdpClient'];
         }
-
         return $motdepasse;
     }
+    
 
-    ///updatePassword 
+ 
     public function updatePassword($email, $password){
-        $sql = "UPDATE CLIENT SET mdpClient = '$password' WHERE mailClient = '$email'";
-        if ($this->conn->query($sql)) {
+        $sql = "UPDATE CLIENT SET mdpClient = ? WHERE mailClient = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("ss", $password, $email);
+    
+        if ($stmt->execute()) {
             return true; 
         } else {
             return false;
         }
     }
-
-    //updateUtilisateur
-    public function updateUtilisateur($email, $nom, $prenom,$adresse){
-        $sql = "UPDATE CLIENT SET nomClient = '$nom', prenomClient = '$prenom',adresseClient = '$adresse',mailClient ='$email' WHERE mailClient = '$email'";
-        if ($this->conn->query($sql)) {
+    
+    public function updateUtilisateur($email, $nom, $prenom, $adresse){
+        $sql = "UPDATE CLIENT SET nomClient = ?, prenomClient = ?, adresseClient = ?, mailClient = ? WHERE mailClient = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("sssss", $nom, $prenom, $adresse, $email, $email);
+    
+        if ($stmt->execute()) {
             return true; 
         } else {
             return false;
         }
     }
+    
 
 
 }
