@@ -28,8 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->setFrom('totoleschamps@outlook.fr'); //adresse mail de l'expéditeur
             $mail->addAddress($adresse_mail); //adresse mail du destinataire
             $mail->isHTML(true); //mail au format HTML
-            $mail->Subject = 'demande de rdv'; //sujet du mail
-            $mail->Body = 'Jespère que vous allez bien. Je vous écris pour solliciter';
+            $mail->Subject = 'Confirmation de ton inscription !'; //sujet du mail
+            $mail->Body = 'Vous êtes désormais inscrit à WIREFIT !';
             $mail->send();
         } catch(Exception) {
             echo 'Message could not be sent. Mailer Error: {$mail->ErrorInfo}';
