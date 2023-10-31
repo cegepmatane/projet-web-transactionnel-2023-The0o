@@ -1,9 +1,14 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+require_once('../includes/Exception.php');
+require_once('../includes/PHPMailer.php');
+require_once('../includes/SMTP.php');
 require_once '../controllers/UtilisateurController.php';
 $utilisateurController = new UtilisateurController($mysqli);
+$mail = new PHPMailer(true);
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nom = $_POST["nom"];
     $prenom = $_POST["prenom"];
@@ -11,6 +16,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $adresse_mail = $_POST["adresse_mail"];
     if (!empty($nom) && !empty($prenom) && !empty($mot_de_passe) && !empty($adresse_mail)) {
         $utilisateurs = $utilisateurController->creeUtilisateur($nom,$prenom, $adresse_mail, $mot_de_passe);
+        try{
+            $mail->isSMTP();
+            $mail->Host = 'smtp-mail.outlook.com';
+            $mail->SMTPAuth = true;
+            $mail->SMTPSecure = "tls";
+            $mail->Port = 587; 
+            $mail->Username = 'totoleschamps@outlook.fr';
+            $mail->Password = 'Lolita5300';
+        
+            $mail->setFrom('totoleschamps@outlook.fr'); //adresse mail de l'expéditeur
+            $mail->addAddress($adresse_mail); //adresse mail du destinataire
+            $mail->isHTML(true); //mail au format HTML
+            $mail->Subject = 'demande de rdv'; //sujet du mail
+            $mail->Body = 'Jespère que vous allez bien. Je vous écris pour solliciter';
+            $mail->send();
+        } catch(Exception) {
+            echo 'Message could not be sent. Mailer Error: {$mail->ErrorInfo}';
+        }
     } else {
         $erreur = "Veuillez remplir tous les champs.";
     }
