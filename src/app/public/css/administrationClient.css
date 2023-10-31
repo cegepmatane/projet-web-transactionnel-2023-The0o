@@ -8,6 +8,12 @@ body {
     width: 100vw;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 #mainPage {
     width: 90%;
     margin: auto;
@@ -44,15 +50,33 @@ body {
 
 .row {
     display: grid;
-    grid-template-columns: 28% 28% 28% 16%;
+    grid-template-columns: repeat(5, 1fr);
     padding: 1%;
 }
 
-#tableauClient div p {
+#tableauClient div input[type=text], #tableauClient div p {
     word-break: break-word;
     display: flex;
     align-items: center;
     justify-self: center;
+}
+
+#save-button {
+    margin-top: 1%;
+    display: flex;
+    justify-content: center;
+}
+
+input[type=submit] {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    border-radius: 14px;
+    padding: 1ch 2ch;
+    border-style: none;
+    cursor: pointer;
 }
 
 #headerTableau {
@@ -67,6 +91,7 @@ body {
 }
 
 .listeActions {
+
 }
 
 .imageAction {
@@ -83,4 +108,5 @@ body {
     background-color: black;
     border-radius: 100%;
     padding: 5px !important;
+    cursor: pointer;
 }
