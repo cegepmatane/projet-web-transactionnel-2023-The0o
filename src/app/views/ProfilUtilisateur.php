@@ -20,6 +20,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $prenomUtilisateur = $_POST['last_name'];
             $adresseUtilisateur = $_POST['address'];
             $ModifiactionUtilisateur =  $utilisateurController->modificationUtilisateur($emailUtilisateur, $nomUtilisateur, $prenomUtilisateur, $adresseUtilisateur);
+            $_SESSION['utilisateur']->setEmail($emailUtilisateur);
+            $_SESSION['utilisateur']->setNom($nomUtilisateur);
+            $_SESSION['utilisateur']->setPrenom($prenomUtilisateur);
+            $_SESSION['utilisateur']->setAdresse($adresseUtilisateur);
             if(isset($_POST['password']) && !empty($_POST['password'])){
                 $passwordUtilisateur = $_POST['password'];
                 $passwordUtilisateur = $utilisateurController->modificationMotDePasse($emailUtilisateur, $passwordUtilisateur);

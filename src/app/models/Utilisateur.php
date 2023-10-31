@@ -38,5 +38,20 @@ class Utilisateur{
         return $this->adresse;
     }
 
+    public function setEmail($email) {
+        $this->email = filter_var($email, FILTER_SANITIZE_EMAIL);
+    }
+
+    public function setPrenom($prenom) {
+        $this->prenomutilisateur = filter_var($prenom, FILTER_SANITIZE_STRING);
+    }
+
+    public function setNom($nom) {
+        $this->nomutilisateur = filter_var($nom, FILTER_SANITIZE_STRING);
+    }
+
+    public function setAdresse($adresse) {
+        $this->adresse = filter_var($adresse, FILTER_SANITIZE_STRING);
+    }
 }
 ?>
