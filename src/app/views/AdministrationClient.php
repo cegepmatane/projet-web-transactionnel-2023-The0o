@@ -1,3 +1,23 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
+require_once('../models/Utilisateur.php');
+require_once('../controllers/UtilisateurController.php');
+$utilisateurController = new UtilisateurController($mysqli);
+session_start();
+$utilisateurs = $utilisateurController->tousUtilisateur();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    foreach ($_POST['nom'] as $id => $nom) {
+        $prenom = $_POST['prenom'][$id];
+        $email = $_POST['email'][$id];
+        $adresse = $_POST['adresse'][$id];
+        $utilisateurController->modificationUtilisateur($email, $nom, $prenom, $adresse);
+    }
+    $utilisateurs = $utilisateurController->tousUtilisateur();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="">
   <head>
@@ -27,91 +47,42 @@
                 <p>+</p>
             </div>
         </div>
-        <div id="tableauClient">
-            <div id="headerTableau" class="row">
-                <p>Nom</p>
-                <p>Email</p>
-                <p>Age</p>
-                <p id="actionHeader">Action</p>
-            </div>
-            <div class="row">
-                <p>Nom</p>
-                <p>Email</p>
-                <p>Age</p>
-                <div class="listeActions">
-                  <div class="imageAction">
-                    <img src="../public/img/crayonModifier.svg" alt="">
-                    <img src="../public/img/poubelleSupprimer.svg" alt="">
-                  </div>
+        <form method="post">
+            <div id="tableauClient">
+                <div id="headerTableau" class="row">
+                    <p>Nom</p>
+                    <p>Prénom</p>
+                    <p>Email</p>
+                    <p>Adresse</p>
+                    <p id="actionHeader">Action</p>
                 </div>
-            </div>
-            <div class="row">
-                <p>Nom</p>
-                <p>Email</p>
-                <p>Age</p>
-                <div class="listeActions">
-                  <div class="imageAction">
-                    <img src="../public/img/crayonModifier.svg" alt="">
-                    <img src="../public/img/poubelleSupprimer.svg" alt="">
-                  </div>
+
+                <?php
+                foreach ($utilisateurs as $utilisateur) {
+                    $id = $utilisateur->getEmail();
+                ?>
+
+                <div class="row">
+                    <input type="text" name="nom[<?php echo $id ?>]" value="<?php echo $utilisateur->getNom() ?>">
+                    <input type="text" name="prenom[<?php echo $id ?>]" value="<?php echo $utilisateur->getPrenom() ?>">
+                    <input type="text" name="email[<?php echo $id ?>]" value="<?php echo $utilisateur->getEmail() ?>">
+                    <input type="text" name="adresse[<?php echo $id ?>]" value="<?php echo $utilisateur->getAdresse() ?>">
+                    <div class="listeActions">
+                    <div class="imageAction">
+                        <img src="../public/img/crayonModifier.svg" alt="">
+                        <img src="../public/img/poubelleSupprimer.svg" alt="">
+                    </div>
+                    </div>
                 </div>
+
+                <?php
+                }
+                ?>
             </div>
-            <div class="row">
-              <p>Nom</p>
-                <p>Email</p>
-                <p>Age</p>
-                <div class="listeActions">
-                  <div class="imageAction">
-                    <img src="../public/img/crayonModifier.svg" alt="">
-                    <img src="../public/img/poubelleSupprimer.svg" alt="">
-                  </div>
-                </div>
+            <div id="save-button">
+                <input type="submit" value="Sauvegarder">
             </div>
-            <div class="row">
-              <p>Nom</p>
-                <p>Email</p>
-                <p>Age</p>
-                <div class="listeActions">
-                  <div class="imageAction">
-                    <img src="../public/img/crayonModifier.svg" alt="">
-                    <img src="../public/img/poubelleSupprimer.svg" alt="">
-                  </div>
-                </div>
-            </div>
-            <div class="row">
-              <p>Nom</p>
-                <p>Email</p>
-                <p>Age</p>
-                <div class="listeActions">
-                  <div class="imageAction">
-                    <img src="../public/img/crayonModifier.svg" alt="">
-                    <img src="../public/img/poubelleSupprimer.svg" alt="">
-                  </div>
-                </div>
-            </div>
-            <div class="row">
-              <p>Nom</p>
-                <p>Email</p>
-                <p>Age</p>
-                <div class="listeActions">
-                  <div class="imageAction">
-                    <img src="../public/img/crayonModifier.svg" alt="">
-                    <img src="../public/img/poubelleSupprimer.svg" alt="">
-                  </div>
-                </div>
-            </div>
-            <div class="row">
-              <p>Nom</p>
-                <p>Email</p>
-                <p>Age</p>
-                <div class="listeActions">
-                  <div class="imageAction">
-                    <img src="../public/img/crayonModifier.svg" alt="">
-                    <img src="../public/img/poubelleSupprimer.svg" alt="">
-                  </div>
-                </div>
-            </div>
-        </div>
+        </form>
     </div>
   </body>
 </html>
