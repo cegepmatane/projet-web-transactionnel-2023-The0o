@@ -50,5 +50,11 @@ class UtilisateurController{
         return $this->utilisateurDAO->allUtilisateur();
     }
 
+    //ajouterProduitPanier
+    public function ajouterProduitPanier($emailUtilisateur, $idProduit){
+        $ajouterProduitPanier = $this->utilisateurDAO->addProduitPanier($emailUtilisateur, $idProduit);
+        return $ajouterProduitPanier;
+    }
+
 }
 ?>

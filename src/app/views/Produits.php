@@ -3,7 +3,15 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 require_once('../controllers/ProduitController.php');
+require_once('../controllers/PanierController.php');
+require_once('../models/Utilisateur.php');
+require_once('../models/Produit.php');
+session_start();
 $produitController = new ProduitController($mysqli);
+$panierController = new PanierController($mysqli);
+$utilisateurObjet = $_SESSION['utilisateur'];
+$emailUtilisateur = $utilisateurObjet->getEmail();
+echo $emailUtilisateur;
 if (isset($_GET['id'])) {
     $idProduit = $_GET['id'];
 } else {
@@ -12,6 +20,24 @@ if (isset($_GET['id'])) {
 $produits = $produitController->afficherUnProduitParSonId($idProduit);
 $couleur = $produitController->afficherCouleurParProduit($idProduit);
 $taille = $produitController->afficherTailleParProduit($idProduit);
+//si on a cliqué sur le bouton ajouter au panier
+if (isset($_POST['ajouter'])) {
+    //si l'utilisateur est connecté
+    if (isset($_SESSION['utilisateur'])) {
+        //on récupère l'utilisateur
+        $utilisateurObjet = $_SESSION['utilisateur'];
+        //on récupère son email
+        $emailUtilisateur = $utilisateurObjet->getEmail();
+        //on récupère la taille et la couleur du produit
+        //on ajoute le produit au panier
+        $panierController->ajouterProduitPanier($emailUtilisateur, $idProduit);
+    }
+    //si l'utilisateur n'est pas connecté
+    else {
+        //on le redirige vers la page de connexion
+        header('Location: Connexion.php');
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -113,6 +139,9 @@ $taille = $produitController->afficherTailleParProduit($idProduit);
                             <?php endforeach; ?>
                         </ul>
                       </div>
+                      <form action="" method="post">
+                        <input type="submit" name="ajouter" value="Ajouter au panier">
+                      </form>
                     </div>
                 </div>
             </div>

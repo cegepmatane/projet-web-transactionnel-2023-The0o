@@ -25,5 +25,10 @@ class PanierController{
         $prixTotal = $this->panierDAO->totalPricePanier($emailUtilisateur);
         return $prixTotal;
     }
+
+    public function ajouterProduitPanier($emailUtilisateur, $idProduit){
+        $ajouterProduitPanier = $this->panierDAO->addProduitPanier($emailUtilisateur, $idProduit);
+        return $ajouterProduitPanier;
+    }
 }
 ?>

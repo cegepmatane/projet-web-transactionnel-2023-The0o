@@ -112,6 +112,21 @@ class UtilisateurDAO {
     
         return $utilisateurs;
     }
+
+    //addProduitPanier
+
+    public function addProduitPanier($emailUtilisateur, $idProduit){
+        $quantite = 1;
+        $sql = "INSERT INTO PANIER (mailClient, idProduit,QuantiterProduit) VALUES (?, ?,?)";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("sii", $emailUtilisateur, $idProduit, $quantite);
+    
+        if ($stmt->execute()) {
+            return true; 
+        } else {
+            return false;
+        }
+    }
     
 
 }
