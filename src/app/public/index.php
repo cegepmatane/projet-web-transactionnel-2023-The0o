@@ -6,6 +6,9 @@ error_reporting(E_ALL);
 require_once('../controllers/ProduitController.php');
 $produitController = new ProduitController($mysqli); 
 
-$produitController->afficherProduitAccueil();
-?>
+session_start();
 
+if (!isset($_SESSION['utilisateur'])) {
+    header('Location: ../views/connexion.php');
+} else $produitController->afficherProduitAccueil();
+?>
