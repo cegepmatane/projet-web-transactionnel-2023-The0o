@@ -26,7 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['utilisateur']->setAdresse($adresseUtilisateur);
             if(isset($_POST['password']) && !empty($_POST['password'])){
                 $passwordUtilisateur = $_POST['password'];
-                $passwordUtilisateur = $utilisateurController->modificationMotDePasse($emailUtilisateur, $passwordUtilisateur);
+                $newPasswordUtilisateur = $_POST['newPasswordUtilisateur'];
+                $passwordUtilisateur = $utilisateurController->modificationMotDePasse($emailUtilisateur, $passwordUtilisateur, $newPasswordUtilisateur);
             }
         
     }
@@ -57,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="password" id="password" name="password" value="<?php ?>" ><br>
         
         <label for="password">Nouveau mot de passe :</label>
-        <input type="password" id="password" name="password" value="<?php ?>" ><br>
+        <input type="password" id="newPasswordUtilisateur" name="newPasswordUtilisateur" value="<?php ?>" ><br>
 
         <input type="submit" value="Enregistrer les modifications">
     </form>

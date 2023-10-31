@@ -12,7 +12,6 @@ $emailUtilisateur = $utilisateurObjet->getEmail();
 $nomUtilisateur = $utilisateurObjet->getNom();
 $prenomUtilisateur = $utilisateurObjet->getPrenom();
 $adresseUtilisateur = $utilisateurObjet->getAdresse();
-
 //si le formulaire est envoyer
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emailUtilisateur = $_POST['email'];
@@ -24,9 +23,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['utilisateur']->setNom($nomUtilisateur);
     $_SESSION['utilisateur']->setPrenom($prenomUtilisateur);
     $_SESSION['utilisateur']->setAdresse($adresseUtilisateur);
-    if(isset($_POST['password']) && !empty($_POST['password'])){
+    if(isset($_POST['newpassword']) && !empty($_POST['newpassword'])){
         $passwordUtilisateur = $_POST['password'];
-        $passwordUtilisateur = $utilisateurController->modificationMotDePasse($emailUtilisateur, $passwordUtilisateur);
+        $newpassword = $_POST['newpassword'];
+        $passwordUtilisateur = $utilisateurController->modificationMotDePasse($emailUtilisateur, $passwordUtilisateur, $newpassword);
     }  
 }
 
@@ -98,7 +98,7 @@ if(isset($_POST['deconnexion'])) {
                     </div>
                     <div class="champ" id="ville">
                         <p>Nouveau mot de passe</p>
-                        <input type="password" id="password" name="password" value="<?php ?>" readonly>
+                        <input type="newpassword" id="newpassword" name="newpassword" value="<?php ?>" readonly>
                     </div>
                 </div>
             </div>

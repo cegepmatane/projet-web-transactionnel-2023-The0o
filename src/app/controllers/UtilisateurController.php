@@ -21,7 +21,7 @@ class UtilisateurController{
             return false;
         }else{
             $motdepasse = $this->utilisateurDAO->getPassword($email);
-            if (password_verify($password, $motdepasse)) {
+            if ((password_verify($password, $motdepasse))) {
                 return $utilisateur;
             } else {
                 return false;
@@ -30,11 +30,11 @@ class UtilisateurController{
        
     }
 
-    public function modificationMotDePasse($email, $password){
+    public function modificationMotDePasse($email, $password, $newpassword){
         $motdepasse = $this->utilisateurDAO->getPassword($email);
-        if (password_verify($password, $motdepasse)) {
-            $password = password_hash($password, PASSWORD_DEFAULT);
-            $modificationMotDePasse = $this->utilisateurDAO->updatePassword($email, $password);
+        $newpassword = password_hash($newpassword, PASSWORD_DEFAULT);
+        if ((password_verify($password, $motdepasse))) {
+            $modificationMotDePasse = $this->utilisateurDAO->updatePassword($email, $newpassword);
             return $modificationMotDePasse;
         } else {
             return false;
@@ -51,10 +51,7 @@ class UtilisateurController{
     }
 
     //ajouterProduitPanier
-    public function ajouterProduitPanier($emailUtilisateur, $idProduit){
-        $ajouterProduitPanier = $this->utilisateurDAO->addProduitPanier($emailUtilisateur, $idProduit);
-        return $ajouterProduitPanier;
-    }
+    
 
 }
 ?>

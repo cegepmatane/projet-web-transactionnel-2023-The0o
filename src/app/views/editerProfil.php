@@ -12,7 +12,6 @@ $emailUtilisateur = $utilisateurObjet->getEmail();
 $nomUtilisateur = $utilisateurObjet->getNom();
 $prenomUtilisateur = $utilisateurObjet->getPrenom();
 $adresseUtilisateur = $utilisateurObjet->getAdresse();
-
 //si le formulaire est envoyer
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $emailUtilisateur = $_POST['email'];
@@ -26,7 +25,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['utilisateur']->setAdresse($adresseUtilisateur);
         if(isset($_POST['password']) && !empty($_POST['password'])){
             $passwordUtilisateur = $_POST['password'];
-            $passwordUtilisateur = $utilisateurController->modificationMotDePasse($emailUtilisateur, $passwordUtilisateur);
+            $newPasswordUtilisateur = $_POST['newPasswordUtilisateur'];
+            $passwordUtilisateur = $utilisateurController->modificationMotDePasse($emailUtilisateur, $passwordUtilisateur, $newPasswordUtilisateur);
         }
         header('Location: ./profil.php');
     }
@@ -94,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                         <div class="champ" id="ville">
                             <p>Nouveau mot de passe</p>
-                            <input type="password" id="password" name="password" value="<?php ?>" >
+                            <input type="password" id="newPasswordUtilisateur" name="newPasswordUtilisateur" value="<?php ?>" >
                         </div>
                     </div>
                 </div>
