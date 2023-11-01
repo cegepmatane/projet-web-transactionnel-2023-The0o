@@ -16,7 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $adresse_mail = $_POST["adresse_mail"];
     if (!empty($nom) && !empty($prenom) && !empty($mot_de_passe) && !empty($adresse_mail)) {
         $utilisateurs = $utilisateurController->creeUtilisateur($nom,$prenom, $adresse_mail, $mot_de_passe);
+        //fait moi une page de chagrement en html
         try{
+            echo '<div class="loader"> creation du compte</div>';
             $mail->isSMTP();
             $mail->Host = 'smtp-mail.outlook.com';
             $mail->SMTPAuth = true;

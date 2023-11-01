@@ -101,5 +101,6 @@ class ProduitController {
         $nomCouleur = $this->couleurDAO->deleteColor($nomCouleur);
         return $nomCouleur;
     }
+
 }
 ?>
