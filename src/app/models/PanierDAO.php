@@ -88,6 +88,20 @@ class PanierDAO{
         }
     }
 
+    public function deletePanier($emailUtilisateur){
+        $sql = "DELETE FROM PANIER WHERE mailClient = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("s", $emailUtilisateur);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        if ($result === false) {
+            return false; 
+        }
+    
+        return true;
+    }
+
 
 }
 ?>

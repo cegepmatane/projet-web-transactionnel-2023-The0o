@@ -30,5 +30,9 @@ class PanierController{
         $ajouterProduitPanier = $this->panierDAO->addProduitPanier($emailUtilisateur, $idProduit);
         return $ajouterProduitPanier;
     }
+
+    public function viderPanier($emailUtilisateur){
+        $this->panierDAO->deletePanier($emailUtilisateur);
+    }
 }
 ?>
