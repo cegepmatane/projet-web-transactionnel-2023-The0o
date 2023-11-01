@@ -102,7 +102,7 @@ $total = implode($total);
                 <p class="total txt-g3">TOTAL : <?php echo $total ?> $</p>
             </div>
             <div class="btn-paypal">
-                <button>paypal</button>
+                <a href="pay.php">paypal</a>
             </div>
         </div>
     </div>
