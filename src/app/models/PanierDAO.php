@@ -10,16 +10,14 @@ class PanierDAO{
     }
 
     public function getListPanier($mailClient){
-        $sql = "SELECT idProduit,QuantiterProduit FROM Panier WHERE mailClient = ?";
-        $stmt = $this->conn->prepare($sql);
+        $sql = "SELECT idProduit,QuantiterProduit FROM PANIER WHERE mailClient = ?";
+	$stmt = $this->conn->prepare($sql);
         $stmt->bind_param("s", $mailClient);
         $stmt->execute();
         $result = $stmt->get_result();
-    
         if ($result === false) {
             return false; 
         }
-    
         $listeProduit = [];
         while ($row = $result->fetch_assoc()) {
             $panier = new Panier(
@@ -33,7 +31,7 @@ class PanierDAO{
     }
 
     public function deleteProduitPanier($idProduit, $emailUtilisateur){
-        $sql = "DELETE FROM Panier WHERE idProduit = ? AND mailClient = ?";
+        $sql = "DELETE FROM PANIER WHERE idProduit = ? AND mailClient = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("is", $idProduit, $emailUtilisateur);
         $stmt->execute();
@@ -47,7 +45,7 @@ class PanierDAO{
     }
 
     public function updateQuantiteProduitPanier($idProduit, $emailUtilisateur, $quantite){
-        $sql = "UPDATE Panier SET QuantiterProduit = ? WHERE idProduit = ? AND mailClient = ?";
+        $sql = "UPDATE PANIER SET QuantiterProduit = ? WHERE idProduit = ? AND mailClient = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("iis", $quantite, $idProduit, $emailUtilisateur);
         $stmt->execute();
@@ -62,7 +60,7 @@ class PanierDAO{
 
     //total prix pannier 
     public function totalPricePanier($mailClient){
-        $sql = "SELECT SUM(QuantiterProduit*prixProduit) AS total FROM Panier INNER JOIN Produit ON Panier.idProduit = Produit.idProduit WHERE mailClient = ?";
+        $sql = "SELECT SUM(QuantiterProduit*prixProduit) AS total FROM PANIER INNER JOIN PRODUIT ON PANIER.idProduit = PRODUIT.idProduit WHERE mailClient = ?";
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("s", $mailClient);
         $stmt->execute();
