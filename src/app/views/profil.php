@@ -50,17 +50,20 @@ if(isset($_POST['deconnexion'])) {
 </head>
 
 <body>
-    <div id="navBar">
+<div id="navBar">
+      <a href="../public/index.php" id="aLien" class="aucuneDecoration">
         <div id="logo">
-                    WIREFIT
+          WIREFIT
         </div>
-        <div id="naviguerCategories">
-            <a href="./pageAdmin.php" class="aucuneDecoration">Produits</a>
-            <a href="./AdministrationClient.php" class="aucuneDecoration">Clients</a>
-        </div>
-        <div id="imageDefilerMenu">
-            <img src="../img/menu.svg" alt="Menu déroulant">
-        </div>
+      </a>
+      <div id="naviguerCategories">
+        <a href="../views/ListeProduit.php" class="aucuneDecoration">Homme</a>
+        <a href="../views/ListeProduit.php" class="aucuneDecoration">Femme</a>
+        <a href="../views/ListeProduit.php" class="aucuneDecoration">Enfant</a>
+      </div>
+      <div id="imageDefilerMenu">
+        <img src="../public/img/menu.svg" alt="Menu déroulant">
+      </div>
     </div>
 
     <div id="body-content">

@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->addAddress($adresse_mail); //adresse mail du destinataire
             $mail->isHTML(true); //mail au format HTML
             $mail->Subject = 'Confirmation de ton inscription !'; //sujet du mail
-            $mail->Body = 'Vous êtes désormais inscrit à WIREFIT !';
+            $mail->Body = 'Vous etes desormais inscrit a WIREFIT !';
             $mail->send();
         } catch(Exception) {
             echo 'Message could not be sent. Mailer Error: {$mail->ErrorInfo}';
