@@ -20,7 +20,6 @@ class Utilisateur{
         $this->password = $password;
         $this->adresse = $adresse;
     }
-    
 
     public function getEmail() {
         return $this->email;
