@@ -70,6 +70,15 @@ a {
     letter-spacing: 0.275rem;
 }
 
+.compte-panier{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5%;
+    width: 50%;
+    margin-right: 2%;
+}
+
 @media screen and (max-width: 960px) {
     #title{
         font-size: 3.5rem;
