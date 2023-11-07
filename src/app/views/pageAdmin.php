@@ -259,7 +259,7 @@ $produits = $produitController->afficherTousLesProduits();
 
         <div id="ajoutProduitEtCategories">
             <div id="ajoutProduit">
-                <button id="boutonAjoutProduit" onclick="afficherPopupAjoutProduit()()">
+                <button id="boutonAjoutProduit" onclick="window.location.href = './AjouterProduit.php';">
                     <p>Ajouter un produit</p>
                     <p>+</p>
                 </button>
