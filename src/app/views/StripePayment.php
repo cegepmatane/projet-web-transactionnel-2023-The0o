@@ -1,5 +1,6 @@
 <?php
 
+require_once('../models/TransactionDAO.php');
 require_once('../models/PanierDAO.php');
 require_once('../controllers/PanierController.php');
 require_once('../config/database.php');
@@ -21,7 +22,10 @@ class StripePayment {
 	$mysqli = new mysqli('localhost', 'TestUserAdmin', '123', 'wirefit');
 	$panierDAO = new PanierController($mysqli);
 	$produitDAO = new ProduitController($mysqli);
+	//$transactionDAO = new TransactionDAO($mysqli);
+	//$produitDAO->addTransaction('1', '1', 1);
 	session_start();
+        $_SESSION['mysqli'] = $mysqli;
 	$utilisateurObjet = $_SESSION['utilisateur'];
 	$emailUtilisateur = $utilisateurObjet->getEmail();
 	$panierDAO->ListPanierProduit($emailUtilisateur);
@@ -46,8 +50,8 @@ class StripePayment {
 	$session = Session::create([
 		'line_items'                  => $line_items, 
 	        'mode'                        => 'payment',
-            	'success_url'                 => 'success.php', //a changer manuellement
-            	'cancel_url'                  => 'Accueil.php', //a changer manuellement
+            	'success_url'                 => 'https://wirefit.net/projet-web-transactionnel-2023-The0o/src/app/views/success.php', //a changer manuellement
+            	'cancel_url'                  => 'https://wirefit.net', //a changer manuellement
             	'billing_address_collection'  => 'required',
             	'shipping_address_collection' => [
                 'allowed_countries' => ['CA', 'FR']
@@ -55,7 +59,7 @@ class StripePayment {
         ]);
         header("HTTP/1.1 303 See Other");
         header("Location: " . $session->url);
-    }
+	}
 
 }
 ?>

@@ -15,6 +15,10 @@ class ProduitController {
         $this->couleurDAO = new CouleurDAO($connexion);
     }
 
+    public function addTransaction($idProduit , $quantite, $total){
+        $panier = $this->produitDAO->addTransaction($idProduit , $quantite, $total);
+    }
+
     public function afficherTousLesProduits() {
         $produits = $this->produitDAO->getAllProduits();
         return $produits;

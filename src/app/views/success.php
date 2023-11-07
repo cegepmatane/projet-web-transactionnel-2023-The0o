@@ -1,23 +1,36 @@
 <?php
+//echo "C";
 require_once('../models/TransactionDAO.php');
-require_once('../controllers/PanierController.php');
-require_once('../config/database.php');
-require_once('../config/config.php');
-require_once('../controllers/ProduitController.php');
-require_once('../models/Utilisateur.php');
-
+//require_once('../controllers/PanierController.php');
+//require_once('../config/database.php');
+//require_once('../config/config.php');
+//require_once('../controllers/ProduitController.php');
+//require_once('../models/Utilisateur.php');
+//echo "B";
 $arrayy = $_SESSION['paiement'];
 $idProduit = array();
 $quantite = array();
 $total = 0;
-array_map(function(array $product) {
+//echo "a";
+//array_map(function(array $product) {
+    //array_push($idProduit, $product['idProduit']);
+    //array_push($idProduit, $product['quantite']);
+    //$total += $product['quantite'] * $product['prix'] * 100;
+//}, $arrayy);
+foreach ($arrayy as &$product) {
     array_push($idProduit, $product['idProduit']);
     array_push($idProduit, $product['quantite']);
     $total += $product['quantite'] * $product['prix'] * 100;
-}, $arrayy);
-$mysqli = new mysqli('localhost', 'TestUserAdmin', '123', 'wirefit');
-$transactionDAO = new TransactionDAO($mysqli);
-$transactionDAO->addTransaction($idProduit, $quantite, $total);
+}
+//echo "e";
+//$mysqli = new mysqli('localhost', 'userTransaction', 'mdp', 'wirefit');
+$mysqli = $_SESSION['mysqli'];
+//echo $mysqli;
+//echo "g";
+//$transactionDAO = new TransactionDAO($mysqli);
+//echo "f";
+//$transactionDAO->addTransaction($idProduit, $quantite, $total);
+//echo "d";
 ?>
 
 <!DOCTYPE html>

@@ -16,9 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $adresse_mail = $_POST["adresse_mail"];
     if (!empty($nom) && !empty($prenom) && !empty($mot_de_passe) && !empty($adresse_mail)) {
         $utilisateurs = $utilisateurController->creeUtilisateur($nom,$prenom, $adresse_mail, $mot_de_passe);
-        //fait moi une page de chagrement en html
         try{
-            echo '<div class="loader"> creation du compte</div>';
             $mail->isSMTP();
             $mail->Host = 'smtp-mail.outlook.com';
             $mail->SMTPAuth = true;
@@ -31,10 +29,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->addAddress($adresse_mail); //adresse mail du destinataire
             $mail->isHTML(true); //mail au format HTML
             $mail->Subject = 'Confirmation de ton inscription !'; //sujet du mail
-            $mail->Body = 'Vous etes desormais inscrit a WIREFIT !';
+            $mail->Body = 'Vous êtes désormais inscrit à WIREFIT !';
             $mail->send();
+            header('Location: connexion.php');
         } catch(Exception) {
-            echo 'Message could not be sent. Mailer Error: {$mail->ErrorInfo}';
+            echo 'Votre mail est non valide';
         }
     } else {
         $erreur = "Veuillez remplir tous les champs.";
@@ -50,7 +49,59 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="../public/css/inscription.css">
     <title>WIREFIT</title>
 </head>
+
+
+<style>
+
+.svg-container{
+height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+        .loader {
+            position: fixed;
+            z-index: 999;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <script>
+
+ document.addEventListener('DOMContentLoaded', function() {
+        // Votre code ici
+        var connexionElement = document.getElementById('inscription');
+        if (connexionElement) {
+            connexionElement.addEventListener('submit', function() {
+                hideLoader();
+            });
+        }
+    });
+
+
+        function hideLoader() {
+            const loader = document.querySelector(".loader");
+            loader.style.display = "block";
+        }
+    </script>
+
+
+
+
+
 <body>
+<div class="loader" style="display : none">
+<div class="svg-container">
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100" overflow="visible" fill="#ffffff" stroke="none"><defs><circle id="loader" cx="20" cy="50" r="6" /></defs><use xlink:href="#loader" x="18"><animate attributeName="opacity" values="0;1;0" dur="1s" begin="0.20s" repeatCount="indefinite"></animate></use><use xlink:href="#loader" x="34"><animate attributeName="opacity" values="0;1;0" dur="1s" begin="0.40s" repeatCount="indefinite"></animate></use><use xlink:href="#loader" x="50"><animate attributeName="opacity" values="0;1;0" dur="1s" begin="0.60s" repeatCount="indefinite"></animate></use><use xlink:href="#loader" x="66"><animate attributeName="opacity" values="0;1;0" dur="1s" begin="0.80s" repeatCount="indefinite"></animate></use><use xlink:href="#loader" x="82"><animate attributeName="opacity" values="0;1;0" dur="1s" begin="1.00s" repeatCount="indefinite"></animate></use></svg>
+</div>
+</div>
     <div id="body-contenu">
         <div id="titre">WIREFIT</div>
         <div id="log-sub-option">
@@ -68,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <?php if (isset($erreur)) { ?>
         <p style="color: red;"><?php echo $erreur; ?></p>
         <?php } ?>
-        <form method="post">
+        <form id="inscription" method="post">
             <div id="form">
                 <div id="champs">
                     <div class="champ">

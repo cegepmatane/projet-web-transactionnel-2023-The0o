@@ -1,11 +1,16 @@
 <?php
 require_once('../config/database.php');
 
-class CouleurDAO {
+class TransactionDAO {
     private $conn;
 
     public function __construct($connexion) {
+//$mysqli = new mysqli('localhost', 'TestUserAdmin', '123', 'wirefit');
+echo "o";
         $this->conn = $connexion;
+//echo $connexion;
+echo "n";
+//echo "m".$this->conn;
     }
 
     public function getListTransaction(){
@@ -55,12 +60,20 @@ class CouleurDAO {
 
 
     public function addTransaction($idProduit , $quantite, $total){
+echo "h";
         $sql = "INSERT INTO `_TRANSACTION` (`idProduit `,`quantite`, `total`) VALUES ('$idProduit ','$quantite', '$total')";
-        if ($this->conn->query($sql)) {
-            return true; 
+	echo "q";
+	echo ".".$this->conn.".";        
+echo "j";
+//echo "l".$this->conn."k";
+	if ($this->conn->query($sql)) {
+            return true;
+echo "p"; 
         } else {
+echo "q";
             return false;
         }
+echo "I";
     }
 }
 ?>

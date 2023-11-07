@@ -8,6 +8,21 @@ class ProduitDAO {
         $this->conn = $connexion;
     }
 
+public function addTransaction($idProduit , $quantite, $total){
+	//echo "h";
+        //$sql = "INSERT INTO `_TRANSACTION` (`idProduit `,`quantite`, `total`) VALUES ('$idProduit ','$quantite', '$total'";
+        //echo $this->conn;
+        //echo ".".$this->conn.".";        
+	//echo "j";
+	//echo "l".$this->conn."k";
+        //if ($this->conn->query($sql)) {
+        //    return true;
+        //} else {
+        //    return false;
+        //}
+    }
+
+
     public function getAllProduits() {
         $sql = "SELECT * FROM PRODUIT";
         $result = $this->conn->query($sql);
