@@ -28,7 +28,7 @@ class StripePayment {
 	$arrayy = array();
 	foreach ($panierDAO->ListPanierProduit($emailUtilisateur) as &$value) {
 		$produit = $produitDAO->afficherUnProduitParSonId($value->idProduit);
-		array_push($arrayy, array('quantite' => $value->QuantiterProduit, 'prix' => $produit->prixProduit, 'nomProduit' => $produit->nomProduit));
+		array_push($arrayy, array('quantite' => $value->QuantiterProduit, 'prix' => $produit->prixProduit, 'nomProduit' => $produit->nomProduit, 'idProduit' => $produit->idProduit));
 	}
 	$line_items = array_map(function(array $product) {
 	    return [
@@ -42,11 +42,12 @@ class StripePayment {
         	]
     	];
 	}, $arrayy);
+	$_SESSION['paiement'] = $line_items;
 	$session = Session::create([
 		'line_items'                  => $line_items, 
 	        'mode'                        => 'payment',
-            	'success_url'                 => 'http://localhost/poc/src/success.html', //a changer manuellement
-            	'cancel_url'                  => 'http://localhost/poc/src/stripe.html', //a changer manuellement
+            	'success_url'                 => 'success.php', //a changer manuellement
+            	'cancel_url'                  => 'Accueil.php', //a changer manuellement
             	'billing_address_collection'  => 'required',
             	'shipping_address_collection' => [
                 'allowed_countries' => ['CA', 'FR']
