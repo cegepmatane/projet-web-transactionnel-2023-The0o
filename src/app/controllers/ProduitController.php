@@ -57,6 +57,11 @@ class ProduitController {
         return $produits;
     }
 
+    public function afficherUnProduitParSonIdAvecAfficher($id){
+        $produits = $this->produitDAO->getProduitByIdWithAfficher($id);
+        return $produits;
+    }
+
     public function afficherCouleurParProduit($id){
         $couleur = $this->couleurDAO->getColorByProductId($id);
         return $couleur;

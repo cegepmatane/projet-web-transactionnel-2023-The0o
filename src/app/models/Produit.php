@@ -7,11 +7,12 @@ class Produit {
     public $descriptionProduit;
     public $marqueProduit;
     public $reductionProduit;
+    public $afficherProduit;
     public $couleurProduit;
     public $imagesProduit;
     public $imagesDeuxProduit;
 
-    public function __construct($id, $nom, $prix, $sousTitre, $description, $marque, $reduction, $couleur,$imagesProduit,$imagesDeuxProduit) {
+    public function __construct($id, $nom, $prix, $sousTitre, $description, $marque, $reduction, $afficher, $couleur,$imagesProduit,$imagesDeuxProduit) {
         $this->idProduit = filter_var($id, FILTER_VALIDATE_INT);
         $this->nomProduit = htmlspecialchars($nom);
         $this->prixProduit = htmlspecialchars($prix);
@@ -19,6 +20,7 @@ class Produit {
         $this->descriptionProduit = htmlspecialchars($description);
         $this->marqueProduit = htmlspecialchars($marque);
         $this->reductionProduit = htmlspecialchars($reduction);
+        $this->afficherProduit = htmlspecialchars($afficher);
         $this->couleurProduit = htmlspecialchars($couleur);
         $this->imagesProduit = $imagesProduit;
         $this->imagesDeuxProduit = $imagesDeuxProduit;

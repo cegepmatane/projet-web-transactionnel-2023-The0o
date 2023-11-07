@@ -45,6 +45,7 @@ class ProduitDAO {
                 $row['descriptionProduit'],
                 $row['marqueProduit'],
                 $row['reductionProduit'],
+                '1',
                 $couleurProduit,
                 $fileNameProduit1,
                 $fileNameProduit2
@@ -94,6 +95,56 @@ class ProduitDAO {
                 $row['descriptionProduit'],
                 $row['marqueProduit'],
                 $row['reductionProduit'],
+                '1',
+                $couleurProduit,
+                $fileNameProduit1,
+                $fileNameProduit2
+            );
+            return $produit;
+        } else {
+            return null; 
+        }
+    }
+
+    public function getProduitByIdWithAfficher($id){
+        $sql = "SELECT * FROM PRODUIT WHERE idProduit = ".$id."";
+        $result = $this->conn->query($sql);
+
+        if ($result === false) {
+            return false; 
+        }
+
+        if ($row = $result->fetch_assoc()) {
+            $sql = "SELECT COULEUR.hexaCouleur FROM PRODUIT INNER JOIN AVOIR ON AVOIR.idProduit=".$row['idProduit']." INNER JOIN COULEUR ON AVOIR.idCouleur=COULEUR.idCouleur";
+            $couleurResult= $this->conn->query($sql);
+
+            $sql = "SELECT * FROM PRODUIT INNER JOIN IMAGE ON IMAGE.id = PRODUIT.imageUnProduit WHERE PRODUIT.idProduit = ".$row['idProduit'];
+            $fileNameProduit1 = $this->conn->query($sql)->fetch_assoc()["filename"];
+
+            $sql = "SELECT * FROM PRODUIT INNER JOIN IMAGE ON IMAGE.id = PRODUIT.imageDeuxProduit WHERE PRODUIT.idProduit = ".$row['idProduit'];
+            $fileNameProduit2 = $this->conn->query($sql)->fetch_assoc()["filename"];
+
+            if ($couleurResult) {
+                $couleurRow = $couleurResult->fetch_assoc();
+                if (isset($couleurRow['hexaCouleur'])) {
+                    $couleurProduit = $couleurRow['hexaCouleur'];
+                }
+                else {
+                    $couleurProduit = "000000";    
+                }
+            } else {
+                $couleurProduit = "000000";
+            }
+
+            $produit = new Produit(
+                $row['idProduit'],
+                $row['nomProduit'],
+                $row['prixProduit'],
+                $row['sousTitreProduit'],
+                $row['descriptionProduit'],
+                $row['marqueProduit'],
+                $row['reductionProduit'],
+                $row['afficherProduit'],
                 $couleurProduit,
                 $fileNameProduit1,
                 $fileNameProduit2
@@ -139,6 +190,7 @@ class ProduitDAO {
                 $row['descriptionProduit'],
                 $row['marqueProduit'],
                 $row['reductionProduit'],
+                '1',
                 $couleurProduit,
                 $fileNameProduit1,
                 $fileNameProduit2
@@ -242,6 +294,7 @@ class ProduitDAO {
                 $row['descriptionProduit'],
                 $row['marqueProduit'],
                 $row['reductionProduit'],
+                '1',
                 $row['couleurProduit'],
                 $row['imagesProduit'],
                 $row['imageDeuxProduit']

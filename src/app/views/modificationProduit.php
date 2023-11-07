@@ -11,7 +11,7 @@ if (isset($_GET['id'])) {
 } else {
     $idProduit = 1;
 }
-$produit = $produitController->afficherUnProduitParSonId($idProduit);
+$produit = $produitController->afficherUnProduitParSonIdAvecAfficher($idProduit);
 $categories = $produitController->afficherListeDesCategorie();
 
 ?>
@@ -64,12 +64,7 @@ $categories = $produitController->afficherListeDesCategorie();
                 <p>Affichage du produit</p>
                 <div id="choixAffichageRadioButtons">
                     <div id="noAffichageRadioButton">
-                        <input type="radio" id="reponseNoAffichage" name="afficherProduit" value="0" required>
-                        <label for="reponseNoAffichage">Non</label>
-                    </div>
-                    <div id="yesAffichageRadioButton">
-                        <input type="radio" id="reponseYesAffichage" name="afficherProduit" value="1" required>
-                        <label for="reponseYesAffichage">Oui</label>
+                        <input type="checkbox" id="reponseNoAffichage" name="afficherProduit" <?php echo $produit->afficherProduit == 1 ? 'checked' : ''; ?>>
                     </div>
                 </div>
             </div>
