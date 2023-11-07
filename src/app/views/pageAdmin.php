@@ -1,6 +1,15 @@
 <?php
 require_once('../controllers/ProduitController.php');
 $produitController = new ProduitController($mysqli);
+session_start();
+if (!isset($_SESSION['email'])) {
+    header('Location: ConnexionAdmin.php');
+}
+//deconnexion
+if (isset($_GET['deconnexion'])) {
+    session_destroy();
+    header('Location: ConnexionAdmin.php');
+}
 $produits = $produitController->afficherTousLesProduits();
 ?>
 
@@ -18,9 +27,12 @@ $produits = $produitController->afficherTousLesProduits();
 
 <body>
     <div id="navBar">
+        <form action="pageAdmin.php">
         <div id="logo">
+        <input type="submit" value="Deconnexion" name="deconnexion">
                     WIREFIT
         </div>
+        </form>
         <div id="naviguerCategories">
             <a href="./pageAdmin.php" class="aucuneDecoration">Produits</a>
             <a href="./AdministrationClient.php" class="aucuneDecoration">Clients</a>

@@ -4,7 +4,10 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 require_once('../controllers/ProduitController.php');
-
+session_start();
+if (!isset($_SESSION['email'])) {
+    header('Location: ConnexionAdmin.php');
+}
 $produitController = new ProduitController($mysqli);
 if (isset($_GET['id'])) {
     $idProduit = $_GET['id'];

@@ -31,15 +31,18 @@ class CouleurDAO {
     }
 
     public function getColorByProductId($id){
-        $sql = "SELECT COULEUR.idCouleur,COULEUR.nomCouleur,COULEUR.hexaCouleur FROM PRODUIT NATURAL JOIN COULEUR WHERE idProduit = ".$id."";
-        $result = $this->conn->query($sql);
-
+        $sql = "SELECT COULEUR.idCouleur, COULEUR.nomCouleur, COULEUR.hexaCouleur FROM PRODUIT NATURAL JOIN COULEUR WHERE idProduit = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
         if ($result === false) {
             return false; 
         }
-
+    
         $couleurs = [];
-
+    
         while ($row = $result->fetch_assoc()) {
             $couleur = new Couleur(
                 $row['idCouleur'],
@@ -50,6 +53,7 @@ class CouleurDAO {
         }
         return $couleurs;
     }
+    
 
 
     public function addColor($nomCouleur, $hexaCouleur){

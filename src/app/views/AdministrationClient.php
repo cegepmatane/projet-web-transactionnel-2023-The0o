@@ -6,6 +6,9 @@ require_once('../models/Utilisateur.php');
 require_once('../controllers/UtilisateurController.php');
 $utilisateurController = new UtilisateurController($mysqli);
 session_start();
+if (!isset($_SESSION['email'])) {
+    header('Location: ConnexionAdmin.php');
+}
 $utilisateurs = $utilisateurController->tousUtilisateur();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     foreach ($_POST['nom'] as $id => $nom) {
