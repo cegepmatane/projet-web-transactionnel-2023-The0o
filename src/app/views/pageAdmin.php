@@ -27,15 +27,17 @@ $produits = $produitController->afficherTousLesProduits();
 
 <body>
     <div id="navBar">
-        <form action="pageAdmin.php">
         <div id="logo">
-        <input type="submit" value="Deconnexion" name="deconnexion">
                     WIREFIT
         </div>
-        </form>
         <div id="naviguerCategories">
             <a href="./pageAdmin.php" class="aucuneDecoration">Produits</a>
             <a href="./AdministrationClient.php" class="aucuneDecoration">Clients</a>
+        </div>
+        <div class="deco">
+        <form action="pageAdmin.php">
+        <input type="submit" value="Deconnexion" name="deconnexion">
+        </form>
         </div>
         <div id="imageDefilerMenu">
             <img src="../img/menu.svg" alt="Menu déroulant">

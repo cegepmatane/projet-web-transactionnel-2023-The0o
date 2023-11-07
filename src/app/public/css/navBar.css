@@ -6,6 +6,12 @@
     display: flex;
     position: relative;
 }
+.deco{
+    display: flex;
+    justify-content: end;
+    width: 100vw;
+    align-items: center;
+}
 
 #logo {
     margin: 0 3ch;
@@ -46,6 +52,8 @@
     text-decoration: none;
     color: white;
 }
+
+
 
 @media (max-width: 750px) {
     #naviguerCategories {
