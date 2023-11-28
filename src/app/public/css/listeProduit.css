@@ -76,6 +76,10 @@ ul {
     justify-content: space-between;
 }
 
+#filtrePrix {
+    display: flex;
+}
+
 #listeArticles {
     margin: 0 2ch;
     display: flex;

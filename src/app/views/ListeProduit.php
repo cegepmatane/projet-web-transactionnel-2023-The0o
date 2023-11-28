@@ -17,7 +17,7 @@ $categorie = $produitController->afficherListeDesCategorie();
     <link rel="stylesheet" href="../public/css/listeProduit.css">
     <link rel="stylesheet" href="../public/css/navBar.css">
   </head>
-  <body>
+  <body  onload="javascript:updatePriceFilter()">
     <div id="navBar">
       <a href="../public/index.php" id="aLien" class="aucuneDecoration">
         <div id="logo">
@@ -58,11 +58,11 @@ $categorie = $produitController->afficherListeDesCategorie();
           </div>
         </div>
         <div class="filtre">
-          <div class="filtreTitre" onclick="showFilter('filtrePrix')">
+          <div class="filtreTitre" onclick="showFilter('filtrePrixx')">
             <p>Prix</p>
             <img src="../public/img/fleche.svg" alt="fleche vers le bas">  
           </div>
-          <div class="optionsFiltre" id="filtrePrix">
+          <div class="optionsFiltre" id="filtrePrixx">
             <hr>
             <ul>
               <div class="optionFiltre">
@@ -173,6 +173,15 @@ $categorie = $produitController->afficherListeDesCategorie();
       </div>
     </div>
 
+    <div id="filtrePrix">
+      <div>Prix minimum :&nbsp;</div>
+      <div id="prixMinValue">0</div>
+      <input type="range" name="" id="prixMinimum" min="0" max="100" value="0" oninput="updatePriceFilter()">
+      <div>Prix maximum :&nbsp;</div>
+      <div id="prixMaxValue">100</div>
+      <input type="range" name="" id="prixMaximum" min="0" max="100" value="100" oninput="updatePriceFilter()">
+    </div>
+
     <div id="listeArticles">
     <?php foreach ($produits as $produit): ?>
       <a href="/projet-web-transactionnel-2023-The0o/src/app/views/Produits.php?id=<?php echo $produit->idProduit; ?>">
@@ -191,6 +200,27 @@ $categorie = $produitController->afficherListeDesCategorie();
 
   </body>
   <script>
+
+      function updatePriceFilter() {
+        var prixMin = document.getElementById("prixMinimum").value;
+        var prixMax = document.getElementById("prixMaximum").value;
+
+        
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            document.getElementById('listeArticles').innerHTML = xhr.responseText;
+          }
+        };
+
+        var url = 'scriptFiltrage.php?prixMin=' + prixMin + '&prixMax=' + prixMax;
+        xhr.open('GET', url, true);
+        xhr.send();
+
+        document.getElementById("prixMinValue").innerHTML = document.getElementById("prixMinimum").value;
+        document.getElementById("prixMaxValue").innerHTML = document.getElementById("prixMaximum").value;
+      }
+
     function showFilter(id) {
       if (document.getElementById(id).style.display !== "block") {
         document.getElementById(id).style.display = "block"
