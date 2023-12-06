@@ -11,6 +11,8 @@ if (isset($_GET['deconnexion'])) {
     header('Location: ConnexionAdmin.php');
 }
 $produits = $produitController->afficherTousLesProduits();
+$categories = $produitController->afficherListeDesCategorie();
+
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +24,6 @@ $produits = $produitController->afficherTousLesProduits();
     <title>Panneau Admin</title>
     <link rel="stylesheet" type="text/css" href="../public/css/panneauAdmin.css" />
     <link rel="stylesheet" type="text/css" href="../public/css/navBar.css" />
-    <script src="../public/js/panneauAdmin.js"></script>
 </head>
 
 <body>
@@ -46,70 +47,78 @@ $produits = $produitController->afficherTousLesProduits();
 
     <div id="popupAjout">
         <div id="contenuPopupAjout">
-            <form action="ajoutProduitBDD.php" method="post">
-                <button class="boutonFermer" onclick="fermerPopupAjout()">
-                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
-                        <path
-                            d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
-                    </svg>
-                </button>
-                <div class="contenuProduit">
-                    <div class="titrePopup">
-                        <p>Ajouter un produit</p>
-                    </div>
+            
+            <button class="boutonFermer" onclick="fermerPopupAjout()">
+                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
+                    <path
+                        d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z" />
+                </svg>
+            </button>
+            <div class="contenuProduit">
+                <div class="titrePopup">
+                    <p>Ajouter un produit</p>
+                </div>
+                <form id="formAjoutProduit" action="ajoutProduitBDD.php" method="post">
                     <div class="champsProduit">
+                        <input type="hidden" name="idProduit" required>
                         <div class="champ">
                             <p>Nom du produit</p>
-                            <input type="text" name="nomProduit">
-                        </div>
-                        <div class="champ">
-                            <p>Marque du produit</p>
-                            <input type="text" name="marqueProduit">
+                            <input type="text" name="nomProduit" required>
                         </div>
                         <div class="champ">
                             <p>Prix du produit</p>
-                            <input type="text" name="prixProduit">
+                            <input type="number" name="prixProduit" required>
                         </div>
                         <div class="champ">
                             <p>Description du produit</p>
-                            <input type="text" name="descriptionProduit">
+                            <input type="text" name="descriptionProduit" required>
                         </div>
                         <div class="champ">
-                            <p>Tailles du produit</p>
-                            <div id="choixTailles">
-
-                                <?php foreach ($produits as $produit): ?>
-                                    <div>
-                                        <input type="checkbox" name="<?php ?>" value="<?php ?>">
-                                        <label for="<?php ?>"><?php ?></label>
-                                    </div>
-                                <?php endforeach; ?>
-
+                            <p>Marque du produit</p>
+                            <input type="text" name="marqueProduit" required>
+                        </div>
+                        <div class="champ">
+                            <p>Réduction sur le produit</p>
+                            <input type="number" name="reductionProduit" required>
+                        </div>
+                        <div class="champ">
+                            <p>Type de sexe du produit</p>
+                            <select id="sexeProduit" name="sexeProduit" required>
+                                <option value="0">Homme</option>
+                                <option value="1">Femme</option>
+                                <option value="2">Enfant</option>
+                            </select>
+                        </div>
+                        <div class="champ">
+                            <p>Affichage du produit</p>
+                            <div id="choixAffichageRadioButtons">
+                                <div id="noAffichageRadioButton">
+                                    <input type="checkbox" id="reponseNoAffichage" name="afficherProduit">
+                                </div>
                             </div>
                         </div>
                         <div class="champ">
-                            <p>Couleurs du produit</p>
-                            <div id="champCouleurs">
-
-                                <?php foreach ($produits as $produit): ?>
-                                    <div>
-                                        <input type="checkbox" name="<?php ?>" value="<?php ?>">
-                                        <label for="<?php ?>"><?php ?></label>
-                                    </div>
+                            <p>Type de produit</p>
+                            <select id="typeProduit" name="typeProduit" >
+                                <?php foreach ($categories as $categorie): ?>
+                                    <option value="<?php echo $categorie->nomCategorie ?>" required><?php echo $categorie->nomCategorie ?></option>
                                 <?php endforeach; ?>
-
-                            </div>
+                            </select>
                         </div>
                         <div class="champ">
-                            <p>Images du produit</p>
-                            <input type="file" accept="image/png, image/jpeg" name="images[]" multiple />
+                            <p>Première image du produit</p>
+                            <input type="file" class="imagesInput" id="imageUn" name="imageUn" accept="image/png" />
+                        </div>
+                        <div class="champ">
+                            <p>Seconde image du produit</p>
+                            <input type="file" class="imagesInput" id="imageDeux" name="imageDeux" accept="image/png" />
                         </div>
                     </div>
-                    <button type="submit" id="boutonAjoutProduitPopup" onclick="fermerPopupAjout()">
+                    <button type="submit" id="boutonAjoutProduitPopup">
                         <p>Ajouter le produit</p>
                     </button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -259,7 +268,7 @@ $produits = $produitController->afficherTousLesProduits();
 
         <div id="ajoutProduitEtCategories">
             <div id="ajoutProduit">
-                <button id="boutonAjoutProduit" onclick="window.location.href = './AjouterProduit.php';">
+                <button id="boutonAjoutProduit" onclick="afficherPopupAjoutProduit()">
                     <p>Ajouter un produit</p>
                     <p>+</p>
                 </button>
@@ -354,6 +363,8 @@ $produits = $produitController->afficherTousLesProduits();
 
         </div>
     </div>
+
+    <script src="../public/js/panneauAdmin.js"></script>
 </body>
 
 </html>

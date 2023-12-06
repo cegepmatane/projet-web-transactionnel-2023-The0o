@@ -68,3 +68,26 @@ function changerCategorieActive(categorie) {
     categorie.style.backgroundColor = "black";
     categorie.style.color = "white";
 }
+
+document.getElementById("formAjoutProduit").addEventListener('submit', function (event) {
+    event.preventDefault();
+    var formData = new FormData(this);
+
+    fetch('ajoutProduitBDD.php', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        if (data.success) {
+            fermerPopupAjout();
+        } else {
+            alert('Erreur lors de l\'ajout du produit. Réessayer.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Une erreur est survenue. Réessayer s\il vous plait.');
+    });
+});
