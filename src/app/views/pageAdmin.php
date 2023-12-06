@@ -58,7 +58,7 @@ $categories = $produitController->afficherListeDesCategorie();
                 <div class="titrePopup">
                     <p>Ajouter un produit</p>
                 </div>
-                <form id="formAjoutProduit" action="ajoutProduitBDD.php" method="post">
+                <form id="formAjoutProduit" action="ajoutProduitBDD.php" method="post" enctype="multipart/form-data">
                     <div class="champsProduit">
                         <input type="hidden" name="idProduit" required>
                         <div class="champ">

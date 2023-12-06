@@ -1,5 +1,8 @@
 <?php
-require_once('../controllers/ProduitController.php');
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+error_reporting(E_ALL);
+require_once '../controllers/ProduitController.php';
 $produitController = new ProduitController($mysqli);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -24,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Valider et ajouter le produit à la base de données (vous devez implémenter cette logique)
     if ($nom && $prix !== false) {
         // Ajouter le produit à la base de données en utilisant la méthode appropriée de ProduitController
-        $produitController->ajouterUnProduit($nom, $prix, $description, $marque, $reduction, $sexe, $afficher, $type, $imagesUn, $imagesDeux);
+        echo $produitController->ajouterUnProduit($nom, $prix, $description, $marque, $reduction, $sexe, $afficher, $type, $imagesUn, $imagesDeux);
 
         // Mettre à jour la réponse en cas de succès
         $response['success'] = true;

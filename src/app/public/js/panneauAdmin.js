@@ -73,7 +73,7 @@ document.getElementById("formAjoutProduit").addEventListener('submit', function 
     event.preventDefault();
     var formData = new FormData(this);
 
-    fetch('ajoutProduitBDD.php', {
+    fetch('./ajoutProduitBDD.php', {
         method: 'POST',
         body: formData,
     })
@@ -87,7 +87,6 @@ document.getElementById("formAjoutProduit").addEventListener('submit', function 
         }
     })
     .catch(error => {
-        console.error('Error:', error);
-        alert('Une erreur est survenue. Réessayer s\il vous plait.');
+        alert('Une erreur est survenue. Réessayer s\'il vous plait.');
     });
 });
