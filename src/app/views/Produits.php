@@ -11,7 +11,6 @@ $produitController = new ProduitController($mysqli);
 $panierController = new PanierController($mysqli);
 $utilisateurObjet = $_SESSION['utilisateur'];
 $emailUtilisateur = $utilisateurObjet->getEmail();
-echo $emailUtilisateur;
 if (isset($_GET['id'])) {
     $idProduit = $_GET['id'];
 } else {

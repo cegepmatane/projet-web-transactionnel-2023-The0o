@@ -50,8 +50,8 @@ class StripePayment {
 	$session = Session::create([
 		'line_items'                  => $line_items, 
 	        'mode'                        => 'payment',
-            	'success_url'                 => 'https://wirefit.net/projet-web-transactionnel-2023-The0o/src/app/views/success.php', //a changer manuellement
-            	'cancel_url'                  => 'https://wirefit.net', //a changer manuellement
+            	'success_url'                 => 'http://wirefit.net/projet-web-transactionnel-2023-The0o/src/app/views/success.php', //a changer manuellement
+            	'cancel_url'                  => 'http://wirefit.net', //a changer manuellement
             	'billing_address_collection'  => 'required',
             	'shipping_address_collection' => [
                 'allowed_countries' => ['CA', 'FR']
